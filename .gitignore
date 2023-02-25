@@ -54,3 +54,4 @@ dkms.conf
 # gba related
 *.gba
 tools/agbcc/
+.vscode/
