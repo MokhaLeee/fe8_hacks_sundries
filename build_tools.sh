@@ -29,14 +29,6 @@ rm -fr $TEMP_DIR
 
 # build decomp
 cp $BASE_DIR/fe8.gba $FE8_DIR/baserom.gba
-cd $FE8_DIR
-
-make -C tools/gbagfx
-make -C tools/scaninc
-make -C tools/preproc
-make -C tools/bin2c
-make -C tools/rsfont
-make -C tools/aif2pcm
-make -C tools/ramscrgen
+cd $FE8_DIR && ./build_tools.sh
 
 cd $BASE_DIR

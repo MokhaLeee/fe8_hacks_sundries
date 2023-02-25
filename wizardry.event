@@ -1,4 +1,4 @@
 #define FreeSpace 0xB2A610
 ORG FreeSpace
 
-#include "wizardry/ts_rework/ts_rework.event"
+// #include "wizardry/ts_rework/ts_rework.event"
