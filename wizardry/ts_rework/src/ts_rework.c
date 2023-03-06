@@ -10,7 +10,7 @@
 extern struct ProcScr ProcCmd_NewTargetSelection[];
 
 ProcPtr StartNewTargetSelection(const struct SelectInfo* selectInfo){
-    
+
     struct SelectTargetProc* proc;
 
     LockGameLogic();
