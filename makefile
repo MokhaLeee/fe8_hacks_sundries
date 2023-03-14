@@ -2,8 +2,8 @@ CACHE_DIR := .cache_dir
 $(shell mkdir -p $(CACHE_DIR) > /dev/null)
 
 FE8_DIR := tools/fe8
-FE8_GBA := $(FE8_DIR)/fe8.gba
-FE8_ELF := $(FE8_DIR)/fe8.elf
+FE8_GBA := $(FE8_DIR)/fireemblem8.gba
+FE8_ELF := $(FE8_DIR)/fireemblem8.elf
 FE8_REF := $(CACHE_DIR)/fe8-ref.s
 FE8_SYM := $(CACHE_DIR)/fe8.sym
 
