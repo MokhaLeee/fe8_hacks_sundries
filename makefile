@@ -136,10 +136,10 @@ SDEPFLAGS = --MD "$(CACHE_DIR)/$(notdir $*).d"
 -include $(wildcard $(CACHE_DIR)/*.d)
 
 CFILES := $(shell find $(HACK_DIRS) -type f -name '*.c')
-CLEAN_FILES += $(CFILES:.c=.o) $(CFILES:.c=.asm) $(CFILES:.c=.dmp) $(CFILES:.c=.lyn.event)
+CLEAN_FILES += $(CFILES:.c=.o) $(CFILES:.c=.asm) $(CFILES:.c=.dmp) # $(CFILES:.c=.lyn.event)
 
 SFILES := $(shell find $(HACK_DIRS) -type f -name '*.s')
-CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
+CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) # $(SFILES:.s=.lyn.event)
 
 # ============
 # = Spritans =
