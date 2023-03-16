@@ -49,7 +49,7 @@ bool TargetSelectionRework_HandleWeanponChange(struct SelectTargetProc* proc) {
     }
 
     if (DPAD_RIGHT & gKeyStatusPtr->repeatedKeys) {
-        for (i = UNIT_ITEM_COUNT - 1; i > 1; i--)
+        for (i = UNIT_ITEM_COUNT - 1; i >= 1; i--)
             if (CanUnitUseWeapon(gActiveUnit, gActiveUnit->items[i]) &&
                 IsItemCoveringRange_hook(gActiveUnit->items[i], RECT_DISTANCE(gActiveUnit->xPos, gActiveUnit->yPos, current->x, current->y), gActiveUnit))
                     goto got_weapon;
