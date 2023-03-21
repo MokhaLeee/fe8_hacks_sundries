@@ -27,7 +27,7 @@ cd $BASE_DIR && rm -rf $TEMP_DIR
 git submodule update --init --recursive
 
 # Build event-assembler
-cd $EA_DIR && sudo ./build.sh
+cd $EA_DIR && ./build.sh
 
 # Build and install agbcc
 TEMP_DIR=$(mktemp -d)

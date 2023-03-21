@@ -9,4 +9,3 @@
 [submodule "tools/ea"]
 	path = tools/ea
 	url = git@github.com:MokhaLeee/EventAssembler.git
-	branch = mokha-fix
