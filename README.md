@@ -12,7 +12,7 @@ For compling by yourself to modification, you must have a linux system such as W
 
 2. Install dependency and tools:
 
-    a.) Install [.Net sdk](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004).
+    a.) Install [.Net 6.0](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu).
 
     b.) `./build_tools.sh` in the repository directory.
 
@@ -20,5 +20,4 @@ For compling by yourself to modification, you must have a linux system such as W
 
 # Wizardry list
 
-to-do
-
+- **Target-select rework**: change weapon during selecting target
