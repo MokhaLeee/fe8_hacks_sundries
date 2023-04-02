@@ -7,9 +7,9 @@ EA_DIR=$TOOL_DIR/ea
 FE8_DIR=$TOOL_DIR/fe8
 
 # Install dependence
-sudo apt-get install binutils-arm-none-eabi gcc-arm-none-eabi build-essential \
+sudo apt-get -y install binutils-arm-none-eabi gcc-arm-none-eabi build-essential \
     cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev python3-pip \
-    aspnetcore-runtime-6.0 dotnet-sdk-6.0 dotnet-runtime-6.0 pkg-config libpng*
+    pkg-config libpng*
 
 pip install pyelftools PyInstaller tmx six
 
