@@ -1,0 +1,17 @@
+#ifndef SHIFENG_BMMIND_HACK
+#define SHIFENG_BMMIND_HACK
+
+ALIGN 4
+#include "src/post-action-core.lyn.event"
+#include "src/post-action-inori.lyn.event"
+
+/* Post action hook */
+PUSH
+ORG $59ABE4
+POIN PostActionHook
+
+ORG $5A8078
+POIN PostActionHook
+POP
+
+#endif

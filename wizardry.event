@@ -1,7 +1,13 @@
-#define FreeSpace 0xB2A610
+#include "wizardry/6CDefinitions.event"
+
+#define FreeSpace 0xEF2F18
 ORG FreeSpace
 
-#include "wizardry/ts_rework/ts_rework.event"
+// #include "wizardry/ts_rework/ts_rework.event"
+
+#include "wizardry/bmbattle/bmbattle.event"
+#include "wizardry/post-action/post-action.event"
+#include "wizardry/manims/manims.event"
 
 ALIGN 4
-#include test_prologue.event
+// #include test_prologue.event

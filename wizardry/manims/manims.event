@@ -1,0 +1,6 @@
+ALIGN 4
+#include "src/manim-up.lyn.event"
+
+ALIGN 4
+Img_ManimGravity:
+    #incbin "gfx/gravity.4bpp.lz"

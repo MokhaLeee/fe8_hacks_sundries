@@ -1,0 +1,21 @@
+#ifndef SHIFENG_BMBATTLE_HACK
+#define SHIFENG_BMBATTLE_HACK
+
+ALIGN 4
+#include "src/bmbattle.lyn.event"
+
+gpBmBattleGlobalFlag:
+    WORD 0x203EDB9
+
+gItemIndex_Inori:
+    SHORT 0x1F
+
+gItemIndex_DmgHandler:
+    SHORT 0x1F
+
+PUSH
+ORG $2B894
+#include "src/bmbattle-hooks.lyn.event"
+POP
+
+#endif
