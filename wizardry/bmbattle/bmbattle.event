@@ -3,19 +3,25 @@
 
 ALIGN 4
 #include "src/bmbattle.lyn.event"
+#include "src/bmbattle-hooks.lyn.event"
 
 gpBmBattleGlobalFlag:
     WORD 0x203EDB9
 
-gItemIndex_Inori:
-    SHORT 0x1F
+gItemIndex_Inori:           SHORT 0x1F
+gItemIndex_DmgHandler:      SHORT 0x1F
 
-gItemIndex_DmgHandler:
-    SHORT 0x1F
+gItemDmgHandlerMaxDmg:      SHORT 10
+
+gSkillId_InoriItemAct:      BYTE 0x8
+gSkillId_DmgHandlerItemAct: BYTE 0x58
 
 PUSH
-ORG $2B894
-#include "src/bmbattle-hooks.lyn.event"
+    ORG $2B874
+    jumpToHack(BattleGenerateHit_802B874)
+
+    ORG $2B894
+    jumpToHack(BattleGenerateHit_802B894)
 POP
 
 #endif

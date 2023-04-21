@@ -1,4 +1,11 @@
+# FE8U CHAX
 
-| Free-RAM-Space     | Address     | Size   | Note    |
-| :---               | :----:      | :----: | :---    |
-| BmBattleGlobalFlag | `0x203EDB9` | 0x1    | bmsave  |
+- date: 2023-04-21
+- branch: shifeng-dev
+
+# Memmap
+
+| Remap | Address     | Size    | Note  |
+| :---: | :----:      | :----:  | :---  |
+| RAM   | `0x203EDB9` | `0x1`   | nope  |
+| ROM   | `0x8EF2F18` | `0x4CC` | nope  |

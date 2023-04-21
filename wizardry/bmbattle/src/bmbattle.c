@@ -4,7 +4,9 @@
 #include "bmbattle.h"
 #include "bmbattle-chax.h"
 
-static bool JudgeInoriItemEffect(struct BattleUnit *bu)
+void BattleGenerateHitAttributes(struct BattleUnit* attacker, struct BattleUnit* defender);
+
+bool JudgeBmBattleItemEffect(struct BattleUnit *bu, int item_id)
 {
     int i;
     struct Unit *unit = GetUnit(bu->unit.index);
@@ -12,7 +14,7 @@ static bool JudgeInoriItemEffect(struct BattleUnit *bu)
     for (i = 0; i < UNIT_ITEM_COUNT; i++) {
         u16 item = bu->unit.items[i];
 
-        if (ITEM_INDEX(item) == gItemIndex_Inori && ITEM_USES(item) > 0) {
+        if (ITEM_INDEX(item) == item_id && ITEM_USES(item) != 0) {
             UnitUpdateUsedItem(unit, i);
             UnitUpdateUsedItem(&bu->unit, i);
             return true;
@@ -22,19 +24,34 @@ static bool JudgeInoriItemEffect(struct BattleUnit *bu)
     return false;
 }
 
-bool BattleGenerateHitHack(struct BattleUnit *attacker, struct BattleUnit *defender)
+void BattleGenerateHitHack_802B874(struct BattleUnit *attacker, struct BattleUnit *defender)
+{
+    BattleGenerateHitAttributes(attacker, defender);
+
+    /* Dmg-handler item */
+    if (gBattleStats.damage > 10) {
+        if (JudgeBmBattleItemEffect(defender, gItemIndex_DmgHandler)) {
+
+            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_GREATSHLD;
+            ((u8 *)gBattleHitIterator)[4] = gSkillId_DmgHandlerItemAct;
+
+            gBattleStats.damage = 10;
+        }
+    }
+}
+
+void BattleGenerateHitHack_802B894(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
     /* initialize */
     *gpBmBattleGlobalFlag &= ~CHAX_BMBATTLE_GLBFLG_INORI_ITEM_ACTIVE;
 
+    /* Inori item */
     if (defender->unit.curHP == 0) {
-        if (JudgeInoriItemEffect(defender)) {
+        if (JudgeBmBattleItemEffect(defender, gItemIndex_Inori)) {
             *gpBmBattleGlobalFlag |= CHAX_BMBATTLE_GLBFLG_INORI_ITEM_ACTIVE;
 
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_GREATSHLD;
-
-            /* Setup skill activate anim index */
-            ((u8 *)gBattleHitIterator)[4] = 0x25;
+            ((u8 *)gBattleHitIterator)[4] = gSkillId_InoriItemAct;
 
             defender->unit.curHP = 1;
 
@@ -52,6 +69,4 @@ bool BattleGenerateHitHack(struct BattleUnit *attacker, struct BattleUnit *defen
 
     if (gBattleTarget.unit.curHP == 0)
         gBattleHitIterator->info |= BATTLE_HIT_INFO_KILLS_TARGET;
-    
-    return true;
 }

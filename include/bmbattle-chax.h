@@ -9,4 +9,9 @@ enum gpBmBattleGlobalFlag_bitfile {
 
 extern u16 gItemIndex_Inori;
 extern u16 gItemIndex_DmgHandler;
+extern s16 gItemDmgHandlerMaxDmg;
+
+extern u8 gSkillId_InoriItemAct;
+extern u8 gSkillId_DmgHandlerItemAct;
+
 extern u8 *gpBmBattleGlobalFlag;

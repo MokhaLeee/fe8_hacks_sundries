@@ -39,7 +39,6 @@ PROC_LABEL(POST_ACTION_PROC_LABEL_END),
     PROC_END
 };
 
-
 void PostActionHook(ProcPtr parent)
 {
     struct ProcPostAction *proc = Proc_StartBlocking(ProcScr_PostActionHook, parent);
