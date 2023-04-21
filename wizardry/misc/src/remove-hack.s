@@ -1,13 +1,5 @@
 .thumb
 
-.macro blh to, reg=r4
-	push {\reg}
-	ldr \reg, =\to
-	mov r14, \reg
-	pop {\reg}
-	.short 0xF800
-.endm
-
 .global RemoveHack_B51244
 .type RemoveHack_B51244, %function
 RemoveHack_B51244:

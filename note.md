@@ -29,3 +29,5 @@
 `B6284C`: WTACalcFunctions
 `B4045C`: SkillTester
 `B51218`: ReMove
+`B6286D`: ProcLoopParent --> BattleGenerateHitAttributes (Wrapper)
+`B628B8`: POIN Proc_Start (BattleGenerateHitAttributes loop)

@@ -21,20 +21,18 @@ bool JudgeBmBattleItemEffect(struct BattleUnit *bu, int item_id)
     return false;
 }
 
-void BattleGenerateHitHack_802B874(struct BattleUnit *attacker, struct BattleUnit *defender)
+void BattleGenerateHitAttributesLoop_DmgHandlerItem(struct BattleUnit *attacker, struct BattleUnit *defender, struct BattleHit* hit, struct BattleStats *bstat)
 {
-    BattleGenerateHitAttributes(attacker, defender);
-
     /* Dmg-handler item */
-    if (gBattleStats.damage > gItemDmgHandlerMaxDmg) {
-        if (JudgeBmBattleItemEffect(defender, gItemIndex_DmgHandler)) {
+    if (bstat->damage > 2) {
+        if (JudgeBmBattleItemEffect(defender, 0x1F)) {
 
-            if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_SURESHOT)) {
-                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_GREATSHLD;
-                ((u8 *)gBattleHitIterator)[4] = gSkillId_DmgHandlerItemAct;
+            if (!(hit->attributes & BATTLE_HIT_ATTR_SURESHOT)) {
+                hit->attributes |= BATTLE_HIT_ATTR_GREATSHLD;
+                ((u8 *)hit)[4] = gSkillId_DmgHandlerItemAct;
             }
 
-            gBattleStats.damage = gItemDmgHandlerMaxDmg;
+            bstat->damage = 4;
         }
     }
 }
