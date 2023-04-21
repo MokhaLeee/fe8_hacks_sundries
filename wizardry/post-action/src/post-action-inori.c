@@ -12,12 +12,13 @@ void sub_8028100(void);
 
 void PostActionExecInoriItem(struct ProcPostAction *proc)
 {
-    struct Unit *unit = GetUnit(gBattleTarget.unit.index);
+    struct Unit *unit = GetUnit(*gpBmBattleInoriPid);
 
     if (*gpBmBattleGlobalFlag & CHAX_BMBATTLE_GLBFLG_INORI_ITEM_ACTIVE) {
         SetUnitHp(unit, GetUnitMaxHp(unit));
 
-	    RefreshUnitSprites();
+        // MU_End(MU_GetByUnit(&gBattleTarget.unit));
+	    // RefreshUnitSprites();
 	    ExecManim_up(proc, unit);
     }
 

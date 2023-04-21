@@ -1,0 +1,18 @@
+ALIGN 4
+gpRemoveCounter:
+    WORD 0x203EDBA
+
+#include "src/remove-hack.lyn.event"
+
+PUSH
+    ORG $B51244
+    jumpToHack(RemoveHack_B51244)
+
+/*
+    ORG $B5122C
+    SHORT 0
+
+    ORG $B51240
+    SHORT 0
+*/
+POP

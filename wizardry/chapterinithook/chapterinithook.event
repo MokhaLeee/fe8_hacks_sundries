@@ -1,0 +1,7 @@
+ALIGN 4
+#include "src/chapterinithook.lyn.event"
+
+PUSH
+    ORG $59A224
+    POIN ChapterInitHook
+POP

@@ -15,3 +15,4 @@ extern u8 gSkillId_InoriItemAct;
 extern u8 gSkillId_DmgHandlerItemAct;
 
 extern u8 *gpBmBattleGlobalFlag;
+extern u8 *gpBmBattleInoriPid;

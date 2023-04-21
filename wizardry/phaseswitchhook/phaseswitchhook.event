@@ -1,0 +1,7 @@
+ALIGN 4
+#include "src/playerphasehook.lyn.event"
+
+PUSH
+    ORG $59AAE8
+    _6C_CALL_ROUTINE(PlayerPhaseHook)
+POP

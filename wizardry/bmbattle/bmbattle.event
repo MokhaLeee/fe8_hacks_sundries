@@ -8,10 +8,13 @@ ALIGN 4
 gpBmBattleGlobalFlag:
     WORD 0x203EDB9
 
-gItemIndex_Inori:           SHORT 0x1F
-gItemIndex_DmgHandler:      SHORT 0x1F
+gpBmBattleInoriPid:
+    WORD 0x203EDBB
 
-gItemDmgHandlerMaxDmg:      SHORT 10
+gItemIndex_Inori:           SHORT 0x1F
+gItemIndex_DmgHandler:      SHORT 0xCF
+
+gItemDmgHandlerMaxDmg:      SHORT 30
 
 gSkillId_InoriItemAct:      BYTE 0x8
 gSkillId_DmgHandlerItemAct: BYTE 0x58

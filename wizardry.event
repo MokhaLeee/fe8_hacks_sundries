@@ -4,8 +4,14 @@
 #define FreeSpace 0xEF2F18
 ORG FreeSpace
 
+gpSkillTester:
+    POIN 0x08B4045C | 1
+
 #include "wizardry/bmbattle/bmbattle.event"
 #include "wizardry/post-action/post-action.event"
 #include "wizardry/manims/manims.event"
+#include "wizardry/chapterinithook/chapterinithook.event"
+#include "wizardry/misc/misc.event"
+#include "wizardry/phaseswitchhook/phaseswitchhook.event"
 
 MESSAGE CURRENTOFFSET

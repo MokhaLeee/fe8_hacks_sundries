@@ -7,11 +7,11 @@ ALIGN 4
 
 /* Post action hook */
 PUSH
-ORG $59ABE4
-POIN PostActionHook
+    ORG $59ABE4
+    POIN PostActionHook
 
-ORG $5A8078
-POIN PostActionHook
+    ORG $5A8078
+    POIN PostActionHook
 POP
 
 #endif

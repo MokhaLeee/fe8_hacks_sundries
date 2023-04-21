@@ -9,13 +9,10 @@ void BattleGenerateHitAttributes(struct BattleUnit* attacker, struct BattleUnit*
 bool JudgeBmBattleItemEffect(struct BattleUnit *bu, int item_id)
 {
     int i;
-    struct Unit *unit = GetUnit(bu->unit.index);
-
     for (i = 0; i < UNIT_ITEM_COUNT; i++) {
         u16 item = bu->unit.items[i];
 
         if (ITEM_INDEX(item) == item_id && ITEM_USES(item) != 0) {
-            UnitUpdateUsedItem(unit, i);
             UnitUpdateUsedItem(&bu->unit, i);
             return true;
         }
@@ -29,13 +26,15 @@ void BattleGenerateHitHack_802B874(struct BattleUnit *attacker, struct BattleUni
     BattleGenerateHitAttributes(attacker, defender);
 
     /* Dmg-handler item */
-    if (gBattleStats.damage > 10) {
+    if (gBattleStats.damage > gItemDmgHandlerMaxDmg) {
         if (JudgeBmBattleItemEffect(defender, gItemIndex_DmgHandler)) {
 
-            gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_GREATSHLD;
-            ((u8 *)gBattleHitIterator)[4] = gSkillId_DmgHandlerItemAct;
+            if (!(gBattleHitIterator->attributes & BATTLE_HIT_ATTR_SURESHOT)) {
+                gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_GREATSHLD;
+                ((u8 *)gBattleHitIterator)[4] = gSkillId_DmgHandlerItemAct;
+            }
 
-            gBattleStats.damage = 10;
+            gBattleStats.damage = gItemDmgHandlerMaxDmg;
         }
     }
 }
@@ -49,7 +48,9 @@ void BattleGenerateHitHack_802B894(struct BattleUnit *attacker, struct BattleUni
     if (defender->unit.curHP == 0) {
         if (JudgeBmBattleItemEffect(defender, gItemIndex_Inori)) {
             *gpBmBattleGlobalFlag |= CHAX_BMBATTLE_GLBFLG_INORI_ITEM_ACTIVE;
+            *gpBmBattleInoriPid = defender->unit.index;
 
+            gBattleHitIterator->attributes &= ~BATTLE_HIT_ATTR_SURESHOT;
             gBattleHitIterator->attributes |= BATTLE_HIT_ATTR_GREATSHLD;
             ((u8 *)gBattleHitIterator)[4] = gSkillId_InoriItemAct;
 
