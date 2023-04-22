@@ -5,13 +5,28 @@ ALIGN 4
 #include "src/post-action-core.lyn.event"
 #include "src/post-action-inori.lyn.event"
 
+ALIGN 4
+ProcScr_PostActionHookPlayPhase:
+    _6C_YIELD
+    _6C_CALL_ROUTINE(PostActionHook)
+    _6C_YIELD
+    _6C_JUMP($59ABE8)
+    _6C_END
+
+ProcScr_PostActionHookCpPerform:
+    _6C_YIELD
+    _6C_CALL_ROUTINE(PostActionHook)
+    _6C_YIELD
+    _6C_JUMP($5A807C)
+    _6C_END
+
 /* Post action hook */
 PUSH
-    ORG $59ABE4
-    POIN PostActionHook
+    ORG $59ABE0
+    _6C_JUMP(ProcScr_PostActionHookPlayPhase)
 
-    ORG $5A8078
-    POIN PostActionHook
+    ORG $5A8074
+    _6C_JUMP(ProcScr_PostActionHookCpPerform)
 POP
 
 #endif

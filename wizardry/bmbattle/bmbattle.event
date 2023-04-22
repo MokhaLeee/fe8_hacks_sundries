@@ -17,7 +17,7 @@ gpBmBattleGlobalFlag:
 gpBmBattleInoriPid:
     WORD 0x203EDBB
 
-gItemIndex_Inori:           SHORT 0x1F
+gItemIndex_Inori:           SHORT 0xCE
 gItemIndex_DmgHandler:      SHORT 0xCF
 
 gItemDmgHandlerMaxDmg:      SHORT 30

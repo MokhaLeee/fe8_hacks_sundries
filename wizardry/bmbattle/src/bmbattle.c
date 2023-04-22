@@ -24,15 +24,15 @@ bool JudgeBmBattleItemEffect(struct BattleUnit *bu, int item_id)
 void BattleGenerateHitAttributesLoop_DmgHandlerItem(struct BattleUnit *attacker, struct BattleUnit *defender, struct BattleHit* hit, struct BattleStats *bstat)
 {
     /* Dmg-handler item */
-    if (bstat->damage > 2) {
-        if (JudgeBmBattleItemEffect(defender, 0x1F)) {
+    if (bstat->damage > gItemDmgHandlerMaxDmg) {
+        if (JudgeBmBattleItemEffect(defender, gItemIndex_DmgHandler)) {
 
             if (!(hit->attributes & BATTLE_HIT_ATTR_SURESHOT)) {
                 hit->attributes |= BATTLE_HIT_ATTR_GREATSHLD;
                 ((u8 *)hit)[4] = gSkillId_DmgHandlerItemAct;
             }
 
-            bstat->damage = 4;
+            bstat->damage = gItemDmgHandlerMaxDmg;
         }
     }
 }
