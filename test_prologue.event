@@ -24,7 +24,7 @@ PlayerUnits:
 UNIT Eirika Mage_F Eirika Level(10,Ally,False) [4, 3] 0x0 0x0 0x0 0x1 [GuidingRing, Fire, EnergyRing, Thunder] NoAI
 UNIT Seth Paladin Eirika Level(1,Ally,False) [4, 4] 0x0 0x0 0x0 0x1 [SilverLance,SteelSword] NoAI
 UNIT Innes Sniper Eirika Level(1,Ally,False) [5, 3] 0x0 0x0 0x0 0x1 [SilverBow,BraveBow] NoAI
-UNIT Lute Dancer Eirika Level(1,Ally,False) [5, 4] 0x0 0x0 0x0 0x1 [SilverBow,SteelSword] NoAI
+UNIT Lute DemonKing Eirika Level(1,Ally,False) [5, 4] 0x0 0x0 0x0 0x1 [SilverBow,DemonLight] NoAI
 UNIT
 
 EnemyUnits:
