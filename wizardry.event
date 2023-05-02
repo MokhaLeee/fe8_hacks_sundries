@@ -2,6 +2,7 @@
 ORG FreeSpace
 
 #include "wizardry/ts_rework/ts_rework.event"
+#include "wizardry/EkrDragonHook/EkrDragonHook.event"
 
 ALIGN 4
 #include test_prologue.event

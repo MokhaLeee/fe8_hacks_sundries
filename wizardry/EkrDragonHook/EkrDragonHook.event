@@ -1,0 +1,48 @@
+#ifndef MOKHA_EKR_DRAGON_HOOK_H
+#define MOKHA_EKR_DRAGON_HOOK_H
+
+#include EAstdlib.event
+
+#include "userspace/EkrDragonCommonIntro.lyn.event"
+#include "core/EkrDragonHook.lyn.event"
+
+#include "EkrDragonHookInternal.event"
+
+ALIGN 2
+/*
+enum EkrDragonHandler_type {
+    EKRDRAGON_CONFIG_COMMON = (1 << 0),
+    EKRDRAGON_CONFIG_UNIQUE_INTRO = (1 << 1),
+};
+
+struct EkrDragonHandler {
+    u8 type;
+    u8 class;
+
+    u16 config;
+    void (*intro)(struct Anim *anim);
+    u32 priv;
+};
+ */
+
+#define EkrDragonHookChunk(type, class, config, intro_routine, priv) "BYTE type class; SHORT config; POIN intro_routine | 1; WORD priv"
+#define EkrDemonKingIntro 0x08076541
+#define EkrDracoZombieIntro 0x080701B9
+#define EkrDragonCommonIntroChunk(class, banim_intro, banim_main, banim_exit) "EkrDragonHookChunk(3, class, 1, EkrDragonCommonIntro, banim_intro | (banim_main << 8) | (banim_exit << 16))"
+
+EkrDragonSpecialRountineHook:
+    /* Draco Zombie */
+    EkrDragonHookChunk(1, DracoZombie, 2, EkrDracoZombieIntro, 0)
+
+    /* Demon King */
+    EkrDragonHookChunk(2, DemonKing, 2, EkrDemonKingIntro, 0)
+
+    /* Myrrh */
+    EkrDragonCommonIntroChunk(Manakete_2_F, 0xC5, 0xC4, 0xC6)
+
+    EkrDragonHookChunk(2, Warrior, 2, EkrDemonKingIntro, 0)
+    EkrDragonCommonIntroChunk(Paladin, 0xC4, 0xC6, 0xC5)
+
+    WORD 0 0 0
+
+#endif /* MOKHA_EKR_DRAGON_HOOK_H */

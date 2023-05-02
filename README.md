@@ -4,7 +4,7 @@ Mokha C-Hacks collection for FireEmblem8U, see [here](https://feuniverse.us/t/mo
 
 # Usage
 
-You may just copy the folder and include the .event file inside.
+You may just copy the folder and include the **.event** file inside.
 
 For compling by yourself to modification, you must have a linux system such as WSL(for Windows user) or Ubuntu, then:
 
@@ -12,12 +12,13 @@ For compling by yourself to modification, you must have a linux system such as W
 
 2. Install dependency and tools:
 
-    a.) Install [.Net 6.0](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu).
+    a.) Install [.Net](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu) for EA Colorzcore.
 
     b.) `./build_tools.sh` in the repository directory.
 
-3. `make -j8` in repository directory, then you will get **fe8-chax.gba** in your repo.
+3. `make` in repository directory, then you will get **fe8-chax.gba** in your repo.
 
 # Wizardry list
 
-- **Target-select rework**: change weapon during selecting target
+- **TargetSelectRework**: change weapon during selecting target
+- **EkrDragonHook**: 

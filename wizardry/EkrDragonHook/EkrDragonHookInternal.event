@@ -1,0 +1,18 @@
+#include "Extensions/Hack Installation.txt"
+
+ALIGN 4
+
+PUSH
+
+/* Force skip ekrdragon class judgement in banim-checkenable */
+ORG $57AE0
+jumpToHack($57BD6)
+
+/* Rewrite ekrdragon status init function in ekrbattle rountine */
+ORG $70B3C
+jumpToHack(EkrSetupDragonStatusRework)
+
+/* EkrBattle do ekrdragon core */
+ORG $50174
+jumpToHack(ekrBattleDoSpeialClassIntroRework)
+POP
