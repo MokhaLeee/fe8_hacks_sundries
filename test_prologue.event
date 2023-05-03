@@ -22,13 +22,13 @@ POIN BeginningScene EndingScene
 
 PlayerUnits:
 UNIT Eirika Mage_F Eirika Level(10,Ally,False) [4, 3] 0x0 0x0 0x0 0x1 [GuidingRing, Fire, EnergyRing, Thunder] NoAI
-UNIT Seth Paladin Eirika Level(1,Ally,False) [4, 4] 0x0 0x0 0x0 0x1 [SilverLance,SteelSword] NoAI
-UNIT Innes Sniper Eirika Level(1,Ally,False) [5, 3] 0x0 0x0 0x0 0x1 [SilverBow,BraveBow] NoAI
-UNIT Lute DemonKing Eirika Level(1,Ally,False) [5, 4] 0x0 0x0 0x0 0x1 [SilverBow,DemonLight] NoAI
+UNIT Seth Sage Eirika Level(1,Ally,False) [4, 4] 0x0 0x0 0x0 0x1 [Fire, SilverLance, SteelSword] NoAI
+UNIT Innes Sniper Eirika Level(1,Ally,False) [5, 3] 0x0 0x0 0x0 0x1 [SilverBow, BraveBow] NoAI
+UNIT Lute DemonKing Eirika Level(1,Ally,False) [5, 4] 0x0 0x0 0x0 0x1 [SilverBow, DemonLight] NoAI
 UNIT
 
 EnemyUnits:
-UNIT Riev Bishop 0 Level(10,2,True) [6, 4] 0x0 0x0 0x0 0x1 [Purge,Divine,Heal] NoAI
+UNIT Riev Bishop 0 Level(10,2,True) [6, 4] 0x0 0x0 0x0 0x1 [Purge, Divine, Heal] NoAI
 UNIT Caellach Warrior 0 Level(10,2,True) [6, 5] 0x0 0x0 0x0 0x1 [IronAxe] NoAI
 UNIT Saleh DemonKing 0 Level(10,2,True) [5, 6] 0x0 0x0 0x0 0x1 [DemonLight] NoAI
 UNIT

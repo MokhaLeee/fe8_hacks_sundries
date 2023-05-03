@@ -38,10 +38,9 @@ EkrDragonSpecialRountineHook:
     EkrDragonHookChunk(2, DemonKing, 2, EkrDemonKingIntro, 0)
 
     /* Myrrh */
-    EkrDragonCommonIntroChunk(Manakete_2_F, 0xC5, 0xC4, 0xC6)
+    EkrDragonCommonIntroChunk(Manakete_2_F, 0xC4, 0xC3, 0xC5)
 
-    EkrDragonHookChunk(2, Warrior, 2, EkrDemonKingIntro, 0)
-    EkrDragonCommonIntroChunk(Paladin, 0xC4, 0xC6, 0xC5)
+    EkrDragonCommonIntroChunk(Sage, 0xC4, 0xC3, 0xC5)
 
     WORD 0 0 0
 
