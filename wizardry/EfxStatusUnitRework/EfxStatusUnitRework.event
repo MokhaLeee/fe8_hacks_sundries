@@ -1,4 +1,44 @@
 #ifndef EFXSTATUSUNIT_REWORK_H
 #define EFXSTATUSUNIT_REWORK_H
 
+#ifndef FreeSpace
+#define FreeSpace 0xB2A610
+ORG FreeSpace
+#endif
+
+#include "src/EfxStatusUnitRework.lyn.event"
+
+// unit status index
+#define UNIT_STATUS_NONE 0
+#define UNIT_STATUS_POISON 1
+#define UNIT_STATUS_SLEEP 2
+#define UNIT_STATUS_SILENCED 3
+#define UNIT_STATUS_BERSERK 4
+#define UNIT_STATUS_ATTACK 5
+#define UNIT_STATUS_DEFENSE 6
+#define UNIT_STATUS_CRIT 7
+#define UNIT_STATUS_AVOID 8
+#define UNIT_STATUS_SICK 9
+#define UNIT_STATUS_RECOVER 10
+#define UNIT_STATUS_PETRIFY 11
+#define UNIT_STATUS_12 12
+#define UNIT_STATUS_13 13
+
+// flashing speed, range from 0 to 3
+#define EFXSTATUS_UNIT_SPD_CONST 0
+#define EFXSTATUS_UNIT_SPD_SLOW 1
+#define EFXSTATUS_UNIT_SPD_NORMAL 2
+#define EFXSTATUS_UNIT_SPD_FAST 3
+
+#define EfxUnitDebuffPal(id, r, g, b, flashing) "WORD id r g b flashing"
+
+ALIGN 4
+EfxUnitDebuffPalConfigTable:
+    EfxUnitDebuffPal(UNIT_STATUS_NONE, 0x10, 0x10, 0x10, EFXSTATUS_UNIT_SPD_FAST)
+    EfxUnitDebuffPal(UNIT_STATUS_POISON, 0x10, 0x0, 0x10, EFXSTATUS_UNIT_SPD_NORMAL)
+    EfxUnitDebuffPal(UNIT_STATUS_SLEEP, 0x0, 0x0, 0x10, EFXSTATUS_UNIT_SPD_NORMAL)
+    EfxUnitDebuffPal(UNIT_STATUS_BERSERK, 0x10, 0x0, 0x0, EFXSTATUS_UNIT_SPD_NORMAL)
+    EfxUnitDebuffPal(UNIT_STATUS_PETRIFY, 0x10, 0x10, 0x10, EFXSTATUS_UNIT_SPD_CONST)
+    EfxUnitDebuffPal(UNIT_STATUS_13, 0x10, 0x10, 0x10, EFXSTATUS_UNIT_SPD_CONST)
+    WORD 0xFFFFFFFF 0xFFFFFFFF
 #endif
