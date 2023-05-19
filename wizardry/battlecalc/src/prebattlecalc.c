@@ -84,12 +84,14 @@ int PostRallyMov(int stat, struct Unit *unit)
     return stat;
 }
 
-static inline void UseBuffItem(struct Unit *unit, int item)
+void UseBuffItem(struct Unit *unit, int item)
 {
     int i;
     for (i = 0; i < UNIT_ITEM_COUNT; i++)
         if (ITEM_INDEX(unit->items[i]) == item)
-            UnitUpdateUsedItem(unit, i);
+            unit->items[i] = GetItemAfterUse(unit->items[i]);
+
+    UnitRemoveInvalidItems(unit);
 }
 
 void PrePhaseUseBuffItem(void)
@@ -99,6 +101,9 @@ void PrePhaseUseBuffItem(void)
         struct Unit *unit = gUnitLookup[i];
 
         if (!UNIT_IS_VALID(unit))
+            continue;
+        
+        if (UNIT_FACTION(unit) != gPlaySt.faction)
             continue;
 
         for (j = 0; j < BUFF_ITEM_MAX; j++)
