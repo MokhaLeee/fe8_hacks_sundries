@@ -168,7 +168,7 @@ PROC_LABEL(0),
 ProcPtr NewTargetSelectionRework(const struct SelectInfo* selectInfo) {
     struct SelectTargetProc* proc;
 
-    AddSkipThread2();
+    LockGame();
     proc = Proc_Start(ProcScr_TargetSelectionRework, PROC_TREE_3);
 
     proc->flags = TARGETSELECTION_FLAG_GAMELOCK;
