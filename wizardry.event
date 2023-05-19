@@ -13,5 +13,7 @@ gpSkillTester:
 #include "wizardry/chapterinithook/chapterinithook.event"
 #include "wizardry/misc/misc.event"
 #include "wizardry/phaseswitchhook/phaseswitchhook.event"
+#include "wizardry/battlecalc/battlecalc.event"
+#include "wizardry/postphase/postphase.event"
 
 MESSAGE CURRENTOFFSET

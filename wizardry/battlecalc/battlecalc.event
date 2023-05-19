@@ -1,0 +1,32 @@
+#ifndef FreeSpace
+#define FreeSpace 0xEF3580
+ORG FreeSpace
+#endif
+
+MESSAGE battle-calc CURRENTOFFSET
+
+ALIGN 4
+#include "src/prebattlecalc.lyn.event"
+
+PUSH
+ORG $B62534 /* Vanilla: 0x8B51B41 */
+POIN PostInitializePreBattleLoop
+
+ORG $B5F7EC /* Vanilla: 0x8B5F859 */
+POIN PostRallyMov - 1
+POP
+
+ALIGN 2
+gBuffItemLut:
+//   STR MAG DEF RES HIT AVO CRT MOV AS
+BYTE $D1 $D2 $D3 $D4 $D5 $D6 $D7 $D8 $D9
+
+ALIGN 2
+gBuffItemVal:
+//   STR MAG DEF RES HIT AVO CRT MOV AS
+BYTE 15  15  20  20  80  80  50  3   5
+
+/**
+ * BtlLoopList: 0x8B62504
+ * pMovModifiers: 0x8B5F7D8
+ */

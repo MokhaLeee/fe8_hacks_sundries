@@ -1,0 +1,7 @@
+PUSH
+ORG $59A2F4
+POIN PostPhaseHook
+POP
+
+ALIGN 2
+#include "src/postphase.lyn.event"
