@@ -1,3 +1,7 @@
 PUSH
 
+/* Paladin lance banim to new tyle */
+ORG $8AF02E
+BYTE _T0_RecruitF_Lance
+
 POP

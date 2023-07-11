@@ -1,8 +1,11 @@
 #define FreeSpace 0xB2A610
 ORG FreeSpace
 
+#include "data/Banims/Banims.event"
+
 #include "wizardry/TargetSelectRework/TargetSelectRework.event"
 #include "wizardry/EfxStatusUnitRework/EfxStatusUnitRework.event"
 
 ALIGN 4
 #include test_prologue.event
+#include debug.event

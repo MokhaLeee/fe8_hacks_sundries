@@ -1,0 +1,7 @@
+#include "AnimDefinitions-Vanilla.event"
+#include "AnimDefinitions-Demo.event"
+
+#define BANIMS_AMT_RE 0x100
+#include "repoint/RepointBanim.event"
+
+#include "source/T0_RecuritF_Lance/_T0_RecruitF_LanceInstaller.event"
