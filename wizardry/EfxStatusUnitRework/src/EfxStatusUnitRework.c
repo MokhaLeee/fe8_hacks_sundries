@@ -73,10 +73,10 @@ void EfxStatusUnitMain(struct ProcEfxStatusUnit *proc)
     if (proc->invalid == true)
         return;
 
-    if (proc->debuff != proc->unk50) {
-        proc->unk2C = 0;
-        proc->unk44 = 0;
-        proc->unk50 = proc->debuff;
+    if (proc->debuff != proc->debuf_bak) {
+        proc->timer = 0;
+        proc->frame = 0;
+        proc->debuf_bak = proc->debuff;
     }
 
     for (it = &EfxUnitDebuffPalConfigTable[0]; it->index != 0xFFFFFFFF; it++)
@@ -89,9 +89,9 @@ void EfxStatusUnitMain(struct ProcEfxStatusUnit *proc)
     speed = it->speed;
     LIMIT_AREA(speed, 0, 3);
 
-    ret = sub_80558F4(
-        (void *)&proc->unk2C,
-        (void *)&proc->unk44,
+    ret = EfxAdvanceFrameLut (
+        (void *)&proc->timer,
+        (void *)&proc->frame,
         EfxStatusUnitFlashTiming[speed]
     );
 
@@ -104,7 +104,7 @@ void EfxStatusUnitMain(struct ProcEfxStatusUnit *proc)
     switch (proc->debuff) {
     case UNIT_STATUS_PETRIFY:
     case UNIT_STATUS_13:
-        if (GetAISSubjectId(proc->anim) == EKR_POS_L)
+        if (GetAnimPosition(proc->anim) == EKR_POS_L)
             sub_80715F4(gUnknown_02022B88, gUnknown_020222A8, &gUnknown_020222A8[0x30],
                         &gUnknown_020222A8[0x180], 16, proc->red, 16);
         else
