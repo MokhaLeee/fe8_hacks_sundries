@@ -12,6 +12,7 @@ FE8_CHX := fe8-chax.gba
 
 CLEAN_FILES :=
 CLEAN_DIRS  := $(CACHE_DIR)
+CLEAN_DIRS  += data/Banims/scripts/__pycache__
 
 WIZARDRY_DIR := wizardry
 SPRITANS_DIR :=
@@ -57,6 +58,8 @@ TMX2EA            := $(PYTHON3) tools/pytools/TMX2EA/tmx2ea.py
 
 ELF2REF           := $(PYTHON3) tools/scripts/elf2ref.py
 ELF2SYM           := $(PYTHON3) tools/scripts/elf2sym.py
+
+GRIT              := $(DEVKITPRO)/tools/bin/grit$(EXE)
 
 NOTIFY_PROCESS = @echo "$(notdir $<) => $(notdir $@)"
 
@@ -159,6 +162,12 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) # $(SFILES:.s=.lyn.event)
 PNG_FILES := $(shell find $(HACK_DIRS) -type f -name '*.png')
 CLEAN_FILES += $(PNG_FILES:.png=.4bpp) $(PNG_FILES:.png=.4bpp.lz)
 
+# Grit related
+%.img.bin %.map.bin %.pal.bin: %.png
+	@echo "[GEN]	$@"
+	@$(GRIT) $< -gB 4 -gzl -m -mLf -mR4 -mzl -pn 16 -ftb -fh! -o $@
+
+# CLEAN_FILES += $(PNG_FILES:.png=.img.bin) $(PNG_FILES:.png=.map.bin) $(PNG_FILES:.png=.pal.bin)
 
 # ==============
 # = MAKE CLEAN =

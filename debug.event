@@ -4,4 +4,8 @@ PUSH
 ORG $8AF02E
 BYTE _T0_RecruitF_Lance
 
+/* Mage M */
+ORG $8AF236
+BYTE Lyn_GreenTea
+
 POP

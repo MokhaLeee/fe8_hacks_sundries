@@ -1,0 +1,205 @@
+#######################################################
+#12 blld_sw1 利刃领主 米尤鲁格雷
+#
+#当输入到FEditorAdv时，请删除＃和每行之后。
+#######################################################
+/// - Mode 1               #攻击命中时的动作
+1 p- blld_sw1_000.png
+C01                               #NOP
+~~~
+/// - Mode 3               #攻击必杀时的动作
+1 p- blld_sw1_000.png
+C01                               #NOP
+~~~
+/// - Mode 5               #间接攻击的动作
+C03                               #攻击动作开始07以后会来的
+C07                               #攻击动作开始03会在这之前
+1 p- blld_sw1_000.png
+2 p- blld_sw1_023.png
+2 p- blld_sw1_024.png
+C17
+4 p- blld_sw1_025.png
+4 p- blld_sw1_026.png
+3 p- blld_sw1_027.png
+8 p- blld_sw1_028.png
+C25                               #一堆声音
+2 p- blld_sw1_029.png
+5 p- blld_sw1_030.png
+4 p- blld_sw1_031.png
+5 p- blld_sw1_032.png
+4 p- blld_sw1_033.png
+5 p- blld_sw1_034.png
+C19                               #声音拉弓
+3 p- blld_sw1_035.png
+4 p- blld_sw1_036.png
+7 p- blld_sw1_037.png
+C0E
+C1F                               #关键音效
+3 p- blld_sw1_038.png
+4 p- blld_sw1_039.png
+2 p- blld_sw1_040.png
+1 p- blld_sw1_041.png
+1 p- blld_sw1_042.png
+C15                               #屏幕摆动很小
+2 p- blld_sw1_043.png
+2 p- blld_sw1_044.png
+4 p- blld_sw1_045.png
+6 p- blld_sw1_046.png
+6 p- blld_sw1_047.png
+5 p- blld_sw1_048.png
+C0E
+C1F                               #关键音效
+4 p- blld_sw1_049.png
+1 p- blld_sw1_050.png
+1 p- blld_sw1_051.png
+1 p- blld_sw1_052.png
+2 p- blld_sw1_053.png
+C0F
+C15                               #屏幕摆动很小
+C1F                               #关键音效
+2 p- blld_sw1_054.png
+3 p- blld_sw1_055.png
+2 p- blld_sw1_056.png
+1 p- blld_sw1_057.png
+C15                               #屏幕摆动很小
+1 p- blld_sw1_058.png
+2 p- blld_sw1_059.png
+2 p- blld_sw1_060.png
+2 p- blld_sw1_061.png
+C19                               #声音拉弓
+6 p- blld_sw1_062.png
+2 p- blld_sw1_063.png
+3 p- blld_sw1_064.png
+3 p- blld_sw1_065.png
+2 p- blld_sw1_066.png
+C05                               #调用魔法
+5 p- blld_sw1_067.png
+3 p- blld_sw1_068.png
+2 p- blld_sw1_069.png
+4 p- blld_sw1_070.png
+8 p- blld_sw1_071.png
+3 p- blld_sw1_072.png
+4 p- blld_sw1_073.png
+C1B                               #脚步
+4 p- blld_sw1_074.png
+3 p- blld_sw1_075.png
+12 p- blld_sw1_076.png
+C01                               #NOP
+6 p- blld_sw1_077.png
+6 p- blld_sw1_078.png
+6 p- blld_sw1_079.png
+C06                               #攻击动画结束0D会晚点来
+1 p- blld_sw1_000.png
+C0D                               #攻击动画结束06前来
+~~~
+/// - Mode 6               #间接攻击必杀时的动作
+C03                               #攻击动作开始07以后会来的
+C07                               #攻击动作开始03会在这之前
+1 p- blld_sw1_000.png
+2 p- blld_sw1_023.png
+2 p- blld_sw1_024.png
+4 p- blld_sw1_025.png
+4 p- blld_sw1_026.png
+3 p- blld_sw1_027.png
+8 p- blld_sw1_028.png
+C25                               #一堆声音
+2 p- blld_sw1_029.png
+5 p- blld_sw1_030.png
+4 p- blld_sw1_031.png
+5 p- blld_sw1_032.png
+4 p- blld_sw1_033.png
+5 p- blld_sw1_034.png
+C19                               #声音拉弓
+3 p- blld_sw1_035.png
+4 p- blld_sw1_036.png
+7 p- blld_sw1_037.png
+C1F                               #关键音效
+3 p- blld_sw1_038.png
+4 p- blld_sw1_039.png
+2 p- blld_sw1_040.png
+1 p- blld_sw1_041.png
+1 p- blld_sw1_042.png
+C15                               #屏幕摆动很小
+2 p- blld_sw1_043.png
+2 p- blld_sw1_044.png
+4 p- blld_sw1_045.png
+6 p- blld_sw1_046.png
+6 p- blld_sw1_047.png
+5 p- blld_sw1_048.png
+C1F                               #关键音效
+4 p- blld_sw1_049.png
+1 p- blld_sw1_050.png
+1 p- blld_sw1_051.png
+1 p- blld_sw1_052.png
+2 p- blld_sw1_053.png
+C15                               #屏幕摆动很小
+C1F                               #关键音效
+2 p- blld_sw1_054.png
+3 p- blld_sw1_055.png
+2 p- blld_sw1_056.png
+1 p- blld_sw1_057.png
+C15                               #屏幕摆动很小
+1 p- blld_sw1_058.png
+2 p- blld_sw1_059.png
+2 p- blld_sw1_060.png
+2 p- blld_sw1_061.png
+C19                               #声音拉弓
+6 p- blld_sw1_062.png
+2 p- blld_sw1_063.png
+3 p- blld_sw1_064.png
+3 p- blld_sw1_065.png
+2 p- blld_sw1_066.png
+C05                               #调用魔法
+5 p- blld_sw1_067.png
+3 p- blld_sw1_068.png
+2 p- blld_sw1_069.png
+4 p- blld_sw1_070.png
+8 p- blld_sw1_071.png
+3 p- blld_sw1_072.png
+4 p- blld_sw1_073.png
+C1B                               #脚步
+4 p- blld_sw1_074.png
+3 p- blld_sw1_075.png
+12 p- blld_sw1_076.png
+C01                               #NOP
+6 p- blld_sw1_077.png
+6 p- blld_sw1_078.png
+6 p- blld_sw1_079.png
+C06                               #攻击动画结束0D会晚点来
+1 p- blld_sw1_000.png
+C0D                               #攻击动画结束06前来
+~~~
+/// - Mode 7               #被攻击回避时的动作
+C02                               #避免动议开始
+1 p- blld_sw1_000.png
+C0E                               #Start of dodging frames (should go after standing frame and before dodging animation)
+1 p- blld_sw1_000.png
+C01                               #NOP
+2 p- blld_sw1_000.png
+C0D                               #攻击动画结束06前来
+~~~
+/// - Mode 8               #被间接攻击回避时的动作
+C02                               #避免动议开始
+1 p- blld_sw1_000.png
+C0E                               #Start of dodging frames (should go after standing frame and before dodging animation)
+1 p- blld_sw1_000.png
+C01                               #NOP
+2 p- blld_sw1_000.png
+C0D                               #攻击动画结束06前来
+~~~
+/// - Mode 9               #站立不动的动作
+1 p- blld_sw1_000.png
+C01                               #NOP
+~~~
+/// - Mode 10               #站立不动的动作
+1 p- blld_sw1_000.png
+C01                               #NOP
+~~~
+/// - Mode 11               #间接时站立不动的动作
+1 p- blld_sw1_000.png
+C01                               #NOP
+~~~
+/// - Mode 12               #攻击失误时的动作
+1 p- blld_sw1_000.png
+~~~
+/// - End of animation

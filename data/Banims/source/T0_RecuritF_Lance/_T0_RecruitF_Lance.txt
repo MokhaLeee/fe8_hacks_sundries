@@ -10,6 +10,7 @@ C07                               #Start attack animation; should be preceeded b
 C22                               #Play short sword swinging SFE
 3 p- Lance_001.png
 3 p- Lance_002.png
+C0E
 5 p- Lance_003.png
 4 p- Lance_004.png
 4 p- Lance_005.png

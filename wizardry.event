@@ -5,6 +5,7 @@ ORG FreeSpace
 
 #include "wizardry/TargetSelectRework/TargetSelectRework.event"
 #include "wizardry/EfxStatusUnitRework/EfxStatusUnitRework.event"
+#include "wizardry/BanimCmdExpansion/BanimCmdExpansion.event"
 
 ALIGN 4
 #include test_prologue.event
