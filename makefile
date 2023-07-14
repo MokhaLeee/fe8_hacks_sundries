@@ -40,6 +40,7 @@ PREFIX ?= arm-none-eabi-
 CC  := $(PREFIX)gcc
 CPP := $(PREFIX)cpp
 AS  := $(PREFIX)as
+OBJCOPY := $(PREFIX)objcopy
 
 EA_DIR := tools/ea
 EA := $(EA_DIR)/ColorzCore$(EXE)
