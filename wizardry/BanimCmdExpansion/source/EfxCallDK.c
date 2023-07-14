@@ -9,12 +9,12 @@
 
 #include "BanimUtils.h"
 
-void EfxCalDkBaseHide(struct ProcEfxBmExpa * proc)
+void EfxCallDkBaseHide(struct ProcEfxBmExpa * proc)
 {
     NewEkrDragonBaseHide(proc->anim);
 }
 
-void EfxCalDkCustomBgFadeIn(struct ProcEfxBmExpa * proc)
+void EfxCallDkCustomBgFadeIn(struct ProcEfxBmExpa * proc)
 {
     int ret = Interpolate(INTERPOLATE_SQUARE, 4, 0x10, proc->timer, 8);
     EkrUpdateSomePalMaybe(ret);
@@ -25,7 +25,7 @@ void EfxCalDkCustomBgFadeIn(struct ProcEfxBmExpa * proc)
     }
 }
 
-void EfxCalDkMain(struct ProcEfxBmExpa * proc)
+void EfxCallDkMain(struct ProcEfxBmExpa * proc)
 {
     if (proc->timer == 0x2)
     {
@@ -41,7 +41,7 @@ void EfxCalDkMain(struct ProcEfxBmExpa * proc)
 
         // Some align issue exits for C
         // why ?
-        EfxDragonSetBgPriorityASM();
+        EfxDragonSetBgPriorityASM(0, 1, 3, 2);
 
         CpuFastCopy(Pal_DemonKingBG, PAL_BG(6), 0x20);
         EnablePaletteSync();
@@ -54,7 +54,7 @@ void EfxCalDkMain(struct ProcEfxBmExpa * proc)
         Proc_Break(proc);
 }
 
-void EfxCalDkOnEnd(struct ProcEfxBmExpa * proc)
+void EfxCallDkOnEnd(struct ProcEfxBmExpa * proc)
 {
     struct Anim * anim = proc->anim;
     struct Anim * anim1 = gAnims[GetAnimPosition(anim) * 2];
@@ -65,21 +65,21 @@ void EfxCalDkOnEnd(struct ProcEfxBmExpa * proc)
     SetAnimStateUnfrozen(anim2);
 }
 
-const struct ProcCmd ProScr_EfxCalDk[] = {
+const struct ProcCmd ProScr_EfxCallDK[] = {
     PROC_NAME("efxCallDK"),
     PROC_YIELD,
-    PROC_CALL(EfxCalDkBaseHide),
-    PROC_REPEAT(EfxCalDkCustomBgFadeIn),
-    PROC_REPEAT(EfxCalDkMain),
-    PROC_CALL(EfxCalDkOnEnd),
+    PROC_CALL(EfxCallDkBaseHide),
+    PROC_REPEAT(EfxCallDkCustomBgFadeIn),
+    PROC_REPEAT(EfxCallDkMain),
+    PROC_CALL(EfxCallDkOnEnd),
     PROC_END
 };
 
-void NewEfxCalDk(struct Anim * anim)
+void NewEfxCallDk(struct Anim * anim)
 {
     struct ProcEfxBmExpa * proc;
     struct Anim * anim1, * anim2;
-    proc = Proc_Start(ProScr_EfxCalDk, PROC_TREE_3);
+    proc = Proc_Start(ProScr_EfxCallDK, PROC_TREE_3);
     proc->anim = anim;
     proc->timer = 0;
 
@@ -93,11 +93,13 @@ void NewEfxCalDk(struct Anim * anim)
 
 void BanimCmd_CallDK(struct Anim * anim)
 {
+    anim->pScrCurrent = anim->pScrCurrent - 1;
+
     if (!(anim->state3 & ANIM_BIT3_BLOCKING))
     {
         anim->state3 |= ANIM_BIT3_BLOCKING;
         if (GetAISLayerId(anim) == 0)
-            NewEfxCalDk(anim);
+            NewEfxCallDk(anim);
     }
     else
     {

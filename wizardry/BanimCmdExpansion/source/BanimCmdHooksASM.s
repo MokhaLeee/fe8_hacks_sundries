@@ -26,6 +26,13 @@ C16_Hook:
 THUMB_FUNC_START C17_Hook
 C17_Hook:
     mov r0, r7
+    blh BanimCmd_RemoveDK
+    ldr r0, =0x080596CC + 1
+    bx r0
+
+THUMB_FUNC_START C18_Hook
+C18_Hook:
+    mov r0, r7
     blh BanimCmd_CallDuma
     ldr r0, =0x080596CC + 1
     bx r0

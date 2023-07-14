@@ -44,6 +44,8 @@ void NewEfxFakeHitBlack(struct Anim * anim)
 
 void BanimCmd_FakeHitBlack(struct Anim * anim)
 {
+    anim->pScrCurrent--;
+
     if (!(anim->state3 & ANIM_BIT3_BLOCKING))
     {
         anim->state3 |= ANIM_BIT3_BLOCKING;

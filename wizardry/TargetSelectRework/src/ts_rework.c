@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include "global.h"
 #include "proc.h"
 #include "bmunit.h"

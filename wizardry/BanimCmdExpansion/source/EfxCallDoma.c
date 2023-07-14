@@ -28,11 +28,8 @@ void EfxCalDumaCustomBgFadeIn(struct ProcEfxBmExpa * proc)
 void EfxCalDumaPrepare(struct ProcEfxBmExpa * proc)
 {
     SetEkrDragonStatusType(gAnims[0], EKRDRGON_TYPE_DEMON_KING);
-    EkrDragonBgSetPostion(gEkrBgXOffset, 0);
-
-    // Some align issue exits for C
-    // why ?
-    EfxDragonSetBgPriorityASM();
+    // EkrDragonBgSetPostion(gEkrBgXOffset, 0);
+    EfxDragonSetBgPriorityASM(0, 1, 3, 2);
 }
 
 void EfxCalDumaMain(struct ProcEfxBmExpa * proc)
@@ -94,6 +91,8 @@ void NewEfxCalDuma(struct Anim * anim)
 
 void BanimCmd_CallDuma(struct Anim * anim)
 {
+    anim->pScrCurrent = anim->pScrCurrent - 1;
+
     if (!(anim->state3 & ANIM_BIT3_BLOCKING))
     {
         anim->state3 |= ANIM_BIT3_BLOCKING;

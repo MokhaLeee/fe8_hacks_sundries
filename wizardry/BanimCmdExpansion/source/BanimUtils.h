@@ -13,7 +13,7 @@ struct ProcEfxBmExpa {
 
 void SetAnimStateFrozen(struct Anim *anim);
 void SetAnimStateUnfrozen(struct Anim *anim);
-void EfxDragonSetBgPriorityASM(void);
+void EfxDragonSetBgPriorityASM(int b0, int b1, int b2, int b3);
 
 extern const u16 FrameLut_Duma[];
 extern u16 const * const ImgLut_Duma[15];
