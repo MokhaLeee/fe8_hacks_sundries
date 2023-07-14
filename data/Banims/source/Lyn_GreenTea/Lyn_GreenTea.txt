@@ -33,7 +33,6 @@ C19                               #声音拉弓
 3 p- blld_sw1_035.png
 4 p- blld_sw1_036.png
 7 p- blld_sw1_037.png
-C0E
 C1F                               #关键音效
 3 p- blld_sw1_038.png
 4 p- blld_sw1_039.png
@@ -47,7 +46,6 @@ C15                               #屏幕摆动很小
 6 p- blld_sw1_046.png
 6 p- blld_sw1_047.png
 5 p- blld_sw1_048.png
-C0E
 C1F                               #关键音效
 C17
 4 p- blld_sw1_049.png
@@ -55,7 +53,6 @@ C17
 1 p- blld_sw1_051.png
 1 p- blld_sw1_052.png
 2 p- blld_sw1_053.png
-C0F
 C15                               #屏幕摆动很小
 C1F                               #关键音效
 2 p- blld_sw1_054.png
