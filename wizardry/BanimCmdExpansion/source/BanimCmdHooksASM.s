@@ -30,9 +30,23 @@ C17_Hook:
     ldr r0, =0x080596CC + 1
     bx r0
 
-THUMB_FUNC_START C18_Hook
-C18_Hook:
+THUMB_FUNC_START C53_Hook
+C53_Hook:
     mov r0, r7
     blh BanimCmd_CallDuma
+    ldr r0, =0x080596CC + 1
+    bx r0
+
+THUMB_FUNC_START C54_Hook
+C54_Hook:
+    mov r0, r7
+    blh BanimCmd_RemoveDuma
+    ldr r0, =0x080596CC + 1
+    bx r0
+
+THUMB_FUNC_START C55_Hook
+C55_Hook:
+    mov r0, r7
+    blh BanimCmd_RemoveDumaNonBlocking
     ldr r0, =0x080596CC + 1
     bx r0

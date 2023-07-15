@@ -16,6 +16,7 @@ ORG FreeSpace
 #include "source/EfxCallDK.lyn.event"
 #include "source/EfxRemoveDK.lyn.event"
 #include "source/EfxCallDoma.lyn.event"
+#include "source/EfxRemoveDoma.lyn.event"
 
 #define InjectBanimCmd(index, routine) "PUSH; ORG ($58C44 + 4 * index); POIN routine | 1; POP"
 
@@ -23,6 +24,8 @@ InjectBanimCmd(0xE, C0E_Hook)
 InjectBanimCmd(0xF, C0F_Hook)
 InjectBanimCmd(0x16, C16_Hook)
 InjectBanimCmd(0x17, C17_Hook)
-InjectBanimCmd(0x18, C18_Hook)
+InjectBanimCmd(0x53, C53_Hook)
+InjectBanimCmd(0x54, C54_Hook)
+InjectBanimCmd(0x55, C55_Hook)
 
 #endif /* BANIM_CMD_EXPANSION_H */

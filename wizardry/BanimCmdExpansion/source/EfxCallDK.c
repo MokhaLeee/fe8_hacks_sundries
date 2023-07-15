@@ -36,7 +36,7 @@ void EfxCallDkMain(struct ProcEfxBmExpa * proc)
         BG_EnableSyncByMask(BG3_SYNC_BIT);
         Decompress(Img_DemonKingBG, (void *)0x06008000);
         Decompress(Tsa_DemonKingBG1, gEkrTsaBuffer);
-        sub_806FBB8();
+        sub_806FAD8(0x90, 0);
         EkrDragonBgSetPostion(gEkrBgXOffset, 0);
 
         // Some align issue exits for C
@@ -63,6 +63,8 @@ void EfxCallDkOnEnd(struct ProcEfxBmExpa * proc)
     SetAnimStateUnfrozen(anim);
     SetAnimStateUnfrozen(anim1);
     SetAnimStateUnfrozen(anim2);
+
+    anim->state3 |= ANIM_BIT3_BLOCKEND;
 }
 
 const struct ProcCmd ProScr_EfxCallDK[] = {

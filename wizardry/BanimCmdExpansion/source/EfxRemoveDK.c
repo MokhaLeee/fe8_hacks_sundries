@@ -29,12 +29,18 @@ void EfxRemoveDkOnEnd(struct ProcEkrDragon * proc)
     gEkrDragonStatusRight.type = EKRDRGON_TYPE_NORMAL;
 }
 
+void EfxRemoveDkOnEnd2(struct ProcEkrDragon * proc)
+{
+    proc->anim->state3 |= ANIM_BIT3_BLOCKEND;
+}
+
 const struct ProcCmd ProScr_EfxRemoveDK[] = {
     PROC_NAME("efxRemoveDK"),
     PROC_YIELD,
     PROC_REPEAT(EkrDK_ReloadTerrainEtc),
     PROC_REPEAT(EkrDK_ReloadCustomBgAndFadeOut),
     PROC_CALL(EfxRemoveDkOnEnd),
+    PROC_CALL(EfxRemoveDkOnEnd2),
     PROC_END
 };
 

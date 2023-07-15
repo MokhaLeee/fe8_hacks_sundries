@@ -17,7 +17,7 @@ C07                               #攻击动作开始03会在这之前
 1 p- blld_sw1_000.png
 2 p- blld_sw1_023.png
 2 p- blld_sw1_024.png
-C16
+C53
 4 p- blld_sw1_025.png
 4 p- blld_sw1_026.png
 3 p- blld_sw1_027.png
@@ -47,7 +47,7 @@ C15                               #屏幕摆动很小
 6 p- blld_sw1_047.png
 5 p- blld_sw1_048.png
 C1F                               #关键音效
-C17
+C55
 4 p- blld_sw1_049.png
 1 p- blld_sw1_050.png
 1 p- blld_sw1_051.png
