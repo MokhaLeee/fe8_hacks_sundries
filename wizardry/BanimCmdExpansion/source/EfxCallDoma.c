@@ -76,7 +76,15 @@ void EfxCallDumaBG1(struct ProcEfxBmExpa * proc)
 void EfxCallDumaBG3Start(struct ProcEfxBmExpa * proc)
 {
     SetEkrDragonStatusType(gAnims[0], EKRDRGON_TYPE_DEMON_KING);
+
+#if 0
+    gLCDControlBuffer.bg0cnt.priority = 0;
+    gLCDControlBuffer.bg1cnt.priority = 1;
+    gLCDControlBuffer.bg2cnt.priority = 3;
+    gLCDControlBuffer.bg3cnt.priority = 2;
+#else
     EfxDragonSetBgPriorityASM(0, 1, 3, 2);
+#endif
 }
 
 void EfxCallDumaBG3(struct ProcEfxBmExpa * proc)

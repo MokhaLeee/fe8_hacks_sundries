@@ -8,7 +8,7 @@
 #include "bmmap.h"
 
 struct EfxStatusReConfig {
-    int index;
+    u32 index;
     int red;
     int green;
     int blue;

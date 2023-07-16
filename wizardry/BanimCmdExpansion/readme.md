@@ -21,7 +21,7 @@ Freeze the anim to remove the summoned DemoKing by `C16`
 ![image](gfx/C53C54.gif)
 
 - `C53 (CallDuma): `
-Freeze the anim until the dragon-Duma has been summoned in background. You must call for `C54` (or `C17` or `C54`) to remove it.
+Freeze the anim until the dragon-Duma has been summoned in background. You must call for `C54` (or `C17` or `C55`) to remove it.
 
 - `C54 (RemoveDuma): `
 Freeze the anim to remove the summoned Duma by `C53`

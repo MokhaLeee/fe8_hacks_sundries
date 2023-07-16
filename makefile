@@ -102,12 +102,12 @@ $(FE8_GBA): $(FE8_ELF)
 # ============
 # = Wizardry =
 # ============
-INC_DIRS := include $(FE8_DIR)/include $(FE8_DIR)/tools/agbcc/include
+INC_DIRS := include $(FE8_DIR)/include
 INC_FLAG := $(foreach dir, $(INC_DIRS), -I $(dir))
 LYN_REF := $(FE8_REF:.s=.o)
 
 ARCH    := -mcpu=arm7tdmi -mthumb -mthumb-interwork
-CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -O2 -mtune=arm7tdmi -ffreestanding -mlong-calls
+CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -Wextra -Wno-unused-parameter -O2 -mtune=arm7tdmi -mlong-calls
 ASFLAGS := $(ARCH) $(INC_FLAG)
 
 CDEPFLAGS = -MMD -MT "$*.o" -MT "$*.asm" -MF "$(CACHE_DIR)/$(notdir $*).d" -MP
