@@ -28,4 +28,4 @@ extern u16 const * const TsaLut_Duma[15];
 extern u16 const * const PalLut_Duma[15];
 
 extern struct Anim * gAnims[4];
-void sub_806FAD8(int a, int b);
+void EkrDragonTmCpyHFlip(int a, int b);

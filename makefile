@@ -5,6 +5,7 @@ FE8_DIR := tools/fe8
 FE8_GBA := $(FE8_DIR)/fireemblem8.gba
 FE8_ELF := $(FE8_DIR)/fireemblem8.elf
 FE8_REF := $(CACHE_DIR)/fe8-ref.s
+EXT_REF := lib/fe8-expa.s
 FE8_SYM := $(CACHE_DIR)/fe8.sym
 
 MAIN    := wizardry.event
@@ -86,9 +87,10 @@ $(FE8_ELF): FORCE
 	@echo "[MAKE]	$(notdir $@)"
 	@$(MAKE) -s -C $(FE8_DIR)
 
-$(FE8_REF): $(FE8_ELF)
+$(FE8_REF): $(FE8_ELF) $(EXT_REF)
 	@echo "[PY ]	$(notdir $@)"
 	@$(ELF2REF) $(FE8_ELF) > $(FE8_REF)
+	@cat $(EXT_REF) >> $(FE8_REF)
 
 $(FE8_SYM): $(FE8_ELF)
 	@echo "[PY ]	$(notdir $@)"

@@ -12,13 +12,14 @@
 #include "face.h"
 #include "uiselecttarget.h"
 #include "bmmap.h"
+#include "hardware.h"
 #include "bmidoten.h"
 #include "playerphase.h"
 #include "skillsys-port.h"
 
 extern const struct SelectInfo gSelectInfo_0859D3F8;
 
-static void EquipUnitItemSlotRework(struct Unit* unit, int slot)
+static void EquipUnitItemSlotRework(struct Unit * unit, int slot)
 {
     int i, total = 0;
     u16 itemsTmp[UNIT_ITEM_COUNT] = {0};
@@ -35,7 +36,8 @@ static void EquipUnitItemSlotRework(struct Unit* unit, int slot)
             : itemsTmp[i - (total - slot)];
 }
 
-bool TargetSelectionRework_HandleWeanponChange(struct SelectTargetProc* proc) {
+bool TargetSelectionRework_HandleWeanponChange(struct SelectTargetProc * proc)
+{
     int i;
     s8 uid_pre;
     struct SelectTarget *it, *current = proc->currentTarget;
@@ -88,7 +90,8 @@ got_weapon:
     return true;
 }
 
-void TargetSelectionRework_HandleMoveInput(struct SelectTargetProc* proc) {
+void TargetSelectionRework_HandleMoveInput(struct SelectTargetProc * proc)
+{
     struct SelectTarget* current = proc->currentTarget;
 
     if (TargetSelectionRework_HandleWeanponChange(proc))
@@ -114,7 +117,8 @@ void TargetSelectionRework_HandleMoveInput(struct SelectTargetProc* proc) {
     PlaySoundEffect(0x67);
 }
 
-void TargetSelectionRework_Loop(struct SelectTargetProc* proc) {
+void TargetSelectionRework_Loop(struct SelectTargetProc * proc)
+{
     int x, y;
     int action;
 
@@ -164,7 +168,8 @@ PROC_LABEL(0),
     PROC_END,
 };
 
-ProcPtr NewTargetSelectionRework(const struct SelectInfo* selectInfo) {
+ProcPtr NewTargetSelectionRework(const struct SelectInfo * selectInfo)
+{
     struct SelectTargetProc* proc;
 
     LockGame();
@@ -189,7 +194,8 @@ ProcPtr NewTargetSelectionRework(const struct SelectInfo* selectInfo) {
     return proc;
 }
 
-u8 UnknownMenu_Selected(struct MenuProc* menu, struct MenuItemProc* menuItem) {
+u8 UnknownMenu_Selected(struct MenuProc * menu, struct MenuItemProc * menuItem)
+{
 
     EquipUnitItemSlot(gActiveUnit, menuItem->itemNumber);
     gActionData.itemSlotIndex = 0;

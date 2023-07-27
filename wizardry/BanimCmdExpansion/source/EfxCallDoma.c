@@ -99,8 +99,8 @@ void EfxCallDumaBG3(struct ProcEfxBmExpa * proc)
         Fill16_EkrTsaBuffer_(1);
         BG_Fill(gBG3TilemapBuffer, 1);
         Decompress(proc->tsas[ret], gEkrTsaBuffer);
-        sub_806FAD8(0x80, 0);
-        EkrDragonBgSetPostion(gEkrBgXOffset, 0);
+        EkrDragonTmCpyHFlip(0x80, 0);
+        EkrDragonTmCpyExt(gEkrBgXOffset, 0);
 
         CpuFastCopy(proc->pals[ret], PAL_BG(6), 0x20);
         EnablePaletteSync();

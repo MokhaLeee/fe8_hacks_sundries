@@ -56,3 +56,4 @@ dkms.conf
 tools/agbcc/
 tools/ea/
 .vscode/
+.cache_dir/

@@ -31,13 +31,13 @@ void EfxCallDkMain(struct ProcEfxBmExpa * proc)
     {
         SetEkrDragonStatusType(gAnims[0], EKRDRGON_TYPE_DEMON_KING);
         Fill16_EkrTsaBuffer_(1);
-        sub_80559D0(0x60016001);
+        EfxTmFill(0x60016001);
         BG_Fill(gBG3TilemapBuffer, 1);
         BG_EnableSyncByMask(BG3_SYNC_BIT);
         Decompress(Img_DemonKingBG, (void *)0x06008000);
         Decompress(Tsa_DemonKingBG1, gEkrTsaBuffer);
-        sub_806FAD8(0x90, 0);
-        EkrDragonBgSetPostion(gEkrBgXOffset, 0);
+        EkrDragonTmCpyHFlip(0x90, 0);
+        EkrDragonTmCpyExt(gEkrBgXOffset, 0);
 
         // Some align issue exits for C
         // why ?
