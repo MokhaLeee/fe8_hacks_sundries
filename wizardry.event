@@ -1,6 +1,9 @@
 #define FreeSpace 0xB2A610
 ORG FreeSpace
 
+#include "wizardry/GameInitHook/GameInitHook.event"
+#include "wizardry/DebugKit/DebugKit.event"
+
 #include "wizardry/TargetSelectRework/TargetSelectRework.event"
 #include "wizardry/EfxStatusUnitRework/EfxStatusUnitRework.event"
 #include "wizardry/BanimCmdExpansion/BanimCmdExpansion.event"

@@ -53,6 +53,7 @@ dkms.conf
 
 # gba related
 *.gba
+*.sym
 tools/agbcc/
 tools/ea/
 .vscode/
