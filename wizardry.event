@@ -10,6 +10,7 @@ ORG FreeSpace
 #include "wizardry/PostActionHook/PostActionHook.event"
 #include "wizardry/UnitStatusGetter/UnitStatusGetter.event"
 #include "wizardry/BwlRework/BwlRework.event"
+#include "wizardry/SaveDataExpansion/SaveDataExpansion.event"
 
 ALIGN 4
 #include test_prologue.event
