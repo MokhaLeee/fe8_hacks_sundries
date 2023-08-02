@@ -6,11 +6,14 @@
 #include "mgba.h"
 #include "no-cash-gba.h"
 
-#define CONFIG_USE_DEBUG true
-
-#define LogInit mgba_open
+#define CONFIG_USE_DEBUG 1
 
 #if CONFIG_USE_DEBUG
+
+static inline void LogInit(void)
+{
+    mgba_open();
+}
 
 #define LogPrint(string) { mgba_printf(MGBA_LOG_INFO, string); \
                             NoCashGBAPrint(string); }
@@ -67,6 +70,11 @@
 
 #else
 
+static inline void LogInit(void)
+{
+    return;
+}
+
 #define LogPrint(string)
 #define LogPrintf(format, ...)
 #define LogFatal(string)
@@ -79,7 +87,6 @@
 #define LogInfof(format, ...)
 #define LogDebug(string)
 #define LogDebugf(format, ...)
-#define __FILE__
 #define Print(string)
 #define Printf(format, ...)
 #define Fatal(string)

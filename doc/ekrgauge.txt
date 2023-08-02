@@ -1,0 +1,29 @@
+0805160C: display left hp bar number
+08051688: display right hp bar number
+
+08051746: display left top hp bar
+080517AC: display left down hp bar
+
+08051878: display right top hp bar
+080518D8: display left down hp bar
+
+0805191C: Hit/Dmg/Crt number LEFT
+08051946: Hit/Dmg/Crt text LEFT
+
+0805197C: Hit/Dmg/Crt number RIGHT
+080519A2: Hit/Dmg/Crt text RIGHT
+
+* HP bar position
+
+080514FC: handle hp bar (one line) y pos
+
+0805172A: handle hp bar (two line) top y pos LEFT
+08051770: handle hp bar (two line) bottom y pos LEFT
+
+0805185C: handle hp bar (two line) top y pos RIGHT
+080518A2: handle hp bar (two line) bottom y pos RIGHT
+
+* proc definition
+
+Proc_Ekrgauge:
++3A: base yPos
