@@ -9,6 +9,7 @@ ORG FreeSpace
 #include "wizardry/BanimCmdExpansion/BanimCmdExpansion.event"
 #include "wizardry/PostActionHook/PostActionHook.event"
 #include "wizardry/UnitStatusGetter/UnitStatusGetter.event"
+#include "wizardry/BwlRework/BwlRework.event"
 
 ALIGN 4
 #include test_prologue.event
