@@ -7,12 +7,36 @@
 /* Magic string for FEBuilder patch */
 const char PromoJidLutExpaMagic[] = "PromoJidLutExpa";
 const u8 gPromoJidLutExpa[0x100][0x4] = {
+    [CLASS_JOURNEYMAN] = {
+        CLASS_JOURNEYMAN_T1,
+        CLASS_MAGE,
+        CLASS_SHAMAN,
+        CLASS_MONK,
+    },
+
+    [CLASS_RECRUIT] = {
+        CLASS_RECRUIT_T1,
+        CLASS_CAVALIER_F,
+        CLASS_ARMOR_KNIGHT_F,
+        CLASS_PEGASUS_KNIGHT
+    },
+
+    [CLASS_PUPIL] = {
+        CLASS_PUPIL_T1,
+        CLASS_FIGHTER,
+        CLASS_BRIGAND
+    },
+
     [CLASS_MAGE] = {
         CLASS_DRUID,
     },
 
+    [CLASS_MAGE_F] = {
+        CLASS_DRUID_F,
+    },
+
     [CLASS_EIRIKA_LORD] = {
-        CLASS_DRUID
+        CLASS_SWORDMASTER_F
     },
 };
 
@@ -31,13 +55,13 @@ static const struct ClassChgExpaMod gClassChgExpaMods[] = {
 const char ClassChgExpaModsMagic[] = "ClassChgExpaMod";
 struct ClassChgExpaMod const * const gpClassChgExpaMods = gClassChgExpaMods;
 
-static const struct TraineeData gTraineesRe[] = {
-    { CHARACTER_ROSS,   10, CLASS_JOURNEYMAN },
-    { CHARACTER_AMELIA, 10, CLASS_RECRUIT },
-    { CHARACTER_EWAN,   10, CLASS_PUPIL },
+static const struct TraineeDataRe gTraineesRe[] = {
+    { CLASS_JOURNEYMAN, 10 },
+    { CLASS_RECRUIT, 10 },
+    { CLASS_PUPIL, 10 },
     {0}
 };
 
 /* Magic string for FEBuilder patch */
 const char TraineesReMagic[] = "TraineesRee";
-struct TraineeData const * const gpTraineesRe = gTraineesRe;
+struct TraineeDataRe const * const gpTraineesRe = gTraineesRe;

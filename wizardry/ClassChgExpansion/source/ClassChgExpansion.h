@@ -25,15 +25,12 @@ extern struct ClassChgExpaMod const * const gpClassChgExpaMods;
 int GetClasschgList(struct Unit * unit, u16 item, u8 * out, int length);
 
 /* Trainee related */
-#ifndef TraineeData
-struct TraineeData {
-    u8 charId;
-    u8 promotionLevel;
-    u8 class;
-};
-#endif
 
-extern struct TraineeData const * const gpTraineesRe;
+struct TraineeDataRe {
+    u8 jid;
+    u8 level;
+};
+extern struct TraineeDataRe const * const gpTraineesRe;
 
 struct ClassChgSelInfo {
     u8 jid;

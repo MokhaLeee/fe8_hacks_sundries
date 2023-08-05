@@ -35,38 +35,43 @@ u32 PromoHandler_SetupAndStartUI(struct ProcPromoHandler * proc)
 {
     u8 jid_list[0x10];
     struct Unit * unit;
-    int amt = 0;
+    int i, amt = 0;
 
     if (proc->bmtype == PROMO_HANDLER_TYPE_TRANINEE)
     {
-        const struct TraineeData * it;
-        for (it = gpTraineesRe; it->charId != 0; it++)
+        for (i = 0; i < 0x40; ++i)
         {
-            unit = GetUnitFromCharId(it->charId);
-            if (!unit)
+            const struct TraineeDataRe * it;
+            unit = GetUnit(i);
+
+            if (!UNIT_IS_VALID(unit))
                 continue;
 
-            if (unit->state & (US_BIT16 | US_DEAD))
-                continue;
-
-            if (it->charId == UNIT_CHAR_ID(unit) && it->class == UNIT_CLASS_ID(unit))
+            for (it = gpTraineesRe; it->jid != 0; it++)
             {
-                amt = GetClasschgList(unit, unit->items[proc->item_slot], jid_list, sizeof(jid_list));
-                break;
+                if (it->jid != UNIT_CLASS_ID(unit))
+                    continue;
+
+                if (unit->state & (US_BIT16 | US_DEAD))
+                    continue;
+
+                if (unit->level >= it->level)
+                {
+                    amt = GetClasschgList(unit, unit->items[proc->item_slot], jid_list, sizeof(jid_list));
+                    if (amt <= 0)
+                        return PROMO_HANDLER_STAT_END;
+
+                    if (amt == 1)
+                    {
+                        proc->jid = jid_list[0];
+                        proc->sel_en = false;
+                    }
+
+                    MakePromotionScreen(proc, UNIT_CHAR_ID(unit), TERRAIN_PLAINS);
+                    return PROMO_HANDLER_STAT_IDLE;
+                }
             }
         }
-
-        if (amt <= 0)
-            return PROMO_HANDLER_STAT_END;
-
-        if (amt == 1)
-        {
-            proc->jid = jid_list[0];
-            proc->sel_en = false;
-        }
-
-        MakePromotionScreen(proc, it->charId, TERRAIN_PLAINS);
-        return PROMO_HANDLER_STAT_IDLE;
     }
 
     proc->sel_en = true;
@@ -106,6 +111,7 @@ void PromoMain_HandleType(struct ProcPromoMain * proc)
     {
         proc->jid = parent->jid;
         Proc_Goto(proc, PROMOMAIN_LABEL_POST_SEL);
+        return;
     }
 
     Proc_Goto(proc, PROMOMAIN_LABEL_SEL_EN);
