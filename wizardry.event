@@ -11,6 +11,7 @@ ORG FreeSpace
 #include "wizardry/UnitStatusGetter/UnitStatusGetter.event"
 #include "wizardry/BwlRework/BwlRework.event"
 #include "wizardry/SaveDataExpansion/SaveDataExpansion.event"
+#include "wizardry/ClassChgExpansion/ClassChgExpansion.event"
 
 ALIGN 4
 #include test_prologue.event

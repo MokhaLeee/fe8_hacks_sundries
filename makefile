@@ -72,7 +72,7 @@ NOTIFY_PROCESS = @echo "$(notdir $<) => $(notdir $@)"
 MAIN_DEPS := $(shell $(EA_DEP) $(MAIN) -I $(EA_DIR) --add-missings)
 
 $(FE8_CHX): $(MAIN) $(FE8_GBA) $(FE8_SYM) $(MAIN_DEPS)
-	@echo "[EA ]	$(notdir $@)"
+	@echo "[GEN]	$@"
 	@cp -f $(FE8_GBA) $(FE8_CHX)
 	@$(EA) A FE8 -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || rm -f $(FE8_CHX)
 	@cat $(FE8_SYM) >> $(FE8_CHX:.gba=.sym)
@@ -84,20 +84,20 @@ CLEAN_FILES += $(FE8_CHX)  $(FE8_CHX:.gba=.sym)
 # = DECOMP =
 # ==========
 $(FE8_ELF): FORCE
-	@echo "[MAKE]	$(notdir $@)"
+	@echo "[GEN]	$@"
 	@$(MAKE) -s -C $(FE8_DIR)
 
 $(FE8_REF): $(FE8_ELF) $(EXT_REF)
-	@echo "[PY ]	$(notdir $@)"
+	@echo "[GEN]	$@"
 	@$(ELF2REF) $(FE8_ELF) > $(FE8_REF)
 	@cat $(EXT_REF) >> $(FE8_REF)
 
 $(FE8_SYM): $(FE8_ELF)
-	@echo "[PY ]	$(notdir $@)"
+	@echo "[GEN]	$@"
 	@$(ELF2SYM) $(FE8_ELF) > $(FE8_SYM)
 
 $(FE8_GBA): $(FE8_ELF)
-	@echo "[ODP]	$(notdir $@)"
+	@echo "[GEN]	$@"
 	@touch $(FE8_GBA)
 
 
@@ -116,23 +116,23 @@ CDEPFLAGS = -MMD -MT "$*.o" -MT "$*.asm" -MF "$(CACHE_DIR)/$(notdir $*).d" -MP
 SDEPFLAGS = --MD "$(CACHE_DIR)/$(notdir $*).d"
 
 %.lyn.event: %.o $(LYN_REF)
-	@echo "[LYN]	$(notdir $@)"
+	@echo "[LYN]	$<"
 	@$(LYN) $< $(LYN_REF) > $@
 
 %.dmp: %.o
-	@echo "[OPY]	$(notdir $@)"
+	@echo "[OPY]	$<"
 	@$(OBJCOPY) -S $< -O binary $@
 
 %.o: %.s
-	@echo "[AS ]	$(notdir $@)"
+	@echo "[AS ]	$<"
 	@$(AS) $(ASFLAGS) $(SDEPFLAGS) -I $(dir $<) $< -o $@
 
 %.o: %.c
-	@echo "[CC ]	$(notdir $@)"
+	@echo "[CC ]	$<"
 	@$(CC) $(CFLAGS) $(CDEPFLAGS) -g -c $< -o $@
 
 %.asm: %.c
-	@echo "[CC ]	$(notdir $@)"
+	@echo "[CC ]	$<"
 	@$(CC) $(CFLAGS) $(CDEPFLAGS) -S $< -o $@ -fverbose-asm
 
 # Avoid make deleting objects it thinks it doesn't need anymore
@@ -151,15 +151,15 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) # $(SFILES:.s=.lyn.event)
 # = Spritans =
 # ============
 %.4bpp: %.png
-	@echo "[P2D]	$(notdir $@)"
+	@echo "[GEN]	$@"
 	@$(PNG2DMP) $< -o $@
 
 %.gbapal: %.png
-	@echo "[P2D]	$(notdir $@)"
+	@echo "[GEN]	$@"
 	@$(PNG2DMP) $< -po $@ --palette-only
 
 %.lz: %
-	@echo "[CPR]	$(notdir $@)"
+	@echo "[LZ ]	$<"
 	@$(COMPRESS) $< $@
 
 PNG_FILES := $(shell find $(HACK_DIRS) -type f -name '*.png')
@@ -179,6 +179,6 @@ clean:
 	@rm -f $(CLEAN_FILES)
 	@rm -rf $(CLEAN_DIRS)
 #	@$(MAKE) -s -C $(FE8_DIR) clean
-	@echo "[RM]	$(notdir $(CLEAN_FILES)) $(notdir $(CLEAN_DIRS))"
+	@echo "[RM]	$(CLEAN_FILES) $(CLEAN_DIRS)"
 
 FORCE:
