@@ -28,6 +28,9 @@ const u8 gPromoJidLutExpa[0x100][0x4] = {
 
     [CLASS_MAGE_F] = {
         CLASS_VALKYRIE,
+        CLASS_BISHOP_F,
+        CLASS_DRUID_F,
+        CLASS_SUMMONER_F
     },
 
     [CLASS_EIRIKA_LORD] = {

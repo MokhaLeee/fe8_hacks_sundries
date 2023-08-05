@@ -46,7 +46,7 @@ int GetClasschgListExpa(struct Unit * unit, u16 item, u8 * out, int len)
 
     jid = UNIT_CLASS_ID(unit);
 
-    for (i = 0; i < 2; i++)
+    for (i = 0; i < 4; i++)
     {
         u8 jid_new = gPromoJidLutExpa[jid][i];
         if (jid_new != 0)
