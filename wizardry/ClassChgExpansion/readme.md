@@ -30,15 +30,15 @@ At the same time, there are two list for promotion expansion:
 
     A table for promotion with higher degrees of freedom. A unit can promote to `ClassChgExpaMod::jid_promo` if:
 
-    - The configed class index matched (`ClassChgExpaMod::jid_old`)
-    - The configed character index is matched (`ClassChgExpaMod::pid`)
-    - The configed item is used for promotion.(`ClassChgExpaMod::item`)
-    - The configed event flag is set.(`ClassChgExpaMod::item`)
+    - The configed class index is matched
+    - The configed character index is matched
+    - The configed item is used for promotion
+    - The configed event flag is set
 
-    You can also config this table by FEBuilder's patch, **./patches/PATCH_ClassChgExpandModulearList.txt**
+    You can config this table by FEBuilder's patch, **./patches/PATCH_ClassChgExpandModulearList.txt**
 
 ### Trainees
-As for auto-promotion for trainee class, the is also a reworked table for configuration. `gpTraineesRe`, with two element `jid` and `level`.
+As for auto-promotion for trainee class, there is also a reworked table for configuration. `gpTraineesRe`, with two element `jid` and `level`.
 
     You can also config this table by FEBuilder's patch, **./patches/PATCH_ClassChgExpandTrainee.txt**
 
@@ -60,4 +60,5 @@ You can also write your own jid-getter function and add the function to the list
  * return: amount of the classes to promote
  */
 typedef int (* GetClasschgListFunc_t)(struct Unit * unit, u16 item, u8 * out, int len);
+extern const GetClasschgListFunc_t gGetClasschgListFuncs[];
 ```
