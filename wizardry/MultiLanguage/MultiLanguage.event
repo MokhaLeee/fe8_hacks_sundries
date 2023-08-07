@@ -1,0 +1,6 @@
+#ifndef MULTI_LANGUAGE_H
+#define MULTI_LANGUAGE_H
+
+#include "source/Utils.lyn.event"
+
+#endif /* MULTI_LANGUAGE_H */
