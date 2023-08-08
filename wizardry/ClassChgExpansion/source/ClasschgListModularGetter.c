@@ -14,9 +14,6 @@ int GetClasschgListVanilla(struct Unit * unit, u16 item, u8 * out, int len)
     if (!UNIT_IS_VALID(unit))
         return 0;
 
-    if (!CanUnitUsePromotionItemVanilla(unit, item))
-        return 0;
-
     for (i = 0; i < 2; i++)
     {
         u8 jid_new = gPromoJidLut[UNIT_CLASS_ID(unit)][i];

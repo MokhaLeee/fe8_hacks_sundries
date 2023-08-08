@@ -425,7 +425,7 @@ void ExecUnitPromotion(struct Unit * unit, u8 classId, int itemIdx, s8 unk)
         gBattleActor.weaponBefore = gBattleTarget.weaponBefore = unit->items[itemIdx];
 
     gBattleActor.weapon = GetClassAnimWeapon(classId);
-    gBattleTarget.weapon = GetUnitEquippedWeapon(unit);
+    gBattleTarget.weapon = GetClassAnimWeapon(UNIT_CLASS_ID(unit));
 
     InitBattleUnitWithoutBonuses(&gBattleTarget, unit);
 
