@@ -1,0 +1,7 @@
+#ifndef BRIEF_MSG_H
+#define BRIEF_MSG_H
+
+#include "source/BriefText.lyn.event"
+#include "LynJump.event"
+
+#endif
