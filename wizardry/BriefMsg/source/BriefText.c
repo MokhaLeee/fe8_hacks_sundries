@@ -1,9 +1,9 @@
-char * sub_800A2A4(void)
+char * StringInsertSpecialPrefixByCtrl(void)
 {
     return (char *)0x0202A6AC;
 }
 
-char * FilterSomeTextFromStandardBuffer(void)
+char * StrInsertTact(void)
 {
     return (char *)0x0202A6AC;
 }

@@ -13,6 +13,7 @@ ORG FreeSpace
 #include "wizardry/SaveDataExpansion/SaveDataExpansion.event"
 #include "wizardry/ClassChgExpansion/ClassChgExpansion.event"
 #include "wizardry/MultiLanguage/MultiLanguage.event"
+#include "wizardry/BriefMsg/BriefMsg.event"
 
 ALIGN 4
 #include test_prologue.event
