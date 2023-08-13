@@ -14,6 +14,7 @@ ORG FreeSpace
 #include "wizardry/ClassChgExpansion/ClassChgExpansion.event"
 #include "wizardry/MultiLanguage/MultiLanguage.event"
 #include "wizardry/BriefMsg/BriefMsg.event"
+#include "wizardry/EfxAnims/EfxAnims.event"
 
 ALIGN 4
 #include test_prologue.event

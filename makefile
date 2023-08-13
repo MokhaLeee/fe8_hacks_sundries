@@ -60,6 +60,7 @@ TMX2EA            := $(PYTHON3) tools/pytools/TMX2EA/tmx2ea.py
 
 ELF2REF           := $(PYTHON3) tools/scripts/elf2ref.py
 ELF2SYM           := $(PYTHON3) tools/scripts/elf2sym.py
+EFX_ANIMTOR       := $(PYTHON3) tools/scripts/efx-anim-creator.py
 
 GRIT              := $(DEVKITPRO)/tools/bin/grit$(EXE)
 
@@ -171,6 +172,25 @@ PNG_FILES := $(shell find $(HACK_DIRS) -type f -name '*.png')
 	@$(GRIT) $< -gB 4 -gzl -m -mLf -mR4 -mzl -pn 16 -ftb -fh! -o $@
 
 # CLEAN_FILES += $(PNG_FILES:.png=.img.bin) $(PNG_FILES:.png=.map.bin) $(PNG_FILES:.png=.pal.bin)
+
+# ============
+# = EfxAnims =
+# ============
+%.efx.event: %.efx.txt
+	@echo $^
+	$(EFX_ANIMTOR) $< > $@
+
+%.efx.txt.d: %.efx.txt
+	@echo -n "$<: " > $@
+	$(EFX_ANIMTOR) $< --list-files >> $@
+
+EFX_SCRIPTS := $(shell find $(HACK_DIRS) -type f -name '*.efx.txt')
+CLEAN_FILES += $(EFX_SCRIPTS:.efx.txt=.efx.event)
+
+EFX_SCR_DEPS := $(EFX_SCRIPTS:.efx.txt=.efx.txt.d)
+include $(EFX_SCR_DEPS)
+
+CLEAN_FILES += $(EFX_SCR_DEPS)
 
 # ==============
 # = MAKE CLEAN =
