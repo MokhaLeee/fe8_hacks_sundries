@@ -1,9 +1,0 @@
-#ifndef MULTI_LANGUAGE_H
-#define MULTI_LANGUAGE_H
-
-#include "source/Utf8Decode.lyn.event"
-#include "source/Utf8Text.lyn.event"
-
-#include "LynJump.event"
-
-#endif /* MULTI_LANGUAGE_H */

@@ -12,7 +12,6 @@ ORG FreeSpace
 #include "wizardry/BwlRework/BwlRework.event"
 #include "wizardry/SaveDataExpansion/SaveDataExpansion.event"
 #include "wizardry/ClassChgExpansion/ClassChgExpansion.event"
-#include "wizardry/MultiLanguage/MultiLanguage.event"
 // #include "wizardry/EfxAnims/EfxAnims.event"
 
 ALIGN 4
