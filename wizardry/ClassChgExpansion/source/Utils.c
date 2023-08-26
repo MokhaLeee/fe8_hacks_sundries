@@ -14,7 +14,7 @@ u16 GetClassAnimWeapon(u8 jid)
         [ITYPE_LANCE] = ITEM_LANCE_IRON,
         [ITYPE_AXE]   = ITEM_AXE_IRON,
         [ITYPE_BOW]   = ITEM_BOW_IRON,
-        [ITYPE_STAFF] = ITEM_NONE,
+        [ITYPE_STAFF] = ITEM_STAFF_HEAL,
         [ITYPE_ANIMA] = ITEM_ANIMA_FIRE,
         [ITYPE_LIGHT] = ITEM_LIGHT_LIGHTNING,
         [ITYPE_DARK]  = ITEM_DARK_FLUX,
