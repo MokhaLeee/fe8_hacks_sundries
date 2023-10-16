@@ -53,7 +53,8 @@ dkms.conf
 
 # gba related
 *.gba
-tools/agbcc/
-tools/ea/
+tools/agbcc
+tools/ea
+tools/pytools
 .vscode/
 *.sav
