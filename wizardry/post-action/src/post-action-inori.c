@@ -14,7 +14,7 @@ void PostActionExecInoriItem(struct ProcPostAction *proc)
 {
     struct Unit *unit = GetUnit(*gpBmBattleInoriPid);
 
-    if (*gpBmBattleGlobalFlag & CHAX_BMBATTLE_GLBFLG_INORI_ITEM_ACTIVE) {
+    if (*gpBmBattleGlobalFlag & CHAX_BMBATTLE_GLBFLG_INORI_ITEM_ACTIVE && unit) {
         SetUnitHp(unit, GetUnitMaxHp(unit));
 
         // MU_End(MU_GetByUnit(&gBattleTarget.unit));
@@ -23,5 +23,6 @@ void PostActionExecInoriItem(struct ProcPostAction *proc)
     }
 
     /* Clear bitfile */
+    *gpBmBattleInoriPid = 0;
     *gpBmBattleGlobalFlag &= ~CHAX_BMBATTLE_GLBFLG_INORI_ITEM_ACTIVE;
 }

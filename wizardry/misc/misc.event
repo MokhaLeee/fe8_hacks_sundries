@@ -2,6 +2,9 @@ ALIGN 4
 gpRemoveCounter:
     WORD 0x203EDBA
 
+gRemoveMaxCounter:
+    WORD 5
+
 #include "src/remove-hack.lyn.event"
 
 PUSH

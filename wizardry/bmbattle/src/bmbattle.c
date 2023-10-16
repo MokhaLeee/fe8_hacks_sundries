@@ -39,8 +39,12 @@ void BattleGenerateHitAttributesLoop_DmgHandlerItem(struct BattleUnit *attacker,
 
 void BattleGenerateHitHack_802B894(struct BattleUnit *attacker, struct BattleUnit *defender)
 {
+    if (gBattleStats.config & BATTLE_CONFIG_SIMULATE)
+        return;
+
     /* initialize */
     *gpBmBattleGlobalFlag &= ~CHAX_BMBATTLE_GLBFLG_INORI_ITEM_ACTIVE;
+    *gpBmBattleInoriPid = 0;
 
     /* Inori item */
     if (defender->unit.curHP == 0) {

@@ -9,7 +9,7 @@ RemoveHack_B51244:
     add r1, #1
     strb r1, [r2]
     cmp r1, #5
-    bge 1f
+    # bge 1f
 
     ldr r0, [r4,#0x0C]
     mov r1, #0x42

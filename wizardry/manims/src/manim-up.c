@@ -3,6 +3,7 @@
 #include "bmunit.h"
 #include "proc.h"
 #include "bm.h"
+#include "bmlib.h"
 #include "ctc.h"
 #include "soundwrapper.h"
 
