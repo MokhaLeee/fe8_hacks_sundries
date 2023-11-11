@@ -37,7 +37,7 @@ void EfxCallDumaBaseHide(struct ProcEfxBmExpa * proc)
 void EfxCallDumaCustomBgFadeIn(struct ProcEfxBmExpa * proc)
 {
     int ret = Interpolate(INTERPOLATE_SQUARE, 4, 0x10, proc->timer, 8);
-    EkrUpdateSomePalMaybe(ret);
+    EfxChapterMapFadeOUT(ret);
     if (++proc->timer == 0x9)
     {
         proc->timer = 0;
