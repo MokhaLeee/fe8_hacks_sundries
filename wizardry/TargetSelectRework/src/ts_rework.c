@@ -17,7 +17,7 @@
 #include "playerphase.h"
 #include "skillsys-port.h"
 
-extern const struct SelectInfo gSelectInfo_0859D3F8;
+extern const struct SelectInfo gSelectInfo_Attack;
 
 static void EquipUnitItemSlotRework(struct Unit * unit, int slot)
 {
@@ -202,6 +202,6 @@ u8 UnknownMenu_Selected(struct MenuProc * menu, struct MenuItemProc * menuItem)
 
     ClearBg0Bg1();
     MakeTargetListForWeapon(gActiveUnit, gActiveUnit->items[0]);
-    NewTargetSelectionRework(&gSelectInfo_0859D3F8);
+    NewTargetSelectionRework(&gSelectInfo_Attack);
     return MENU_ACT_SKIPCURSOR | MENU_ACT_END | MENU_ACT_SND6A | MENU_ACT_ENDFACE;
 }

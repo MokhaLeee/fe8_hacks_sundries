@@ -1,4 +1,4 @@
-NAME=ClassChg Modular Expand List for Trainee
+NAME=转职扩展:0阶职业自动转职配置
 AUTHOR=Mokha(悠木晓缺)
 
 IF:0xCCD5C=0x4D 0x6F 0x6B 0x68 0x61
@@ -13,5 +13,5 @@ DATASIZE=0x2
 DATACOUNT=$GREP2 0
 
 LISTNAME=DECIMAL
-B0:CLASS=trainee class
-B1:DECIMAL=Trigger level
+B0:CLASS=职业
+B1:DECIMAL=自动转职等级
