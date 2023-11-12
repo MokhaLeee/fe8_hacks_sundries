@@ -74,7 +74,7 @@ void StatScreen_InitDisplayRework(ProcPtr proc)
     CallARM_FillTileRect(gBG1TilemapBuffer, Tsa_StatScreenBg1Left, TILEREF(0, 1));
 
     /* Set right BG */
-    StatScreenDisplayBG1(0);
+    StatScreenDisplayBG1(gStatScreen.page);
     TileMap_CopyRect(
         _gBmFrameTmap2,
         gBG1TilemapBuffer + 0 + TILEMAP_INDEX(12, 2),
