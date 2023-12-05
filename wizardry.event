@@ -14,8 +14,9 @@ ORG FreeSpace
 #include "wizardry/ClassChgExpansion/ClassChgExpansion.event"
 #include "wizardry/StatScreenfx/StatScreenfx.event"
 #include "wizardry/UnitPreAction/UnitPreAction.event"
+#include "wizardry/EfxMagicDummyFix/EfxMagicDummyFix.event"
 // #include "wizardry/EfxAnims/EfxAnims.event"
 
 ALIGN 4
-#include test_prologue.event
-// #include debug.event
+// #include test_prologue.event
+#include debug.event

@@ -1,15 +1,19 @@
 
+/* Rapier range: 1-2 */
+PUSH
+    ORG 0x809C6D
+    BYTE 0x12
+POP
+
+/*
 ALIGN 4
 #include "data/Banims/Banims.event"
 
 PUSH
+    ORG $8AF02E
+    BYTE _T0_RecruitF_Lance
 
-/* Paladin lance banim to new tyle */
-ORG $8AF02E
-BYTE _T0_RecruitF_Lance
-
-/* Mage M */
-ORG $8AF236
-BYTE Lyn_GreenTea
-
+    ORG $8AF236
+    BYTE Lyn_GreenTea
 POP
+*/
