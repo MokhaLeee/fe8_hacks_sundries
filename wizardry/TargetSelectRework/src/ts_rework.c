@@ -14,6 +14,7 @@
 #include "bmmap.h"
 #include "hardware.h"
 #include "bmidoten.h"
+#include "bmmind.h"
 #include "playerphase.h"
 #include "skillsys-port.h"
 

@@ -1,6 +1,7 @@
 #include "global.h"
 #include "bmunit.h"
 #include "proc.h"
+#include "bmmind.h"
 #include "playerphase.h"
 
 void PlayerPhase_CancelAction(ProcPtr proc);
@@ -13,7 +14,7 @@ extern struct PreActionCancelConf const * const gpPreActionCancelTable;
 
 bool PreActionRework(ProcPtr proc)
 {
-    u8 * taken_action = &gBmSt.unk3D/* &gBmSt.taken_action */;
+    u8 * taken_action = &gBmSt.taken_action;
     const struct PreActionCancelConf * it;
 
     if (gActionData.unitActionType == 0 && *taken_action != 0)
