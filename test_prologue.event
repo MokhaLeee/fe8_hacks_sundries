@@ -63,7 +63,10 @@ LOAD1 1 PlayerUnits
 ENUN
 LOAD1 1 EnemyUnits
 ENUN
-PREP
+
+SVAL 2 Eirika
+CALL EventScr_CallThunderfx
+
 ENDA
 
 EndingScene:

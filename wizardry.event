@@ -16,7 +16,8 @@ ORG FreeSpace
 #include "wizardry/UnitPreAction/UnitPreAction.event"
 // #include "wizardry/EfxMagicDummyFix/EfxMagicDummyFix.event"
 // #include "wizardry/EfxAnims/EfxAnims.event"
+#include "wizardry/EventThunderfx/EventThunderfx.event"
 
 ALIGN 4
-// #include test_prologue.event
+#include test_prologue.event
 #include debug.event
