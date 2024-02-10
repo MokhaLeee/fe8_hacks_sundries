@@ -37,7 +37,7 @@ void EfxCallDkMain(struct ProcEfxBmExpa * proc)
         Decompress(Img_DemonKingBG, (void *)0x06008000);
         Decompress(Tsa_DemonKingBG1, gEkrTsaBuffer);
         EkrDragonTmCpyHFlip(0x90, 0);
-        EkrDragonTmCpyExt(gEkrBgXOffset, 0);
+        EkrDragonTmCpyExt(gEkrBgPosition, 0);
 
         // Some align issue exits for C
         // why ?

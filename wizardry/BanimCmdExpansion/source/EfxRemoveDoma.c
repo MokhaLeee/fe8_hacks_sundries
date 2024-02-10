@@ -58,7 +58,7 @@ void EfxRemoveDumaBG3(struct ProcEfxBmExpa * proc)
         BG_Fill(gBG3TilemapBuffer, 1);
         Decompress(proc->tsas[ret], gEkrTsaBuffer);
         EkrDragonTmCpyHFlip(0x80, 0);
-        EkrDragonTmCpyExt(gEkrBgXOffset, 0);
+        EkrDragonTmCpyExt(gEkrBgPosition, 0);
 
         CpuFastCopy(proc->pals[ret], PAL_BG(6), 0x20);
         EnablePaletteSync();

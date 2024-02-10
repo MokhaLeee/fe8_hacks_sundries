@@ -11,5 +11,5 @@
 void BanimCmd_EraseDispUp(struct Anim * anim)
 {
     if (GetAISLayerId(anim) == 0)
-        sub_8051B90();
+        AsyncEkrDispUP();
 }
