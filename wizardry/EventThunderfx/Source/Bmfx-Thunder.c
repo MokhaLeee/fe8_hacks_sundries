@@ -53,6 +53,6 @@ void StartBmThunderfx(int x, int y, ProcPtr parent)
     else
         proc = Proc_Start(ProcScr_EventThunderfx, PROC_TREE_3);
 
-    proc->x = x;
-    proc->y = y;
+    proc->x = x - 0x18;
+    proc->y = y - 0x78;
 }

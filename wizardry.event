@@ -1,6 +1,8 @@
 #define FreeSpace 0xB2A610
 ORG FreeSpace
 
+#include test_prologue.event
+
 #include "wizardry/GameInitHook/GameInitHook.event"
 #include "wizardry/DebugKit/DebugKit.event"
 
@@ -19,5 +21,4 @@ ORG FreeSpace
 #include "wizardry/EventThunderfx/EventThunderfx.event"
 
 ALIGN 4
-#include test_prologue.event
 #include debug.event
