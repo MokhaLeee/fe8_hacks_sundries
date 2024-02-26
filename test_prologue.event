@@ -31,9 +31,9 @@ UNIT Lute DemonKing Eirika Level(1,Ally,False) [9, 1] 0x0 0x0 0x0 0x1 [SilverBow
 UNIT
 
 EnemyUnits:
-UNIT Riev Bishop 0 Level(10,2,True) [6, 4] 0x0 0x0 0x0 0x1 [Purge,Divine,Heal] NoAI
-UNIT Caellach Warrior 0 Level(10,2,True) [6, 5] 0x0 0x0 0x0 0x1 [IronAxe] NoAI
-UNIT Caellach Warrior 0x0 0x14 [7, 6] 0b 0x0 0x1 0 [0x1F,0x0,0x0,0x0] [0x0,0x12,0x2,0x0]
+UNIT Riev Bishop 0 Level(10,2,True) [2, 1] 0x0 0x0 0x0 0x1 [Purge,Divine,Heal] NoAI
+UNIT Caellach Warrior 0 Level(10,2,True) [2, 2] 0x0 0x0 0x0 0x1 [IronAxe] NoAI
+UNIT Caellach Warrior 0x0 0x14 [10, 9] 0b 0x0 0x1 0 [0x1F,0x0,0x0,0x0] [0x0,0x12,0x2,0x0]
 UNIT
 
 TurnBasedEvents:
@@ -77,7 +77,7 @@ FADU 16
 
 #ifdef TEST_CallThunderfxAtPosition
 	SVAL 3 0x6 // x
-	SVAL 4 0x8 // y
+	SVAL 4 0x5 // y
 	CALL EventScr_CallThunderfxAtPosition
 #endif
 
@@ -85,7 +85,7 @@ FADU 16
 #ifdef TEST_SpawnAssassinfx
 	STAL 60
 	SVAL 3 0x6 // x
-	SVAL 4 0x8 // y
+	SVAL 4 0x5 // y
 	ASMC CallEvent_SpawnAssassinfx
 	STAL 1
 	LOAD1 1 EnemyUnitSpawnAssassin
@@ -117,5 +117,5 @@ SHLI SteelAxe SteelLance SteelBow SteelSword HandAxe Javelin
 
 ALIGN 32
 EnemyUnitSpawnAssassin:
-UNIT Ross Assassin 0 Level(10,2,True) [6, 8] 0x0 0x0 0x0 0x1 [Purge,Divine,Heal] NoAI
+UNIT Ross Assassin 0 Level(10,2,True) [6, 5] 0x0 0x0 0x0 0x1 [Purge,Divine,Heal] NoAI
 UNIT
