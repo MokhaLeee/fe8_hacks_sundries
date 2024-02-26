@@ -1,5 +1,5 @@
-// #define TEST_CallThunderfx
-#define TEST_SpawnAssassinfx
+
+
 
 #include EAstdlib.event
 EventPointerTable(7,MyPrologue)
@@ -73,6 +73,12 @@ FADU 16
 #ifdef TEST_CallThunderfx
 	SVAL 2 Riev
 	CALL EventScr_CallThunderfx
+#endif
+
+#ifdef TEST_CallThunderfxAtPosition
+	SVAL 3 0x6 // x
+	SVAL 4 0x8 // y
+	CALL EventScr_CallThunderfxAtPosition
 #endif
 
 // FE7 style spawn-assassin-fx
