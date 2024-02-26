@@ -51,8 +51,8 @@ void EfxRemoveDumaBG3(struct ProcEfxBmExpa * proc)
     ret = EfxAdvanceFrameLut(&proc->timer, (s16 *)&proc->frame, proc->frame_config);
     if (ret >= 0)
     {
-        Decompress(proc->imgs[ret], gEkrBuf1);
-        RegisterDataMove(gEkrBuf1, (void *)BG_VRAM + 0x8000, 0x2000);
+        Decompress(proc->imgs[ret], gSpellAnimBgfx);
+        RegisterDataMove(gSpellAnimBgfx, (void *)BG_VRAM + 0x8000, 0x2000);
 
         Fill16_EkrTsaBuffer_(1);
         BG_Fill(gBG3TilemapBuffer, 1);
@@ -82,7 +82,7 @@ void EfxRemoveDumaOnEnd(struct ProcEfxBmExpa * proc)
     SetAnimStateUnfrozen(anim1);
     SetAnimStateUnfrozen(anim2);
 
-    gEkrPairSideVaild[GetAnimPosition(proc->anim)] = true;
+    gBanimValid[GetAnimPosition(proc->anim)] = true;
     SetAnimStateUnHidden(GetAnimPosition(proc->anim));
 
     gEkrDragonStatusLeft.type = EKRDRGON_TYPE_NORMAL;

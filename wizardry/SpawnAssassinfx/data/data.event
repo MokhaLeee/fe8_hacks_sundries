@@ -1,0 +1,7 @@
+ALIGN 4
+Img_EventSpriteAnim_SpawnAssassin:
+    #incbin "Img_EventSpriteAnim_SpawnAssassin.4bpp.lz"
+
+ALIGN 4
+ApConf_EventSpriteAnim_SpawnAssassin:
+    #incbin "ApConf_EventSpriteAnim_SpawnAssassin.bin"

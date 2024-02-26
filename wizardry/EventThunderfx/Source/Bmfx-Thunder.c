@@ -33,7 +33,7 @@ void EventThunderfx_Init(struct ProcEventThunderfx * proc)
 
 void EventThunderfx_End(struct ProcEventThunderfx * proc)
 {
-    SetSpecialColorEffectsParameters(BLEND_EFFECT_NONE, 0, 0x10, 0);
+    SetBlendConfig(BLEND_EFFECT_NONE, 0, 0x10, 0);
     InitBmBgLayers();
 }
 

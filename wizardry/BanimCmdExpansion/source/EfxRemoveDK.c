@@ -22,7 +22,7 @@ void EfxRemoveDkOnEnd(struct ProcEkrDragon * proc)
     // LZ77UnCompWram((void *)0x085BE7F4, gEkrTsaBuffer);
     // sub_8070EF4(gEkrTsaBuffer, -1, (void *)0x0201D428, 66, 46, 20, 6, 0);
 
-    gEkrPairSideVaild[GetAnimPosition(proc->anim)] = true;
+    gBanimValid[GetAnimPosition(proc->anim)] = true;
     SetAnimStateUnHidden(GetAnimPosition(proc->anim));
 
     gEkrDragonStatusLeft.type = EKRDRGON_TYPE_NORMAL;

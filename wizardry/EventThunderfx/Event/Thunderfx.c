@@ -16,6 +16,7 @@ static void CallEventThunderfxForUnitSlot2(struct EventEngineProc * proc)
 }
 
 const EventScr EventScr_CallThunderfx[] = {
+    NoFade
     STARTFADE
     EvtColorFadeSetup(0x0, 0x20, 8, 128, 128, 128) // ENOSUPP in EAstdlib
     STAL(30)

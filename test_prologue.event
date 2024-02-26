@@ -1,3 +1,6 @@
+// #define TEST_CallThunderfx
+#define TEST_SpawnAssassinfx
+
 #include EAstdlib.event
 EventPointerTable(7,MyPrologue)
 
@@ -64,8 +67,24 @@ ENUN
 LOAD1 1 EnemyUnits
 ENUN
 
-SVAL 2 Riev
-CALL EventScr_CallThunderfx
+FADU 16
+
+// FE7 style thunderfx
+#ifdef TEST_CallThunderfx
+	SVAL 2 Riev
+	CALL EventScr_CallThunderfx
+#endif
+
+// FE7 style spawn-assassin-fx
+#ifdef TEST_SpawnAssassinfx
+	STAL 60
+	SVAL 3 0x6 // x
+	SVAL 4 0x8 // y
+	ASMC CallEvent_SpawnAssassinfx
+	STAL 1
+	LOAD1 1 EnemyUnitSpawnAssassin
+	STAL 60
+#endif
 
 ENDA
 
@@ -89,3 +108,8 @@ SHLI Thunder Elfire Nosferatu Divine Mend PureWater Elixir
 ALIGN 4
 ArmoryItems:
 SHLI SteelAxe SteelLance SteelBow SteelSword HandAxe Javelin
+
+ALIGN 32
+EnemyUnitSpawnAssassin:
+UNIT Ross Assassin 0 Level(10,2,True) [6, 8] 0x0 0x0 0x0 0x1 [Purge,Divine,Heal] NoAI
+UNIT

@@ -19,6 +19,7 @@ ORG FreeSpace
 // #include "wizardry/EfxMagicDummyFix/EfxMagicDummyFix.event"
 // #include "wizardry/EfxAnims/EfxAnims.event"
 #include "wizardry/EventThunderfx/EventThunderfx.event"
+#include "wizardry/SpawnAssassinfx/SpawnAssassinfx.event"
 
 ALIGN 4
 #include debug.event

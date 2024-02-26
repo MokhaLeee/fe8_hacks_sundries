@@ -57,8 +57,8 @@ void EfxCallDumaBG1(struct ProcEfxBmExpa * proc)
     BG_EnableSyncByMask(BG1_SYNC_BIT);
 
     // SpellFx_RegisterBgGfx(ImgLut_Duma[4], 0x2000);
-    LZ77UnCompWram(ImgLut_Duma[4], gEkrBuf1);
-    RegisterDataMove(gEkrBuf1, (void *)BG_VRAM + 0x2000, 0x2000);
+    LZ77UnCompWram(ImgLut_Duma[4], gSpellAnimBgfx);
+    RegisterDataMove(gSpellAnimBgfx, (void *)BG_VRAM + 0x2000, 0x2000);
 
     // SpellFx_RegisterBgPal(PalLut_Duma[4], 0x20);
     CpuFastCopy(PalLut_Duma[4], PAL_BG(1), 0x20);
@@ -93,8 +93,8 @@ void EfxCallDumaBG3(struct ProcEfxBmExpa * proc)
     ret = EfxAdvanceFrameLut(&proc->timer, (s16 *)&proc->frame, proc->frame_config);
     if (ret >= 0)
     {
-        Decompress(proc->imgs[ret], gEkrBuf1);
-        RegisterDataMove(gEkrBuf1, (void *)BG_VRAM + 0x8000, 0x2000);
+        Decompress(proc->imgs[ret], gSpellAnimBgfx);
+        RegisterDataMove(gSpellAnimBgfx, (void *)BG_VRAM + 0x8000, 0x2000);
 
         Fill16_EkrTsaBuffer_(1);
         BG_Fill(gBG3TilemapBuffer, 1);
