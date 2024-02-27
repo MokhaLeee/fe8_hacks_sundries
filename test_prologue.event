@@ -84,6 +84,7 @@ FADU 16
 // FE7 style spawn-assassin-fx
 #ifdef TEST_SpawnAssassinfx
 	STAL 60
+	SOUN(0x17C)
 	SVAL 3 0x6 // x
 	SVAL 4 0x5 // y
 	ASMC CallEvent_SpawnAssassinfx
