@@ -39,6 +39,7 @@ const EventScr EventScr_CallThunderfxAtPosition[] = {
     STARTFADE
     EvtColorFadeSetup(0x0, 0x20, 8, 128, 128, 128) // ENOSUPP in EAstdlib
     STAL(30)
+    SOUN(0x11A)
     ASMC(CallEventThunderfxAtPosition)
     STAL(60)
     EvtColorFadeSetup(0x0, 0x20, 4, 256, 256, 256) // ENOSUPP in EAstdlib
