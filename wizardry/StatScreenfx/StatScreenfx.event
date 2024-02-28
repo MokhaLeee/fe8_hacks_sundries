@@ -1,3 +1,6 @@
+/* Dependence */
+#include "Extensions/ProcDefinitions.txt"
+
 #include "Source/StatScreenfx.lyn.event"
 #include "_data.event"
 
