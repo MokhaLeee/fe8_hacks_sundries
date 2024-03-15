@@ -107,7 +107,7 @@ $(FE8_GBA): $(FE8_ELF)
 # ============
 INC_DIRS := include $(FE8_DIR)/include
 INC_FLAG := $(foreach dir, $(INC_DIRS), -I $(dir))
-LYN_REF := $(FE8_REF:.s=.o)
+LYN_REF := $(FE8_REF:.s=.o) wizardry/usr-defined.o
 
 ARCH    := -mcpu=arm7tdmi -mthumb -mthumb-interwork
 CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -Werror -Wextra -Wno-unused-parameter -O2 -mtune=arm7tdmi -mlong-calls
