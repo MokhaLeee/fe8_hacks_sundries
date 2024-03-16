@@ -13,5 +13,5 @@ ALIGN 4
 PUSH
 /* Magic for FEB identification */
 ORG $CCD5C
-String("Mokha")
+BYTE $4D $6F $6B $68 $61 // String("Mokha")
 POP
