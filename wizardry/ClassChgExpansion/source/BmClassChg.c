@@ -24,6 +24,7 @@
 #include "ClassChgExpansion.h"
 
 void sub_805AE14(void *);
+
 u8 ClassChgMenuSelOnPressB(struct MenuProc * pmenu, struct MenuItemProc * pmitem);
 
 /**
@@ -180,9 +181,11 @@ void Make6C_PromotionMenuSelect(struct ProcPromoSel * proc)
     }
 
     proc->stat = 1;
-    proc->menu_index = 0;
+    proc->main_select = 0;
+#if 0
     LoadClassReelFontPalette(proc, UNIT_CLASS_ID(unit));
     LoadClassNameInClassReelFont(proc);
+#endif
     LoadObjUIGfx();
 
     proc->menu_proc = NewClassChgMenuSelect(proc);
@@ -206,7 +209,7 @@ void sub_80CCF60(struct ProcPromoSel * proc)
     BG_EnableSyncByMask(BG0_SYNC_BIT | BG1_SYNC_BIT | BG2_SYNC_BIT | BG3_SYNC_BIT);
 
     InitTalk(0x100, 2, 0);
-    ChangeClassDescription(repo->infos[proc->menu_index].desc);
+    ChangeClassDescription(repo->infos[proc->main_select].desc);
     SetTalkPrintDelay(-1);
 
     gLCDControlBuffer.bg0cnt.priority = 0;
@@ -403,7 +406,7 @@ int ClassChgReMenuItem_OnChange(struct MenuProc * menu, struct MenuItemProc * mi
     struct ProcClassChgDataRepo * repo = GetClassChgSelInfo();
 
     gparent->stat = 1;
-    gparent->menu_index = mitem->itemNumber;
+    gparent->main_select = mitem->itemNumber;
 
     if (repo)
         ChangeClassDescription(repo->infos[mitem->itemNumber].desc);
@@ -454,13 +457,13 @@ void ExecUnitPromotion(struct Unit * unit, u8 classId, int itemIdx, s8 unk)
 /**
  * Misc
  */
-
+#if 0
 void LoadClassNameInClassReelFont(struct ProcPromoSel * proc)
 {
     char str[0x20];
     int index;
     struct ProcClassChgDataRepo * repo = GetClassChgSelInfo();
-    u8 jid = repo->infos[proc->menu_index].jid;
+    u8 jid = repo->infos[proc->main_select].jid;
     u32 xOffs = 0x74;
     const struct ClassData *class = GetClassData(jid);
     GetStringFromIndexInBuffer(class->nameTextId, str);
@@ -485,6 +488,7 @@ void LoadClassNameInClassReelFont(struct ProcPromoSel * proc)
     if (proc->u44 < 0xff)
         proc->u44++;
 }
+#endif
 
 void LoadBattleSpritesForBranchScreen(struct ProcPromoSel * proc)
 {
@@ -530,11 +534,11 @@ void LoadBattleSpritesForBranchScreen(struct ProcPromoSel * proc)
             EndEfxAnimeDrvProc();
             sub_805AA28(&gUnknown_030053A0);
             r4 = proc->pid - 1;
-            r6 = repo->infos[proc->menu_index].jid;
+            r6 = repo->infos[proc->main_select].jid;
             sp58 = 0xffff;
             unit = GetUnitFromCharId(proc->pid);
             copied_unit = *unit;
-            copied_unit.pClassData = GetClassData(repo->infos[proc->menu_index].jid);
+            copied_unit.pClassData = GetClassData(repo->infos[proc->main_select].jid);
             battle_anim_ptr = copied_unit.pClassData->pBattleAnimDef;
 
             ret = GetBattleAnimationId(
@@ -590,6 +594,8 @@ D1AC:
     if ((u8) sub_805A96C(tmp)) {
         sub_805A990(tmp);
     }
+#if 0
     LoadClassNameInClassReelFont(proc);
+#endif
     return;
 }
