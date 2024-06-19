@@ -1,0 +1,6 @@
+#ifndef EVENT_BONUS_CLAIM_INSTALLED
+#define EVENT_BONUS_CLAIM_INSTALLED
+
+#include "Source/EventBonusClaim.lyn.event"
+
+#endif

@@ -22,6 +22,7 @@ ORG FreeSpace
 // #include "wizardry/EfxAnims/EfxAnims.event"
 #include "wizardry/EventThunderfx/EventThunderfx.event"
 #include "wizardry/SpawnAssassinfx/SpawnAssassinfx.event"
+#include "wizardry/EventBonusClaim/EventBonusClaim.event"
 
 ALIGN 4
 #include debug.event
