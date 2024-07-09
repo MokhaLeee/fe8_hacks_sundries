@@ -1,0 +1,7 @@
+#ifndef MOVE_PATH_REMOVED
+#define MOVE_PATH_REMOVED
+
+#include "Source/RemoveMovePath.lyn.event"
+#include "Source/LynJump.event"
+
+#endif
