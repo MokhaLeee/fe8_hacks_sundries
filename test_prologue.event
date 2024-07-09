@@ -101,6 +101,13 @@ FADU 16
 	ASMC EventGiveBonusClaimMoney
 #endif
 
+#ifdef TEST_UnitTornOut
+	SET_ACTIVE Seth
+	ASMC StartUnitTornOut
+	STAL 60
+#endif
+
+NoFade
 ENDA
 
 EndingScene:
