@@ -29,7 +29,7 @@ BmBgfxConf_IceCrystal:
     BmBgxConf(2, Tsa_IceBmBgfx_081A3D2C,      0, 0)
     BmBgxConf(1, Img_IceBmBgfx_081A4230, 0x1000, 1)
     BmBgxConf(1, Img_IceBmBgfx_081A5144, 0x1000, 1)
-    BmBgxConf(2, Tsa_IceBmBgfx_081A5708,      0, 0)
+    BmBgxConf(2, Tsa_IceBmBgfx_081A5708,      0, 80)
     BmBgxConf(10, 0, 0, 0)
 
 #include "Source/data.lyn.event"
