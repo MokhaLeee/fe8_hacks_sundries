@@ -20,6 +20,7 @@ ORG FreeSpace
 #include "wizardry/UnitPreAction/UnitPreAction.event"
 // #include "wizardry/EfxMagicDummyFix/EfxMagicDummyFix.event"
 // #include "wizardry/EfxAnims/EfxAnims.event"
+#include "wizardry/RemoveMovePath/RemoveMovePath.event"
 #include "wizardry/EventThunderfx/EventThunderfx.event"
 #include "wizardry/SpawnAssassinfx/SpawnAssassinfx.event"
 
