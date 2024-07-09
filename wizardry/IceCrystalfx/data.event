@@ -1,0 +1,35 @@
+#ifndef BmBgxConf
+#define BmBgxConf(type, data, size, duration) "BYTE type 0 0 0; POIN data; SHORT size; BYTE duration 0"
+#endif
+
+ALIGN 4
+BmBgfxConf_IceCrystal:
+    BmBgxConf(3, Pal_IceBmBgfx_08199A94, 0x1, 0)
+    BmBgxConf(1, Img_IceBmBgfx_08199AB4, 0x1000, 1)
+    BmBgxConf(1, Img_IceBmBgfx_0819A6A4, 0x1000, 1)
+    BmBgxConf(2, Tsa_IceBmBgfx_0819B11C,      0, 0)
+    BmBgxConf(2, Tsa_IceBmBgfx_0819B620,      0, 2)
+    BmBgxConf(2, Tsa_IceBmBgfx_0819BB24,      0, 2)
+    BmBgxConf(2, Tsa_IceBmBgfx_0819C028,      0, 2)
+    BmBgxConf(2, Tsa_IceBmBgfx_0819C52C,      0, 2)
+    BmBgxConf(2, Tsa_IceBmBgfx_0819CA30,      0, 2)
+    BmBgxConf(2, Tsa_IceBmBgfx_0819CF34,      0, 2)
+    BmBgxConf(1, Img_IceBmBgfx_0819D438, 0x1000, 1)
+    BmBgxConf(1, Img_IceBmBgfx_0819E1EC, 0x1000, 1)
+    BmBgxConf(2, Tsa_IceBmBgfx_0819EEF4,      0, 0)
+    BmBgxConf(2, Tsa_IceBmBgfx_0819F3F8,      0, 2)
+    BmBgxConf(1, Img_IceBmBgfx_0819F8FC, 0x1000, 1)
+    BmBgxConf(1, Img_IceBmBgfx_081A07D4, 0x1000, 1)
+    BmBgxConf(2, Tsa_IceBmBgfx_081A0AF8,      0, 0)
+    BmBgxConf(1, Img_IceBmBgfx_081A0FFC, 0x1000, 1)
+    BmBgxConf(1, Img_IceBmBgfx_081A1F0C, 0x1000, 1)
+    BmBgxConf(2, Tsa_IceBmBgfx_081A2374,      0, 0)
+    BmBgxConf(1, Img_IceBmBgfx_081A2878, 0x1000, 1)
+    BmBgxConf(1, Img_IceBmBgfx_081A376C, 0x1000, 1)
+    BmBgxConf(2, Tsa_IceBmBgfx_081A3D2C,      0, 0)
+    BmBgxConf(1, Img_IceBmBgfx_081A4230, 0x1000, 1)
+    BmBgxConf(1, Img_IceBmBgfx_081A5144, 0x1000, 1)
+    BmBgxConf(2, Tsa_IceBmBgfx_081A5708,      0, 0)
+    BmBgxConf(10, 0, 0, 0)
+
+#include "Source/data.lyn.event"

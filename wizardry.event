@@ -25,6 +25,7 @@ ORG FreeSpace
 #include "wizardry/SpawnAssassinfx/SpawnAssassinfx.event"
 #include "wizardry/EventBonusClaim/EventBonusClaim.event"
 #include "wizardry/UnitTornOut/UnitTornOut.event"
+#include "wizardry/IceCrystalfx/IceCrystalfx.event"
 
 ALIGN 4
 #include debug.event

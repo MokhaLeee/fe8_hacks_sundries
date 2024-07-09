@@ -1,5 +1,7 @@
 
+#ifndef BmBgxConf
 #define BmBgxConf(type, data, size, duration) "BYTE type 0 0 0; POIN data; SHORT size; BYTE duration 0"
+#endif
 
 ALIGN 4
 BmBgfxConf_EventThunder:
