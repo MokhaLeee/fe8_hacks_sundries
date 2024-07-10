@@ -54,8 +54,7 @@ void IceCrystalfx_ResetPalette(struct ProcIceCrystal * proc)
     proc->timer = 0x100;
     ArchiveCurrentPalettes();
 
-    // StartEventHorizontalQuakefxViolentlyNoSound(proc);
-    sub_80857F4(proc);
+    StartEventHorizontalQuakefxViolentlyNoSound(proc);
 }
 
 void IceCrystalfx_RefrainPalette(struct ProcIceCrystal * proc)
@@ -66,8 +65,7 @@ void IceCrystalfx_RefrainPalette(struct ProcIceCrystal * proc)
 
     if (proc->timer == 0x200)
     {
-        // StartEventHorizontalQuakefxSlightlyNoSound(proc);
-        sub_808581C(proc);
+        StartEventHorizontalQuakefxSlightlyNoSound(proc);
 
         proc->timer = 0;
         Proc_Break(proc);
