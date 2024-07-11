@@ -1,8 +1,5 @@
 #include "gbafe.h"
 
-void sub_80857F4(ProcPtr parent);
-void sub_808581C(ProcPtr parent);
-
 void IceCrystal_HBlank(void);
 void IceCrystal_ScanlineHook(int a, int b);
 
@@ -14,7 +11,7 @@ struct ProcIceCrystal {
 
 extern struct BmBgxConf BmBgfxConf_IceCrystal[];
 
-void IceCrystalfx_Start(struct ProcIceCrystal * proc)
+static void IceCrystalfx_Start(struct ProcIceCrystal * proc)
 {
     ArchiveCurrentPalettes();
     proc->timer = 0;
@@ -49,7 +46,7 @@ void IceCrystalfx_Start(struct ProcIceCrystal * proc)
     PlaySoundEffect(0x2FA);
 }
 
-void IceCrystalfx_ResetPalette(struct ProcIceCrystal * proc)
+static void IceCrystalfx_ResetPalette(struct ProcIceCrystal * proc)
 {
     proc->timer = 0x100;
     ArchiveCurrentPalettes();
@@ -57,7 +54,7 @@ void IceCrystalfx_ResetPalette(struct ProcIceCrystal * proc)
     StartEventHorizontalQuakefxViolentlyNoSound(proc);
 }
 
-void IceCrystalfx_RefrainPalette(struct ProcIceCrystal * proc)
+static void IceCrystalfx_RefrainPalette(struct ProcIceCrystal * proc)
 {
     proc->timer += 0x10;
 
@@ -72,7 +69,7 @@ void IceCrystalfx_RefrainPalette(struct ProcIceCrystal * proc)
     }
 }
 
-void IceCrystalfx_Paluse(struct ProcIceCrystal * proc)
+static void IceCrystalfx_Paluse(struct ProcIceCrystal * proc)
 {
     int time = ++proc->timer >> 2;
     SetBlendAlpha(0x10 - time, 0x10);
@@ -92,7 +89,7 @@ void IceCrystalfx_Paluse(struct ProcIceCrystal * proc)
     }
 }
 
-const struct ProcCmd ProcScr_IceCrystalfx[] = {
+static const struct ProcCmd ProcScr_IceCrystalfx[] = {
     PROC_YIELD,
     PROC_CALL(IceCrystalfx_Start),
     PROC_WHILE(CheckBmBgfxDone),
