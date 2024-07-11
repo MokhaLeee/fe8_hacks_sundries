@@ -56,5 +56,6 @@ dkms.conf
 *.sym
 tools/agbcc/
 tools/ea/
+Tools/FE-CLib-Mokha/
 .vscode/
 .cache_dir/

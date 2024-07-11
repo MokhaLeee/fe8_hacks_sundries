@@ -3,8 +3,8 @@
 void sub_80857F4(ProcPtr parent);
 void sub_808581C(ProcPtr parent);
 
-void FE7J_HBlank_Scanline_8078098(void);
-void FE7J_sub_80780E0(int a, int b);
+void IceCrystal_HBlank(void);
+void IceCrystal_ScanlineHook(int a, int b);
 
 struct ProcIceCrystal {
     PROC_HEADER;
@@ -24,10 +24,10 @@ void IceCrystalfx_Start(struct ProcIceCrystal * proc)
     SetBlendTargetB(1, 1, 1, 1, 1);
 
     InitScanline();
-    FE7J_sub_80780E0(0, 0);
+    IceCrystal_ScanlineHook(0, 0);
 
     SetPrimaryHBlankHandler(NULL);
-    SetPrimaryHBlankHandler(FE7J_HBlank_Scanline_8078098);
+    SetPrimaryHBlankHandler(IceCrystal_HBlank);
 
     gLCDControlBuffer.bg0cnt.priority = 0;
     gLCDControlBuffer.bg2cnt.priority = 1;

@@ -1,8 +1,8 @@
 .syntax unified
 .include "macros.inc"
 
-THUMB_FUNC_START FE7J_sub_80780E0
-FE7J_sub_80780E0:
+THUMB_FUNC_START IceCrystal_ScanlineHook
+IceCrystal_ScanlineHook:
 	push {r7, lr}
 	sub sp, #0xc
 	mov r7, sp
@@ -46,8 +46,8 @@ _08078124:
 	pop {r0}
 	bx r0
 
-	thumb_func_start FE7J_HBlank_Scanline_8078098
-FE7J_HBlank_Scanline_8078098: @ 0x08078098
+	thumb_func_start IceCrystal_HBlank
+IceCrystal_HBlank: @ 0x08078098
 	push {r7, lr}
 	sub sp, #4
 	mov r7, sp
