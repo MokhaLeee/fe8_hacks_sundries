@@ -108,7 +108,16 @@ FADU 16
 #endif
 
 #ifdef TEST_IceCrystalStorm
+	SOUN 0x122
+	ASMC 0x0808581D
+	ASMC StartSnowStormfx
+	SOUN 0x123
 	ASMC StartLoadIceCrystal
+	ASMC 0x08085845
+#endif
+
+#ifdef TEST_SwordUnsheathe
+	SOUN 0x2DA
 #endif
 
 NoFade

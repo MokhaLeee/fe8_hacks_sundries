@@ -105,7 +105,7 @@ static void EventSnowStormfx_End(struct ProcEventSnowStormfx * proc)
     SetBlendConfig(BLEND_EFFECT_NONE, 0, 0x10, 0);
 }
 
-static struct ProcCmd CONST_DATA ProcScr_EventSnowStormfx[] = {
+static struct ProcCmd const ProcScr_EventSnowStormfx[] = {
     PROC_YIELD,
     PROC_CALL(EventSnowStormfx_Init),
     PROC_YIELD,
@@ -120,5 +120,5 @@ void StartSnowStormfx(ProcPtr proc)
 {
     struct ProcEventSnowStormfx * procfx;
     procfx = Proc_StartBlocking(ProcScr_EventSnowStormfx, proc);
-    procfx->paluse_duration = 60;
+    procfx->paluse_duration = 30;
 }
