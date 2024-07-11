@@ -2,10 +2,6 @@
 	path = tools/pytools
 	url = git@github.com:StanHash/FE-PyTools.git
 
-[submodule "tools/fe8"]
-	path = tools/fe8
-	url = git@github.com:MokhaLeee/fireemblem8u.git
-
 [submodule "tools/ea"]
 	path = tools/ea
 	url = git@github.com:MokhaLeee/EventAssembler.git
