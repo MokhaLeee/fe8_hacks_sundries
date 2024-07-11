@@ -107,6 +107,10 @@ FADU 16
 	STAL 60
 #endif
 
+#ifdef TEST_IceCrystalStorm
+	ASMC StartLoadIceCrystal
+#endif
+
 NoFade
 ENDA
 
