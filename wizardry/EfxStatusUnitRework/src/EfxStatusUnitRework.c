@@ -103,32 +103,32 @@ void EfxStatusUnitMain(struct ProcEfxStatusUnit *proc)
     }
 
     switch (proc->debuff) {
-        case UNIT_STATUS_PETRIFY:
-        case UNIT_STATUS_13:
-            if (GetAnimPosition(proc->anim) == EKR_POS_L)
-                EfxDecodeSplitedPalette(
-                    PAL_OBJ(OBPAL_EFX_UNIT_L),
-                    (s8 *)gFadeComponents,
-                    (s8 *)&gFadeComponents[0x30],
-                    (s16 *)&gFadeComponents[0x180],
-                    16, proc->red, 16);
-            else
-                EfxDecodeSplitedPalette(
-                    PAL_OBJ(OBPAL_EFX_UNIT_R),
-                    (s8 *)gFadeComponents,
-                    (s8 *)&gFadeComponents[0x30],
-                    (s16 *)&gFadeComponents[0x2A0],
-                    16, proc->red, 16);
+    case UNIT_STATUS_PETRIFY:
+    case UNIT_STATUS_13:
+        if (GetAnimPosition(proc->anim) == EKR_POS_L)
+            EfxDecodeSplitedPalette(
+                PAL_OBJ(OBPAL_EFX_UNIT_L),
+                (s8 *)gFadeComponents,
+                (s8 *)&gFadeComponents[0x30],
+                (s16 *)&gFadeComponents[0x180],
+                16, proc->red, 16);
+        else
+            EfxDecodeSplitedPalette(
+                PAL_OBJ(OBPAL_EFX_UNIT_R),
+                (s8 *)gFadeComponents,
+                (s8 *)&gFadeComponents[0x30],
+                (s16 *)&gFadeComponents[0x2A0],
+                16, proc->red, 16);
 
-            RefreshEntityBmMaps();
-            RefreshUnitSprites();
-            MU_EndAll();
-            break;
+        RefreshEntityBmMaps();
+        RefreshUnitSprites();
+        EndAllMus();
+        break;
 
-        default:
-            EfxStatusUnitFlashing(proc->anim, proc->red, proc->green, proc->blue);
-            break;
-        }
+    default:
+        EfxStatusUnitFlashing(proc->anim, proc->red, proc->green, proc->blue);
+        break;
+    }
 
     EnablePaletteSync();
 }

@@ -1,12 +1,10 @@
 CACHE_DIR := .cache_dir
 $(shell mkdir -p $(CACHE_DIR) > /dev/null)
 
-FE8_DIR := tools/fe8
-FE8_GBA := $(FE8_DIR)/fireemblem8.gba
-FE8_ELF := $(FE8_DIR)/fireemblem8.elf
-FE8_REF := $(CACHE_DIR)/fe8-ref.s
+FE8_GBA := fe8.gba
+FE8_REF := tools/FE-CLib-Mokha/reference/fireemblem8.ref.o
+FE8_SYM := tools/FE-CLib-Mokha/reference/fireemblem8.sym
 EXT_REF := lib/fe8-expa.s
-FE8_SYM := $(CACHE_DIR)/fe8.sym
 
 MAIN    := wizardry.event
 FE8_CHX := fe8-chax.gba
@@ -84,30 +82,14 @@ CLEAN_FILES += $(FE8_CHX)  $(FE8_CHX:.gba=.sym)
 # ==========
 # = DECOMP =
 # ==========
-$(FE8_ELF): FORCE
-	@echo "[GEN]	$@"
-	@$(MAKE) -s -C $(FE8_DIR)
-
-$(FE8_REF): $(FE8_ELF) $(EXT_REF)
-	@echo "[GEN]	$@"
-	@$(ELF2REF) $(FE8_ELF) > $(FE8_REF)
-	@cat $(EXT_REF) >> $(FE8_REF)
-
-$(FE8_SYM): $(FE8_ELF)
-	@echo "[GEN]	$@"
-	@$(ELF2SYM) $(FE8_ELF) > $(FE8_SYM)
-
-$(FE8_GBA): $(FE8_ELF)
-	@echo "[GEN]	$@"
-	@touch $(FE8_GBA)
 
 
 # ============
 # = Wizardry =
 # ============
-INC_DIRS := include $(FE8_DIR)/include
+INC_DIRS := include tools/FE-CLib-Mokha/include
 INC_FLAG := $(foreach dir, $(INC_DIRS), -I $(dir))
-LYN_REF := $(FE8_REF:.s=.o) wizardry/usr-defined.o
+LYN_REF := $(FE8_REF) wizardry/usr-defined.o
 
 ARCH    := -mcpu=arm7tdmi -mthumb -mthumb-interwork
 CFLAGS  := $(ARCH) $(INC_FLAG) -Wall -Werror -Wextra -Wno-unused-parameter -O2 -mtune=arm7tdmi -mlong-calls

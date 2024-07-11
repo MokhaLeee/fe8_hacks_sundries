@@ -2,19 +2,19 @@
 
 void UnitTornOutExt(ProcPtr parent)
 {
-    sub_80859D0(gActiveUnit, parent);
+    StartUnitTornOut(gActiveUnit, parent);
 }
 
-static const struct ProcCmd ProcScr_UnitTornOut[] = {
+static const struct ProcCmd ProcScr_EventUnitTornOut[] = {
     PROC_CALL(UnitTornOutExt),
     PROC_SLEEP(64),
     PROC_END
 };
 
-void StartUnitTornOut(ProcPtr parent)
+void EventStartUnitTornOut(ProcPtr parent)
 {
     if (parent)
-        Proc_StartBlocking(ProcScr_UnitTornOut, parent);
+        Proc_StartBlocking(ProcScr_EventUnitTornOut, parent);
     else
-        Proc_Start(ProcScr_UnitTornOut, PROC_TREE_3);
+        Proc_Start(ProcScr_EventUnitTornOut, PROC_TREE_3);
 }
