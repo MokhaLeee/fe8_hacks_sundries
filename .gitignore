@@ -12,10 +12,10 @@ install-devkitpro-pacman
 *.bsdiff
 
 # Tools
-Tools/EventAssembler/
-Tools/FE-PyTools/
-Tools/FE-CLib-Mokha/
-Tools/dotnet-install.sh
+tools/EventAssembler/
+tools/FE-PyTools/
+tools/FE-CLib-Mokha/
+tools/dotnet-install.sh
 
 # Wizardry
 *.o
