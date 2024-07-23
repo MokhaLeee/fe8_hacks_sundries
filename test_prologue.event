@@ -122,6 +122,11 @@ FADU 16
 	STAL 20
 #endif
 
+#ifdef TEST_NinianDisp
+	ASMC NinianDispTest
+	STAL 1
+#endif
+
 NoFade
 ENDA
 
