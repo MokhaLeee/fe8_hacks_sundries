@@ -146,6 +146,34 @@ void NinianAppear_Anim2(struct ProcNinianAppear * proc)
     proc->timer = 0;
 }
 
+void NinianAppear_LoadUnit(struct ProcNinianAppear * proc)
+{
+    proc->timer++;
+
+#if 0
+    if (proc->timer == 20)
+    {
+        EventLoadUnit(
+            0xDC, // todo: pid
+            0x40, // todo: jid
+            proc->x,
+            proc->y,
+            proc->x,
+            proc->y,
+            FACTION_ID_GREEN,
+            NULL
+        );
+    }
+#endif
+
+    if (proc->timer == 0x28)
+    {
+        proc->timer = 0;
+        BmBgfxSetLoopEN(false);
+        Proc_Break(proc);
+    }
+}
+
 void NinianAppear_End(struct ProcNinianAppear * proc)
 {
     SetBlendNone();

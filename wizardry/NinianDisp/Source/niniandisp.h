@@ -29,7 +29,7 @@ void NinianAppear_Anim1(struct ProcNinianAppear * proc);
 void NinianAppear_LoopAnim1(struct ProcNinianAppear * proc);
 void NinianAppear_EndAnim1(struct ProcNinianAppear * proc);
 void NinianAppear_Anim2(struct ProcNinianAppear * proc);
-// void NinianAppear_LoadUnit(struct ProcNinianAppear * proc);
+void NinianAppear_LoadUnit(struct ProcNinianAppear * proc);
 void NinianAppear_End(struct ProcNinianAppear * proc);
 
 extern struct ProcCmd const ProcScr_NinianAppearfx[];
