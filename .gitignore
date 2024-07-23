@@ -1,61 +1,42 @@
-# Prerequisites
-*.d
-
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
-
-# gba related
-*.gba
-*.sym
-tools/agbcc/
-tools/ea/
-Tools/FE-CLib-Mokha/
 .vscode/
 .cache_dir/
+.release_dir/
+*__pycache__
+install-devkitpro-pacman
+
+*.gba
+*.sav
+*.sym
+*.ref.s
+*.ref.event
+*.bsdiff
+
+# Tools
+Tools/EventAssembler/
+Tools/FE-PyTools/
+Tools/FE-CLib-Mokha/
+Tools/dotnet-install.sh
+
+# Wizardry
+*.o
+*.d
+*.dmp
+*.lyn.event
+
+# Spritans
+*.4bpp
+*.gbapal
+*.lz
+*.img.bin
+*.map.bin
+*.pal.bin
+*.lz77
+
+# Tables
+*.csv.event
+
+# Fonts
+*.fefont
+
+# EfxAnims
+*.efx.event
