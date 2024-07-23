@@ -41,7 +41,7 @@ CPP := $(PREFIX)cpp
 AS  := $(PREFIX)as
 OBJCOPY := $(PREFIX)objcopy
 
-EA_DIR := tools/ea
+EA_DIR := tools/EventAssembler
 EA := $(EA_DIR)/ColorzCore$(EXE)
 
 PARSEFILE         := $(EA_DIR)/Tools/ParseFile$(EXE)
@@ -51,10 +51,10 @@ COMPRESS          := $(EA_DIR)/Tools/compress$(EXE)
 LYN               := $(EA_DIR)/Tools/lyn$(EXE) -longcalls
 EA_DEP            := $(EA_DIR)/ea-dep$(EXE)
 
-PORTRAIT_PROCESS  := $(PYTHON3) tools/pytools/portrait-process.py
-TEXT_PROCESS      := $(PYTHON3) tools/pytools/text-process-classic.py
-C2EA              := $(PYTHON3) tools/pytools/NMM2CSV/c2ea.py
-TMX2EA            := $(PYTHON3) tools/pytools/TMX2EA/tmx2ea.py
+PORTRAIT_PROCESS  := $(PYTHON3) tools/FE-PyTools/portrait-process.py
+TEXT_PROCESS      := $(PYTHON3) tools/FE-PyTools/text-process-classic.py
+C2EA              := $(PYTHON3) tools/FE-PyTools/NMM2CSV/c2ea.py
+TMX2EA            := $(PYTHON3) tools/FE-PyTools/TMX2EA/tmx2ea.py
 
 ELF2REF           := $(PYTHON3) tools/scripts/elf2ref.py
 ELF2SYM           := $(PYTHON3) tools/scripts/elf2sym.py
