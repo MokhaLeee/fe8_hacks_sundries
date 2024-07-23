@@ -1,17 +1,5 @@
 .section .rodata
 
-	.global Img_NinianDispfx
-Img_NinianDispfx:	@ 0x081AC808
-	.incbin "data_spriteanimfx.bin", 0x1AC808 - 0x1AC808, 0x1ACA20 - 0x1AC808
-
-	.global Pal_NinianDispfx
-Pal_NinianDispfx:	@ 0x081ACA20
-	.incbin "data_spriteanimfx.bin", 0x1ACA20 - 0x1AC808, 0x1ACA40 - 0x1ACA20
-
-	.global SpritAnim_NinianDispfx
-SpritAnim_NinianDispfx:	@ 0x081ACA40
-	.incbin "data_spriteanimfx.bin", 0x1ACA40 - 0x1AC808, 0x1AD68C - 0x1ACA40
-
 	.global gUnk_081AD68C
 gUnk_081AD68C:	@ 0x081AD68C
 	.incbin "data_bmbgfx.bin", 0x1AD68C - 0x1AD68C, 0x1AD6AC - 0x1AD68C

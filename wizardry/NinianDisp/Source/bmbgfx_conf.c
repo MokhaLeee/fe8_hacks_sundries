@@ -1,19 +1,6 @@
 #include "gbafe.h"
 #include "niniandisp.h"
 
-struct ProcCmd const ProcScr_NinianAppearfx[] = {
-    PROC_YIELD,
-    PROC_CALL(NinianAppear_Init),
-    PROC_CALL(NinianAppear_Anim1),
-    PROC_REPEAT(NinianAppear_LoopAnim1),
-    PROC_CALL(NinianAppear_EndAnim1),
-    PROC_CALL(NinianAppear_Anim2),
-    PROC_REPEAT(NinianAppear_LoadUnit),
-    PROC_WHILE(CheckBmBgfxDone),
-    PROC_CALL(NinianAppear_End),
-    PROC_END,
-};
-
 const struct BmBgxConf BmBgfxConf_NinianDisp[] = {
     {
         .type = BMFX_CONFT_PAL,

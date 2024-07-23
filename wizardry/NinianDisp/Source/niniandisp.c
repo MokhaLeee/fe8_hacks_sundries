@@ -61,6 +61,8 @@ void NinianDisp_AnimLoopEnd_Unused(struct ProcNinianAppear * proc)
 void NinianAppear_Anim1(struct ProcNinianAppear * proc)
 {
     int i;
+    // int ix = OAM1_X(SCREEN_TILE_IX(proc->x) - 0x28);
+    // int iy = OAM0_Y(SCREEN_TILE_IY(proc->y) - 0x28);
 
     Decompress(Img_NinianDispfx, OBJ_VRAM0 + OBCHR_NINIANDISP * CHR_SIZE);
     ApplyPalette(Pal_NinianDispfx, 0x10 + OBPAL_NINIANDISP);
@@ -68,7 +70,7 @@ void NinianAppear_Anim1(struct ProcNinianAppear * proc)
     for (i = 0; i < 8; i++)
         proc->approc[i] = APProc_Create(
                             SpritAnim_NinianDispfx,
-                            0x180,
+                            20,
                             0,
                             OAM2_CHR(OBCHR_NINIANDISP) + OAM2_PAL(OBPAL_NINIANDISP),
                             0,
@@ -179,6 +181,19 @@ void NinianAppear_End(struct ProcNinianAppear * proc)
     SetBlendNone();
     InitBmBgLayers();
 }
+
+struct ProcCmd const ProcScr_NinianAppearfx[] = {
+    PROC_YIELD,
+    PROC_CALL(NinianAppear_Init),
+    PROC_CALL(NinianAppear_Anim1),
+    PROC_REPEAT(NinianAppear_LoopAnim1),
+    PROC_CALL(NinianAppear_EndAnim1),
+    PROC_CALL(NinianAppear_Anim2),
+    PROC_REPEAT(NinianAppear_LoadUnit),
+    PROC_WHILE(CheckBmBgfxDone),
+    PROC_CALL(NinianAppear_End),
+    PROC_END,
+};
 
 void StartNinianDisp(ProcPtr parent, int x, int y)
 {

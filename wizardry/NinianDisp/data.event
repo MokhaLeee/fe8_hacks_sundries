@@ -1,0 +1,11 @@
+#include "Source/bmbgfx_img.lyn.event"
+#include "Source/bmbgfx_conf.lyn.event"
+#include "Source/ap_niniandispfx.lyn.event"
+
+ALIGN 4
+Img_NinianDispfx:
+    #incbin "Source/NinianDispfx.4bpp.lz"
+
+ALIGN 4
+Pal_NinianDispfx:
+    #incbin "Source/NinianDispfx.gbapal"
