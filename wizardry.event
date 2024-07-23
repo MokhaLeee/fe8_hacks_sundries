@@ -8,6 +8,7 @@ ORG FreeSpace
 #include "wizardry/GameInitHook/GameInitHook.event"
 #include "wizardry/DebugKit/DebugKit.event"
 
+#include "wizardry/RemoveWorldMap/RemoveWorldMap.event"
 #include "wizardry/TargetSelectRework/TargetSelectRework.event"
 #include "wizardry/EfxStatusUnitRework/EfxStatusUnitRework.event"
 #include "wizardry/BanimCmdExpansion/BanimCmdExpansion.event"
