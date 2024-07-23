@@ -1,7 +1,0 @@
-[submodule "tools/pytools"]
-	path = tools/pytools
-	url = git@github.com:StanHash/FE-PyTools.git
-
-[submodule "tools/ea"]
-	path = tools/ea
-	url = git@github.com:MokhaLeee/EventAssembler.git
