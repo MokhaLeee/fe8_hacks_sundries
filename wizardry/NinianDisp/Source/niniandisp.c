@@ -205,5 +205,5 @@ void StartNinianDisp(ProcPtr parent, int x, int y)
 
 void NinianDispTest(ProcPtr proc)
 {
-    StartNinianDisp(proc, 5, 5);
+    StartNinianDisp(proc, 6, 5);
 }

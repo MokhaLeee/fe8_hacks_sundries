@@ -6,3 +6,4 @@
 // #define TEST_IceCrystalStorm
 // #define TEST_SwordUnsheathe
 #define TEST_NinianDisp
+#define TEST_NinianPary

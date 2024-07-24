@@ -30,6 +30,7 @@ ORG FreeSpace
 #include "wizardry/SnowStormBgfx/SnowStormBgfx.event"
 #include "wizardry/SwordUnsheathe/SwordUnsheathe.event"
 #include "wizardry/NinianDisp/NinianDisp.event"
+#include "wizardry/NinianPray/NinianPray.event"
 
 ALIGN 4
 #include debug.event

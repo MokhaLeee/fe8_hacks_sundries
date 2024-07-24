@@ -122,6 +122,14 @@ FADU 16
 	STAL 20
 #endif
 
+#ifdef TEST_NinianPary
+	STAL 60
+	SVAL 3 0x6 // x
+	SVAL 4 0x5 // y
+	ASMC CallEvent_NinianPrayfx
+	STAL 1
+#endif
+
 #ifdef TEST_NinianDisp
 	ASMC NinianDispTest
 	STAL 1
