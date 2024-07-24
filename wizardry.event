@@ -28,7 +28,7 @@ ORG FreeSpace
 #include "wizardry/UnitTornOut/UnitTornOut.event"
 #include "wizardry/IceCrystalfx/IceCrystalfx.event"
 #include "wizardry/SnowStormBgfx/SnowStormBgfx.event"
-#include "wizardry/SwordUnsheathe/SwordUnsheathe.event"
+#include "wizardry/SwingSword/SwingSword.event"
 #include "wizardry/NinianDisp/NinianDisp.event"
 #include "wizardry/NinianPray/NinianPray.event"
 

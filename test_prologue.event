@@ -116,7 +116,7 @@ FADU 16
 	ASMC 0x08085845
 #endif
 
-#ifdef TEST_SwordUnsheathe
+#ifdef TEST_SwingSword
 	SOUN 0x2DA
 	ASMC StartSwingSwordfx
 	STAL 20

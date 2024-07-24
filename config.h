@@ -4,6 +4,6 @@
 // #define TEST_BonusClaimItem
 // #define TEST_UnitTornOut
 // #define TEST_IceCrystalStorm
-// #define TEST_SwordUnsheathe
+#define TEST_SwingSword
 #define TEST_NinianDisp
 #define TEST_NinianPary
