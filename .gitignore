@@ -40,3 +40,5 @@ tools/dotnet-install.sh
 
 # EfxAnims
 *.efx.event
+
+install-devkitpro-pacman
