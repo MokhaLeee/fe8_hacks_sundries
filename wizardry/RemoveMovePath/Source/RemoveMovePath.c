@@ -6,10 +6,7 @@ void PlayerPhase_DisplayUnitMovement(void)
 #if 0
     GetMovementScriptFromPath();
 #else
-    GenerateBestMovementScript(
-        gBmSt.playerCursor.x,
-        gBmSt.playerCursor.y,
-        gWorkingMovementScript);
+    GenerateBestMovementScript(gBmSt.playerCursor.x, gBmSt.playerCursor.y, gWorkingMovementScript);
 #endif
 
     UnitApplyWorkingMovementScript(gActiveUnit, gActiveUnit->xPos, gActiveUnit->yPos);
@@ -17,8 +14,7 @@ void PlayerPhase_DisplayUnitMovement(void)
 }
 
 /* LynJump */
-void DrawUpdatedPathArrow(void)
-{
+void DrawUpdatedPathArrow(void) {
 #if 0
     UpdatePathArrowWithCursor();
     DrawPathArrow();
