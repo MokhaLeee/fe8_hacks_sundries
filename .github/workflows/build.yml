@@ -21,4 +21,3 @@ jobs:
 
     - name: Build
     - run: make all
-    shell: bash
