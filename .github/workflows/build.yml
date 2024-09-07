@@ -20,4 +20,4 @@ jobs:
       run: head -c 16M /dev/urandom > fe8.gba
 
     - name: Build
-    - run: make all
+      run: make all
