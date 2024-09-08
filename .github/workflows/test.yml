@@ -29,6 +29,9 @@ jobs:
         echo "$HOME/.dotnet" >> $GITHUB_PATH
         echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
 
+    - name: test dotnet
+      run: dotnet --version
+
     - name: Build EA
       run: |
         cd tools/EventAssembler && ./build.sh && cd ../..
