@@ -1,6 +1,7 @@
 name: Build Check
 
 on:
+  workflow_dispatch:
   pull_request:
   push:
     branches:
@@ -13,8 +14,28 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Build tools
-      run: sudo ./tools/build-tools.sh
+    - name: Install deps
+      run: |
+        sudo apt-get -y install binutils-arm-none-eabi ctags gcc-arm-none-eabi build-essential cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev python3-pip pkg-config libpng* bsdiff moreutils
+        pip install pyelftools PyInstaller tmx six
+
+    - name: Install submodules
+      run: |
+        git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git tools/FE-CLib-Mokha
+        git clone https://github.com/StanHash/FE-PyTools.git --recursive tools/FE-PyTools
+        git clone https://github.com/StanHash/EventAssembler.git --recursive tools/EventAssembler
+
+    - name: Install NET
+      run: |
+        wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+        chmod +x ./dotnet-install.sh
+        sudo ./dotnet-install.sh --channel 6.0
+        export DOTNET_ROOT=$HOME/.dotnet
+        export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
+    - name: Build EA
+      uses: |
+        cd tools/EventAssembler && ./build.sh && cd -
 
     - name: Fake generate baserom
       run: head -c 16M /dev/urandom > fe8.gba
