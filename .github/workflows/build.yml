@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  clang-format-check:
+  Build-check:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -18,6 +18,17 @@ jobs:
       run: |
         sudo apt-get -y install binutils-arm-none-eabi gcc-arm-none-eabi build-essential cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev python3-pip pkg-config libpng* bsdiff moreutils
         pip install pyelftools PyInstaller tmx six
+
+    - name: Install DEVKITPRO
+      run: |
+        wget https://apt.devkitpro.org/install-devkitpro-pacman
+        chmod +x ./install-devkitpro-pacman
+        sudo ./install-devkitpro-pacman
+        sudo dkp-pacman -S gba-dev
+        export DEVKITPRO=/opt/devkitpro
+        export DEVKITARM=\${DEVKITPRO}/devkitARM
+        export DEVKITPPC=\${DEVKITPRO}/devkitPPC
+        export PATH=\${DEVKITPRO}/tools/bin:\$PATH
 
     - name: Install submodules
       run: |
