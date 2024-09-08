@@ -21,7 +21,7 @@ jobs:
 
     - name: Install DEVKITPRO
       run: |
-        curl https://github.com/MokhaLeee/fe8_hacks_sundries/releases/download/ci/devkit.gz
+        curl -L -o devkit.gz https://github.com/MokhaLeee/fe8_hacks_sundries/releases/download/ci/devkit.gz
         tar -xzvf devkit.gz -C $HOME/
 
         echo "DEVKITPRO=$HOME/opt/devkitpro" >> $GITHUB_ENV
