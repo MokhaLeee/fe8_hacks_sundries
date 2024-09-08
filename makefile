@@ -19,7 +19,7 @@ WRITANS_DIR  :=
 GAMEDATA_DIR :=
 HACK_DIRS    := $(WIZARDRY_DIR) $(SPRITANS_DIR) $(WRITANS_DIR) $(GAMEDATA_DIR)
 
-all: $(FE8_CHX)
+all: $(FE8_CHX) || exit 1
 
 # =========
 # = Tools =
@@ -75,7 +75,7 @@ MAIN_DEPS := $(shell $(EA_DEP) $(MAIN) -I $(EA_DIR) --add-missings)
 $(FE8_CHX): $(MAIN) $(FE8_GBA) $(FE8_SYM) $(MAIN_DEPS)
 	@echo "[GEN]	$@"
 	@cp -f $(FE8_GBA) $(FE8_CHX)
-	@$(EA) A FE8 -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || rm -f $(FE8_CHX)
+	@$(EA) A FE8 -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || rm -f $(FE8_CHX); exit 1
 	@cat $(FE8_SYM) >> $(FE8_CHX:.gba=.sym)
 
 CLEAN_FILES += $(FE8_CHX)  $(FE8_CHX:.gba=.sym)
@@ -162,7 +162,7 @@ CLEAN_FILES += $(PNG_FILES:.png=.img.bin) $(PNG_FILES:.png=.map.bin) $(PNG_FILES
 # ============
 %.efx.event: %.efx.txt
 	@echo $^
-	$(EFX_ANIMTOR) $< > $@
+	@$(EFX_ANIMTOR) $< > $@
 
 %.efx.txt.d: %.efx.txt
 	@echo -n "$<: " > $@
