@@ -21,12 +21,10 @@ jobs:
 
     - name: Install DEVKITPRO
       run: |
-        wget https://apt.devkitpro.org/install-devkitpro-pacman
-        chmod +x ./install-devkitpro-pacman
-        sudo ./install-devkitpro-pacman
-        printf "\n\ny\n" | sudo dkp-pacman -S gba-dev
+        curl https://github.com/MokhaLeee/fe8_hacks_sundries/releases/download/ci/devkit.gz
+        tar -xzvf devkit.gz -C $HOME/
 
-        echo "DEVKITPRO=/opt/devkitpro" >> $GITHUB_ENV
+        echo "DEVKITPRO=$HOME/opt/devkitpro" >> $GITHUB_ENV
         echo "DEVKITARM=\${DEVKITPRO}/devkitARM" >> $GITHUB_ENV
         echo "DEVKITPPC=\${DEVKITPRO}/devkitPPC" >> $GITHUB_ENV
         echo "\${DEVKITPRO}/tools/bin" >> $GITHUB_PATH

@@ -42,3 +42,4 @@ tools/dotnet-install.sh
 *.efx.event
 
 install-devkitpro-pacman
+devkit.gz
