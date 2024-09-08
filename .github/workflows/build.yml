@@ -33,7 +33,6 @@ jobs:
       run: |
         git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git tools/FE-CLib-Mokha
         git clone https://github.com/StanHash/FE-PyTools.git --recursive tools/FE-PyTools
-        git clone https://github.com/StanHash/EventAssembler.git --recursive tools/EventAssembler
 
     - name: Install NET
       run: |
@@ -45,7 +44,8 @@ jobs:
         echo "$HOME/.dotnet:$HOME/.dotnet/tools" >> $GITHUB_PATH
 
     - name: Build EA
-      run: cd tools/EventAssembler && ./build.sh && cd -
+      run: curl -L -o EventAssembler.gz  https://github.com/MokhaLeee/fe8_hacks_sundries/releases/download/ci/EventAssembler.gz
+      run: tar -xzvf EventAssembler.gz -C tools/
 
     - name: Fake generate baserom
       run: head -c 16M /dev/urandom > fe8.gba
