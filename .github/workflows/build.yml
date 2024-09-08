@@ -44,8 +44,9 @@ jobs:
         echo "$HOME/.dotnet:$HOME/.dotnet/tools" >> $GITHUB_PATH
 
     - name: Build EA
-      run: curl -L -o EventAssembler.gz  https://github.com/MokhaLeee/fe8_hacks_sundries/releases/download/ci/EventAssembler.gz
-      run: tar -xzvf EventAssembler.gz -C tools/
+      run: |
+        curl -L -o EventAssembler.gz  https://github.com/MokhaLeee/fe8_hacks_sundries/releases/download/ci/EventAssembler.gz
+        tar -xzvf EventAssembler.gz -C tools/
 
     - name: Fake generate baserom
       run: head -c 16M /dev/urandom > fe8.gba
