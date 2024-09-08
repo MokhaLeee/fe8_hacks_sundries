@@ -30,6 +30,9 @@ jobs:
     - name: test dotnet
       run: dotnet --version
 
+    - name: Clear Cabal cache
+      run: rm -rf ~/.cabal
+
     - name: test babal
       run: |
         cd tools/EventAssembler/.Sources/EAFormattingSuite
