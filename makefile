@@ -19,7 +19,7 @@ WRITANS_DIR  :=
 GAMEDATA_DIR :=
 HACK_DIRS    := $(WIZARDRY_DIR) $(SPRITANS_DIR) $(WRITANS_DIR) $(GAMEDATA_DIR)
 
-all: $(FE8_CHX) || exit 1
+all: $(FE8_CHX)
 
 # =========
 # = Tools =
@@ -66,6 +66,12 @@ GRIT              := $(DEVKITPRO)/tools/bin/grit$(EXE)
 
 NOTIFY_PROCESS = @echo "$(notdir $<) => $(notdir $@)"
 
+GRITLZ77ARGS      := -gu 16 -gzl -gB 4 -p! -m! -ft bin -fh!
+GRIT4BPPARGS      := -gu 16 -gB 4 -p! -m! -ft bin -fh!
+GRIT2BPPARGS      := -gu 16 -gb -gB 2 -p! -m! -ft bin -fh!
+GRITPALETTEARGS	  := -g! -m! -p -ft bin -fh!
+MAPPALETTEARGS    := -pn 160
+BTLPALETTEARGS    := -pn 80
 
 # ========
 # = Main =
@@ -75,11 +81,10 @@ MAIN_DEPS := $(shell $(EA_DEP) $(MAIN) -I $(EA_DIR) --add-missings)
 $(FE8_CHX): $(MAIN) $(FE8_GBA) $(FE8_SYM) $(MAIN_DEPS)
 	@echo "[GEN]	$@"
 	@cp -f $(FE8_GBA) $(FE8_CHX)
-	@$(EA) A FE8 -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || rm -f $(FE8_CHX); exit 1
+	@$(EA) A FE8 -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || { rm -f $(FE8_CHX); exit 1; }
 	@cat $(FE8_SYM) >> $(FE8_CHX:.gba=.sym)
 
 CLEAN_FILES += $(FE8_CHX)  $(FE8_CHX:.gba=.sym)
-
 
 # ==========
 # = DECOMP =
@@ -137,11 +142,13 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
 # ============
 %.4bpp: %.png
 	@echo "[GEN]	$@"
-	@$(PNG2DMP) $< -o $@
+	@cd $(dir $<) && $(GRIT) $(notdir $<) $(GRIT4BPPARGS)
+	@mv $(basename $<).img.bin $@
 
 %.gbapal: %.png
 	@echo "[GEN]	$@"
-	@$(PNG2DMP) $< -po $@ --palette-only
+	@cd $(dir $<) && $(GRIT) $(notdir $<) $(GRITPALETTEARGS)
+	@mv $(basename $<).pal.bin $@
 
 %.lz: %
 	@echo "[LZ ]	$<"
