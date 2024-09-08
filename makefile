@@ -142,16 +142,14 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
 # ============
 %.4bpp: %.png
 	@echo "[GEN]	$@"
-	@cd $(dir $<) && $(GRIT) $(notdir $<) $(GRIT4BPPARGS)
-	@mv $(basename $<).img.bin $@
+	@$(PNG2DMP) $< -o $@
 
 %.gbapal: %.png
 	@echo "[GEN]	$@"
-	@cd $(dir $<) && $(GRIT) $(notdir $<) $(GRITPALETTEARGS)
-	@mv $(basename $<).pal.bin $@
+	@$(PNG2DMP) $< -po $@ --palette-only
 
 %.lz: %
-	@echo "[LZ ]	$<"
+	@echo "[LZ ]	$@"
 	@$(COMPRESS) $< $@
 
 PNG_FILES := $(shell find $(HACK_DIRS) -type f -name '*.png')
