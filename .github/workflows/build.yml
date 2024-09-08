@@ -24,6 +24,11 @@ jobs:
         curl -L -o devkit.gz https://github.com/MokhaLeee/fe8_hacks_sundries/releases/download/ci/devkit.gz
         tar -xzvf devkit.gz -C $HOME/
 
+        echo "DEVKITPRO=$HOME/opt/devkitpro" >> $GITHUB_ENV
+        echo "DEVKITARM=\${DEVKITPRO}/devkitARM" >> $GITHUB_ENV
+        echo "DEVKITPPC=\${DEVKITPRO}/devkitPPC" >> $GITHUB_ENV
+        echo "\${DEVKITPRO}/tools/bin" >> $GITHUB_PATH
+
     - name: Install submodules
       run: |
         git clone https://github.com/MokhaLeee/FE-CLib-Mokha.git tools/FE-CLib-Mokha
@@ -36,19 +41,16 @@ jobs:
         chmod +x ./dotnet-install.sh
         sudo ./dotnet-install.sh --channel 6.0
 
+        echo "DOTNET_ROOT=$HOME/.dotnet" >> $GITHUB_ENV
+        echo "$HOME/.dotnet" >> $GITHUB_PATH
+        echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
     - name: Build EA
       run: |
-        export DOTNET_ROOT=$HOME/.dotnet
-        export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
         cd tools/EventAssembler && ./build.sh && cd ../..
 
     - name: Fake generate baserom
       run: head -c 16M /dev/urandom > fe8.gba
 
     - name: Build
-      run: |
-        export DEVKITPRO=$HOME/opt/devkitpro
-        export DEVKITARM=\${DEVKITPRO}/devkitARM
-        export DEVKITPPC=\${DEVKITPRO}/devkitPPC
-        export PATH=\${DEVKITPRO}/tools/bin:\$PATH
-        make all
+      run: make all
