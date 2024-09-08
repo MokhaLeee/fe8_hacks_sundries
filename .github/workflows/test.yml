@@ -31,11 +31,7 @@ jobs:
     - name: test dotnet
       run: dotnet --version
 
-    - name: Build EA
+    - name: test babal
       run: |
-        cd tools/EventAssembler && ./build.sh && cd ../..
-
-    - name: test
-      run: |
-        cd ./tools/EventAssembler/.Sources/EAFormattingSuite
+        cd tools/EventAssembler/.Sources/EAFormattingSuite
         cabal v1-install --bindir=../../Tools
