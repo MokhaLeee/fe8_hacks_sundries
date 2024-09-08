@@ -62,7 +62,8 @@ ELF2REF           := $(PYTHON3) tools/scripts/elf2ref.py
 ELF2SYM           := $(PYTHON3) tools/scripts/elf2sym.py
 EFX_ANIMTOR       := $(PYTHON3) tools/scripts/efx-anim-creator.py
 
-GRIT              := $(DEVKITPRO)/tools/bin/grit$(EXE)
+GRIT := $(DEVKITPRO)/tools/bin/grit$(EXE)
+LZSS := $(DEVKITPRO)/tools/bin/gbalzss
 
 NOTIFY_PROCESS = @echo "$(notdir $<) => $(notdir $@)"
 
@@ -142,15 +143,17 @@ CLEAN_FILES += $(SFILES:.s=.o) $(SFILES:.s=.dmp) $(SFILES:.s=.lyn.event)
 # ============
 %.4bpp: %.png
 	@echo "[GEN]	$@"
-	@$(PNG2DMP) $< -o $@
+	@cd $(dir $<) && $(GRIT) $(notdir $<) $(GRIT4BPPARGS)
+	@mv $(basename $<).img.bin $@
 
 %.gbapal: %.png
 	@echo "[GEN]	$@"
-	@$(PNG2DMP) $< -po $@ --palette-only
+	@cd $(dir $<) && $(GRIT) $(notdir $<) $(GRITPALETTEARGS)
+	@mv $(basename $<).pal.bin $@
 
 %.lz: %
 	@echo "[LZ ]	$@"
-	@$(COMPRESS) $< $@
+	@$(LZSS) e $< $@
 
 PNG_FILES := $(shell find $(HACK_DIRS) -type f -name '*.png')
 CLEAN_FILES += $(PNG_FILES:.png=.gbapal) $(PNG_FILES:.png=.4bpp) $(PNG_FILES:.png=.4bpp.lz)
