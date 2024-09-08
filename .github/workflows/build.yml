@@ -42,6 +42,7 @@ jobs:
 
     - name: Build EA
       run: |
+        cabal update
         cd tools/EventAssembler && ./build.sh && cd ../..
 
     - name: Fake generate baserom
