@@ -17,7 +17,6 @@ jobs:
         sudo apt-get install -y re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev
         sudo apt-get install -y python3-pip pkg-config libpng* bsdiff moreutils
         pip install pyelftools PyInstaller tmx six
-        cabal update
 
     - name: Install submodules
       run: |
