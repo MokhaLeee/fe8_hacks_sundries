@@ -12,8 +12,12 @@ jobs:
 
     - name: Install deps
       run: |
-        sudo apt-get -y install binutils-arm-none-eabi gcc-arm-none-eabi build-essential cmake re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev python3-pip pkg-config libpng* bsdiff moreutils
+        sudo apt-get update
+        sudo apt-get install -y binutils-arm-none-eabi gcc-arm-none-eabi build-essential cmake
+        sudo apt-get install -y re2c ghc cabal-install libghc-vector-dev libghc-juicypixels-dev
+        sudo apt-get install -y python3-pip pkg-config libpng* bsdiff moreutils
         pip install pyelftools PyInstaller tmx six
+        cabal update
 
     - name: Install submodules
       run: |
