@@ -38,7 +38,7 @@ jobs:
       run: |
         wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
         chmod +x ./dotnet-install.sh
-        sudo ./dotnet-install.sh --channel 6.0
+        sudo ./dotnet-install.sh --channel 7.0
 
         echo "DOTNET_ROOT=$HOME/.dotnet" >> $GITHUB_ENV
         echo "$HOME/.dotnet:$HOME/.dotnet/tools" >> $GITHUB_PATH
