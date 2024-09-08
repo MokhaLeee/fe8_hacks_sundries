@@ -19,15 +19,10 @@ jobs:
       run: |
         git clone https://github.com/StanHash/EventAssembler.git --recursive tools/EventAssembler
 
-    - name: Install NET
-      run: |
-        wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
-        chmod +x ./dotnet-install.sh
-        sudo ./dotnet-install.sh --channel 6.0
-
-        echo "DOTNET_ROOT=$HOME/.dotnet" >> $GITHUB_ENV
-        echo "$HOME/.dotnet" >> $GITHUB_PATH
-        echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0'
 
     - name: test dotnet
       run: dotnet --version
