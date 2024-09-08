@@ -33,4 +33,5 @@ jobs:
 
     - name: test
       run: |
-        ./tools/EventAssembler/ColorzCore
+        cd ./tools/EventAssembler/.Sources/EAFormattingSuite
+        cabal v1-install --bindir=../../Tools
