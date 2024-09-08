@@ -25,10 +25,11 @@ jobs:
         chmod +x ./install-devkitpro-pacman
         sudo ./install-devkitpro-pacman
         printf "\n\ny\n" | sudo dkp-pacman -S gba-dev
-        export DEVKITPRO=/opt/devkitpro
-        export DEVKITARM=\${DEVKITPRO}/devkitARM
-        export DEVKITPPC=\${DEVKITPRO}/devkitPPC
-        export PATH=\${DEVKITPRO}/tools/bin:\$PATH
+
+        echo "DEVKITPRO=/opt/devkitpro" >> $GITHUB_ENV
+        echo "DEVKITARM=\${DEVKITPRO}/devkitARM" >> $GITHUB_ENV
+        echo "DEVKITPPC=\${DEVKITPRO}/devkitPPC" >> $GITHUB_ENV
+        echo "\${DEVKITPRO}/tools/bin" >> $GITHUB_PATH
 
     - name: Install submodules
       run: |
@@ -41,8 +42,9 @@ jobs:
         wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
         chmod +x ./dotnet-install.sh
         sudo ./dotnet-install.sh --channel 6.0
-        export DOTNET_ROOT=$HOME/.dotnet
-        export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
+        echo "DOTNET_ROOT=$HOME/.dotnet" >> $GITHUB_ENV
+        echo "$HOME/.dotnet:$HOME/.dotnet/tools" >> $GITHUB_PATH
 
     - name: Build EA
       run: cd tools/EventAssembler && ./build.sh && cd -
