@@ -19,6 +19,8 @@ WRITANS_DIR  :=
 GAMEDATA_DIR :=
 HACK_DIRS    := $(WIZARDRY_DIR) $(SPRITANS_DIR) $(WRITANS_DIR) $(GAMEDATA_DIR)
 
+all: $(FE8_CHX)
+
 # =========
 # = Tools =
 # =========
@@ -164,7 +166,7 @@ CLEAN_FILES += $(PNG_FILES:.png=.img.bin) $(PNG_FILES:.png=.map.bin) $(PNG_FILES
 
 %.efx.txt.d: %.efx.txt
 	@echo -n "$<: " > $@
-	$(EFX_ANIMTOR) $< --list-files >> $@
+	@$(EFX_ANIMTOR) $< --list-files >> $@
 
 EFX_SCRIPTS := $(shell find $(HACK_DIRS) -type f -name '*.efx.txt')
 CLEAN_FILES += $(EFX_SCRIPTS:.efx.txt=.efx.event)
