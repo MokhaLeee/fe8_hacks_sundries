@@ -6,9 +6,6 @@ gpOpAnimFrames:
     POIN OpAnim_Test
 
 PUSH
-    ORG 0x59170C
-    PROC_15
-
     ORG 0x591728
     POIN ProcScr_CustomOpAnim
 POP
