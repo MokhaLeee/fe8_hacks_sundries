@@ -19,6 +19,3 @@ OPANIM_TARGET   := $(OPANIM_SCRIPTS:.opanim.txt=.opanim.event)
 -include $(OPANIM_SCR_DEPS)
 
 CLEAN_FILES += $(OPANIM_SCR_DEPS) $(OPANIM_TARGET)
-
-clean:
-	rm -f $(CLEAN_FILES)
