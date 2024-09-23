@@ -1,0 +1,18 @@
+#include "src/CustomOpAnim.lyn.event"
+#include "src/utils.lyn.event"
+
+ALIGN 4
+gpOpAnimFrames:
+    POIN OpAnim_Test
+
+PUSH
+    ORG 0x59170C
+    PROC_15
+
+    ORG 0x591728
+    POIN ProcScr_CustomOpAnim
+POP
+
+CUSTOM_OPANIM_DATA_START:
+#include "data.event"
+MESSAGE CUSTOM_OPANIM_DATA_SIZE (CURRENTOFFSET - CUSTOM_OPANIM_DATA_START)

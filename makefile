@@ -74,6 +74,8 @@ GRITPALETTEARGS	  := -g! -m! -p -ft bin -fh!
 MAPPALETTEARGS    := -pn 160
 BTLPALETTEARGS    := -pn 80
 
+-include wizardry/CustomOpAnim/opanim.mk
+
 # ========
 # = Main =
 # ========
