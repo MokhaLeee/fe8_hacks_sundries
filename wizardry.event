@@ -32,6 +32,7 @@ ORG FreeSpace
 #include "wizardry/NinianDisp/NinianDisp.event"
 #include "wizardry/NinianPray/NinianPray.event"
 #include "wizardry/CustomOpAnim/CustomOpAnim.event"
+#include "wizardry/BanimHpDrainFix/BanimHpDrainFix.event"
 
 ALIGN 4
 #include debug.event
