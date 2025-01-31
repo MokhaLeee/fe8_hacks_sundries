@@ -18,6 +18,7 @@ ORG FreeSpace
 #include "wizardry/SaveDataExpansion/SaveDataExpansion.event"
 #include "wizardry/ClassChgExpansion/ClassChgExpansion.event"
 #include "wizardry/StatScreenfx/StatScreenfx.event"
+// #include "wizardry/StatScreenfx-fe7/StatScreenfx.event"
 #include "wizardry/UnitPreAction/UnitPreAction.event"
 // #include "wizardry/EfxMagicDummyFix/EfxMagicDummyFix.event"
 // #include "wizardry/EfxAnims/EfxAnims.event"
