@@ -11,7 +11,7 @@ ALIGN 4
 PUSH
     // Seth lance
     ORG $8AF02E
-    BYTE _T0_RecruitF_Lance
+    BYTE Banim_Villager
 
     // Eirika sword
     ORG $8AEFE6

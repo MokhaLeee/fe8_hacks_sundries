@@ -10,6 +10,7 @@ ORG FreeSpace
 #include "wizardry/TargetSelectRework/TargetSelectRework.event"
 #include "wizardry/EfxStatusUnitRework/EfxStatusUnitRework.event"
 #include "wizardry/BanimCmdExpansion/BanimCmdExpansion.event"
+#include "wizardry/BanimIdle/BanimIdle.event"
 #include "wizardry/PostActionHook/PostActionHook.event"
 #include "wizardry/UnitStatusGetter/UnitStatusGetter.event"
 #include "wizardry/BwlRework/BwlRework.event"
@@ -36,4 +37,5 @@ ORG FreeSpace
 
 ALIGN 4
 #include debug.event
+#include "wizardry/debug/debug.event"
 // #include test_prologue.event

@@ -1,0 +1,60 @@
+#include "Extensions/Hack Installation.txt"
+
+/**
+ * Kakudai fix
+ */
+#include "Source/KakudaiFix.lyn.event"
+PUSH
+	ORG 0x56984
+	jumpToHack(KakudaiFix)
+POP
+
+/**
+ * Anim create
+ */
+#include "Source/AnimCreateHook.lyn.event"
+PUSH
+	ORG 0x004F98
+	jumpToHack(AnimCreateHook)
+POP
+
+/**
+ * C01 fix
+ */
+#include "Source/C01Fix.lyn.event"
+#include "Source/BanimIdle.lyn.event"
+
+ALIGN 4
+pBanim_C01:
+	WORD $B4081C38 $469E4B02 $BC08F800 $47004801
+	POIN Banim_C01 0x80596CD
+
+pBanim_C10:
+	WORD $B4081C38 $469E4B02 $BC08F800 $47004801
+	POIN Banim_C10 0x80596CD
+
+pBanim_C11:
+	WORD $B4081C38 $469E4B02 $BC08F800 $47004801
+	POIN Banim_C11 0x80596CD
+
+PUSH
+	ORG ($58C44 + 4 * 0x01)
+	POIN pBanim_C01 | 1
+	ORG ($58C44 + 4 * 0x10)
+	POIN pBanim_C10 | 1
+	ORG ($58C44 + 4 * 0x11)
+	POIN pBanim_C11 | 1
+POP
+
+/**
+ * Trace
+ */
+PUSH
+	ORG 0x004E7C
+	BL(BL_AnimTrace_AnimInterpret)
+	PROTECT 0x00004E40 0x00004EB8 // AnimUpdateAll
+
+	ORG 0x058E34 // vanilla C01
+	BL_AnimTrace_AnimInterpret:
+	jumpToHack(AnimTrace_AnimInterpret)
+POP

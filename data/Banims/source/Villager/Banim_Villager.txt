@@ -227,12 +227,17 @@ C0D                               #06在攻击动画结束前出现
 4 p- vil_086.png
 4 p- vil_002.png
 4 p- vil_001.png
+C10
 9 p- vil_087.png
 7 p- vil_000.png
+C11
 C01                               #NOP
 ~~~
 /// - Mode 10               #站立不动的动作
-2 p- vil_000.png
+C10
+9 p- vil_087.png
+7 p- vil_000.png
+C11
 C01                               #NOP
 ~~~
 /// - Mode 11               #间接时站立不动的动作
@@ -240,8 +245,10 @@ C01                               #NOP
 4 p- vil_086.png
 4 p- vil_002.png
 4 p- vil_001.png
+C10
 9 p- vil_087.png
 7 p- vil_000.png
+C11
 C01                               #NOP
 ~~~
 /// - Mode 12               #攻击失误时的动作

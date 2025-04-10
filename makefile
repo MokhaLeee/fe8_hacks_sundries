@@ -193,6 +193,5 @@ clean:
 	@rm -f $(CLEAN_FILES)
 	@rm -rf $(CLEAN_DIRS)
 #	@$(MAKE) -s -C $(FE8_DIR) clean
-	@echo "[RM]	$(CLEAN_FILES) $(CLEAN_DIRS)"
 
 FORCE:
