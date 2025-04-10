@@ -19,6 +19,37 @@ static bool ShouldTrace(struct Anim *anim)
 	return need_trace;
 }
 
+void AnimMoveBackToCommand(struct Anim *anim, int cmd)
+{
+	const u32 *history = anim->pScrCurrent;
+
+	anim->pScrCurrent = anim->pScrStart;
+
+	while (1) {
+		u32 inst = ANINS_GET_TYPE(*anim->pScrCurrent);
+
+		if (anim->pScrCurrent == history)
+			break;
+
+		if (inst == ANIM_INS_TYPE_STOP) {
+			anim->pScrCurrent -= 3;
+			break;
+		}
+
+		if (inst == ANIM_INS_TYPE_COMMAND) {
+			int this_cmd = ANINS_COMMAND_GET_ID(inst);
+
+			if (this_cmd == cmd)
+				break;
+
+			anim->pScrCurrent += 1;
+		}
+
+		if (inst == ANIM_INS_TYPE_FRAME)
+			anim->pScrCurrent += 3;
+	}
+}
+
 void Banim_C10(struct Anim *anim)
 {
 	bool need_trace = ShouldTrace(anim);
@@ -36,35 +67,7 @@ void Banim_C10(struct Anim *anim)
 		);
 	}
 
-	if (anim->unk13 > 0)
-		anim->unk13--;
-
-	if (!C01_BLOCKING_PRE_BATTLE(anim) && !C01_BLOCKING_IN_BATTLE(anim)) {
-		if (anim->state3 & ANIM_BIT3_HIT_EFFECT_APPLIED) {
-			while (1) {
-				u32 inst = ANINS_GET_TYPE(*anim->pScrCurrent);
-		
-				if (inst == ANIM_INS_TYPE_STOP) {
-					anim->pScrCurrent -= 3;
-					return;
-				} else if (inst == ANIM_INS_TYPE_COMMAND) {
-					switch (ANINS_COMMAND_GET_ID(inst)) {
-					case 0x1:
-						Banim_C01(anim);
-						return;
-		
-					default:
-						break;
-					}
-					anim->pScrCurrent += 1;
-				} else if (inst == ANIM_INS_TYPE_FRAME)
-					anim->pScrCurrent += 3;
-			}
-		}
-	}
-
-	if (anim->unk13 != 0)
-		anim->pScrCurrent -= 3;
+	; // pass
 }
 
 void Banim_C11(struct Anim *anim)
@@ -84,29 +87,13 @@ void Banim_C11(struct Anim *anim)
 		);
 	}
 
-	anim->pScrCurrent = anim->pScrStart;
-
-	while (1) {
-		u32 inst = ANINS_GET_TYPE(*anim->pScrCurrent);
-
-		if (inst == ANIM_INS_TYPE_STOP) {
-			anim->pScrCurrent -= 3;
+	if (!C01_BLOCKING_PRE_BATTLE(anim) && !C01_BLOCKING_IN_BATTLE(anim)) {
+		if (anim->state3 & ANIM_BIT3_HIT_EFFECT_APPLIED) {
 			return;
-		} else if (inst == ANIM_INS_TYPE_COMMAND) {
-			switch (ANINS_COMMAND_GET_ID(inst)) {
-			case 0x10:
-			case 0x11:
-				anim->unk13 = 0x20;
-				anim->pScrCurrent -= 3;
-				return;
-
-			default:
-				break;
-			}
-			anim->pScrCurrent += 1;
-		} else if (inst == ANIM_INS_TYPE_FRAME)
-			anim->pScrCurrent += 3;
+		}
 	}
+
+	AnimMoveBackToCommand(anim, 0x10);
 }
 
 int AnimTrace_AnimInterpret(struct Anim *anim)
