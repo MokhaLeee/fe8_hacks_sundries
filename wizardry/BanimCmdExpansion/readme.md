@@ -12,6 +12,8 @@ Call for a fake hit (flashing BG) the same as C51, but with black color and hold
 
 ![image](gfx/C16C17.gif)
 
+- `C10 C11 IDLE`
+
 - `C16 (CallDK): `
 Freeze the anim until the DemoKing has been summoned in background. You must call for `C17` to remove it.
 

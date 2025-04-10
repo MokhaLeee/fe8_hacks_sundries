@@ -3,7 +3,7 @@
 
 void CustomOpAnim_Init(struct ProcCustomOpAnim * proc)
 {
-    Sound_FadeOutBGM(SONG_01);
+    Sound_FadeOutBGM(SONG_THE_VALIANT);
     SetupBackgrounds(NULL);
     SetPrimaryHBlankHandler(NULL);
 
@@ -62,7 +62,7 @@ void CustomOpAnim_Initfx(struct ProcCustomOpAnim * proc)
     proc->tsas = gpOpAnimFrames->tsas;
     proc->frames = gpOpAnimFrames->frame_confs;
 
-    StartBgmExt(SONG_01, 0, NULL);
+    StartBgmExt(SONG_THE_VALIANT, 0, NULL);
 }
 
 void CustomOpAnim_Loop(struct ProcCustomOpAnim * proc)

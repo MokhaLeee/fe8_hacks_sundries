@@ -5,4 +5,5 @@
 #include "repoint/RepointBanim.event"
 
 #include "source/T0_RecuritF_Lance/_T0_RecruitF_LanceInstaller.event"
-#include "source/Lyn_GreenTea/Lyn_GreenTeaInstaller.event"
+// #include "source/Lyn_GreenTea/Lyn_GreenTeaInstaller.event"
+#include "source/Villager/Banim_VillagerInstaller.event"

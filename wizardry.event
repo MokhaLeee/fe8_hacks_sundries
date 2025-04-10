@@ -3,8 +3,6 @@ ORG FreeSpace
 
 #include config.h
 
-#include test_prologue.event
-
 #include "wizardry/GameInitHook/GameInitHook.event"
 #include "wizardry/DebugKit/DebugKit.event"
 
@@ -38,3 +36,4 @@ ORG FreeSpace
 
 ALIGN 4
 #include debug.event
+// #include test_prologue.event

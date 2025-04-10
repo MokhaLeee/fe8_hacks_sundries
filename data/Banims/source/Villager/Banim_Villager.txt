@@ -1,0 +1,295 @@
+#######################################################
+#0F vilf_sw1 村民 剑
+#
+#当输入到FEditorAdv时，请删除＃和每行之后。
+#######################################################
+/// - Mode 1               #攻击命中时的动作
+1 p- vil_000.png
+C03                               #攻击动作开始 07将在此之后
+C07                               #攻击动作开始 03就在此之前
+1 p- vil_000.png
+3 p- vil_001.png
+3 p- vil_002.png
+3 p- vil_003.png
+C22                               #剑在手中摆动声音
+3 p- vil_004.png
+2 p- vil_005.png
+2 p- vil_006.png
+C1B                               #重步脚步声
+4 p- vil_007.png
+4 p- vil_008.png
+6 p- vil_009.png
+2 p- vil_010.png
+C25                               #弹翼声音
+3 p- vil_011.png
+4 p- vil_012.png
+3 p- vil_013.png
+C24                               #剑砍空气声音
+2 p- vil_014.png
+2 p- vil_015.png
+C1B                               #重步脚步声
+C04                               #准备HP耗尽程序; 在命中后需要动画回到站立框架
+C1A                               #无声音
+C1F                               #暴击效果音
+3 p- vil_016.png
+3 p- vil_017.png
+3 p- vil_018.png
+3 p- vil_019.png
+3 p- vil_020.png
+C01                               #NOP
+6 p- vil_021.png
+3 p- vil_022.png
+C22                               #剑在手中摆动声音
+2 p- vil_023.png
+2 p- vil_024.png
+2 p- vil_025.png
+2 p- vil_026.png
+C1B                               #重步脚步声
+2 p- vil_027.png
+2 p- vil_028.png
+2 p- vil_029.png
+3 p- vil_030.png
+1 p- vil_000.png
+C06                               #0D在攻击动画结束后出现
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - Mode 3               #攻击必杀时的动作
+1 p- vil_000.png
+C03                               #攻击动作开始 07将在此之后
+C07                               #攻击动作开始 03就在此之前
+1 p- vil_000.png
+6 p- vil_031.png
+9 p- vil_032.png
+18 p- vil_033.png
+9 p- vil_031.png
+12 p- vil_034.png
+24 p- vil_031.png
+24 p- vil_035.png
+3 p- vil_036.png
+3 p- vil_037.png
+3 p- vil_038.png
+C22                               #剑在手中摆动声音
+3 p- vil_039.png
+2 p- vil_040.png
+2 p- vil_041.png
+C1B                               #重步脚步声
+4 p- vil_042.png
+4 p- vil_043.png
+6 p- vil_044.png
+3 p- vil_045.png
+3 p- vil_046.png
+C25                               #弹翼声音
+2 p- vil_047.png
+2 p- vil_048.png
+C1B                               #重步脚步声
+C14                               #屏幕动摇　
+C04                               #准备HP耗尽程序; 在命中后需要动画回到站立框架
+C0C                               #重击
+C21                               #暴击效果音
+3 p- vil_049.png
+3 p- vil_050.png
+3 p- vil_051.png
+3 p- vil_052.png
+3 p- vil_053.png
+C01                               #NOP
+6 p- vil_054.png
+3 p- vil_055.png
+C22                               #剑在手中摆动声音
+2 p- vil_056.png
+2 p- vil_057.png
+2 p- vil_025.png
+2 p- vil_026.png
+C1B                               #重步脚步声
+2 p- vil_027.png
+2 p- vil_028.png
+2 p- vil_029.png
+3 p- vil_030.png
+1 p- vil_000.png
+C06                               #0D在攻击动画结束后出现
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - Mode 5               #间接攻击的动作
+1 p- vil_000.png
+C03                               #攻击动作开始 07将在此之后
+C07                               #攻击动作开始 03就在此之前
+1 p- vil_000.png
+3 p- vil_058.png
+3 p- vil_059.png
+2 p- vil_060.png
+C1B                               #重步脚步声
+2 p- vil_061.png
+C22                               #剑在手中摆动声音
+2 p- vil_062.png
+2 p- vil_063.png
+2 p- vil_064.png
+3 p- vil_065.png
+3 p- vil_066.png
+4 p- vil_067.png
+C05                               #魔法的呼出
+6 p- vil_068.png
+6 p- vil_069.png
+C01                               #NOP
+4 p- vil_068.png
+4 p- vil_070.png
+4 p- vil_071.png
+3 p- vil_072.png
+4 p- vil_073.png
+C1B                               #重步脚步声
+1 p- vil_000.png
+C06                               #0D在攻击动画结束后出现
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - Mode 6               #间接攻击必杀时的动作
+1 p- vil_000.png
+C03                               #攻击动作开始 07将在此之后
+C07                               #攻击动作开始 03就在此之前
+1 p- vil_000.png
+60 p- vil_074.png
+6 p- vil_000.png
+3 p- vil_058.png
+3 p- vil_059.png
+2 p- vil_060.png
+C1B                               #重步脚步声
+2 p- vil_061.png
+C22                               #剑在手中摆动声音
+2 p- vil_062.png
+2 p- vil_063.png
+2 p- vil_064.png
+3 p- vil_065.png
+3 p- vil_066.png
+4 p- vil_067.png
+6 p- vil_068.png
+C28                               #电的声音(吱吱吱吱的)
+4 p- vil_075.png
+4 p- vil_069.png
+4 p- vil_076.png
+4 p- vil_069.png
+4 p- vil_076.png
+4 p- vil_069.png
+4 p- vil_076.png
+4 p- vil_069.png
+4 p- vil_076.png
+C05                               #魔法的呼出
+4 p- vil_069.png
+C01                               #NOP
+4 p- vil_068.png
+4 p- vil_070.png
+4 p- vil_071.png
+3 p- vil_072.png
+4 p- vil_073.png
+C1B                               #重步脚步声
+1 p- vil_000.png
+C06                               #0D在攻击动画结束后出现
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - Mode 7               #被攻击回避时的动作
+1 p- vil_000.png
+C02                               #开始回避运动
+1 p- vil_000.png
+C0E                               #开始躲避帧(应该在静止帧之后，在躲避动画之前)
+3 p- vil_058.png
+3 p- vil_077.png
+2 p- vil_078.png
+C1B                               #重步脚步声
+2 p- vil_079.png
+2 p- vil_080.png
+2 p- vil_081.png
+C01                               #NOP
+3 p- vil_082.png
+2 p- vil_083.png
+C1B                               #重步脚步声
+3 p- vil_084.png
+1 p- vil_000.png
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - Mode 8               #被间接攻击回避时的动作
+1 p- vil_000.png
+C02                               #开始回避运动
+1 p- vil_000.png
+C0E                               #开始躲避帧(应该在静止帧之后，在躲避动画之前)
+3 p- vil_058.png
+3 p- vil_077.png
+2 p- vil_078.png
+C1B                               #重步脚步声
+2 p- vil_079.png
+2 p- vil_080.png
+2 p- vil_081.png
+C01                               #NOP
+3 p- vil_082.png
+2 p- vil_083.png
+C1B                               #重步脚步声
+3 p- vil_084.png
+1 p- vil_000.png
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - Mode 9               #站立不动的动作
+4 p- vil_085.png
+4 p- vil_086.png
+4 p- vil_002.png
+4 p- vil_001.png
+9 p- vil_087.png
+7 p- vil_000.png
+C01                               #NOP
+~~~
+/// - Mode 10               #站立不动的动作
+2 p- vil_000.png
+C01                               #NOP
+~~~
+/// - Mode 11               #间接时站立不动的动作
+4 p- vil_085.png
+4 p- vil_086.png
+4 p- vil_002.png
+4 p- vil_001.png
+9 p- vil_087.png
+7 p- vil_000.png
+C01                               #NOP
+~~~
+/// - Mode 12               #攻击失误时的动作
+1 p- vil_000.png
+C03                               #攻击动作开始 07将在此之后
+C07                               #攻击动作开始 03就在此之前
+1 p- vil_000.png
+3 p- vil_001.png
+3 p- vil_002.png
+3 p- vil_003.png
+C22                               #剑在手中摆动声音
+3 p- vil_004.png
+2 p- vil_005.png
+2 p- vil_006.png
+C1B                               #重步脚步声
+4 p- vil_007.png
+4 p- vil_008.png
+6 p- vil_009.png
+2 p- vil_010.png
+C25                               #弹翼声音
+3 p- vil_011.png
+4 p- vil_012.png
+3 p- vil_013.png
+C24                               #剑砍空气声音
+2 p- vil_014.png
+2 p- vil_088.png
+C1B                               #重步脚步声
+C04                               #准备HP耗尽程序; 在命中后需要动画回到站立框架
+3 p- vil_089.png
+3 p- vil_017.png
+3 p- vil_018.png
+3 p- vil_019.png
+3 p- vil_020.png
+C01                               #NOP
+6 p- vil_021.png
+3 p- vil_022.png
+C22                               #剑在手中摆动声音
+2 p- vil_023.png
+2 p- vil_024.png
+2 p- vil_025.png
+2 p- vil_026.png
+C1B                               #重步脚步声
+2 p- vil_027.png
+2 p- vil_028.png
+2 p- vil_029.png
+3 p- vil_030.png
+1 p- vil_000.png
+C06                               #0D在攻击动画结束后出现
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - End of animation
