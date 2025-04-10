@@ -15,7 +15,7 @@ POP
 #include "Source/AnimCreateHook.lyn.event"
 PUSH
 	ORG 0x004F98
-	jumpToHack(AnimCreateHook)
+	// jumpToHack(AnimCreateHook)
 POP
 
 /**

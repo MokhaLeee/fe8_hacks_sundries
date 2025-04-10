@@ -231,6 +231,7 @@ C10
 9 p- vil_087.png
 7 p- vil_000.png
 C11
+7 p- vil_000.png
 C01                               #NOP
 ~~~
 /// - Mode 10               #站立不动的动作
@@ -238,6 +239,7 @@ C10
 9 p- vil_087.png
 7 p- vil_000.png
 C11
+7 p- vil_000.png
 C01                               #NOP
 ~~~
 /// - Mode 11               #间接时站立不动的动作
@@ -249,6 +251,7 @@ C10
 9 p- vil_087.png
 7 p- vil_000.png
 C11
+7 p- vil_000.png
 C01                               #NOP
 ~~~
 /// - Mode 12               #攻击失误时的动作
