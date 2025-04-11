@@ -86,6 +86,7 @@ $(FE8_CHX): $(MAIN) $(FE8_GBA) $(FE8_SYM) $(MAIN_DEPS)
 	@cp -f $(FE8_GBA) $(FE8_CHX)
 	@$(EA) A FE8 -input:$(MAIN) -output:$(FE8_CHX) --nocash-sym || { rm -f $(FE8_CHX); exit 1; }
 	@cat $(FE8_SYM) >> $(FE8_CHX:.gba=.sym)
+	@cat $(FE8_CHX:.gba=.sym) | python3 tools/scripts/sym_modify.py | sponge $(FE8_CHX:.gba=.sym)
 
 CLEAN_FILES += $(FE8_CHX)  $(FE8_CHX:.gba=.sym)
 

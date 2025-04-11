@@ -29,5 +29,6 @@ void Banim_C01(struct Anim *anim)
 		}
 	}
 
-	AnimMoveBackToCommand(anim, 0x10);
+	// AnimMoveBackToCommand(anim, 0x10);
+	// anim->timer = 0x20;
 }

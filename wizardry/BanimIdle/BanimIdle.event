@@ -12,7 +12,7 @@ POP
 /**
  * Anim create
  */
-#include "Source/AnimCreateHook.lyn.event"
+
 PUSH
 	ORG 0x004F98
 	// jumpToHack(AnimCreateHook)
@@ -22,6 +22,7 @@ POP
  * C01 fix
  */
 #include "Source/C01Fix.lyn.event"
+#include "Source/C11Hook.lyn.event"
 #include "Source/BanimIdle.lyn.event"
 
 ALIGN 4
@@ -41,14 +42,15 @@ PUSH
 	ORG ($58C44 + 4 * 0x01)
 	POIN pBanim_C01 | 1
 	ORG ($58C44 + 4 * 0x10)
-	POIN pBanim_C10 | 1
+	POIN C10Hook // pBanim_C10 | 1
 	ORG ($58C44 + 4 * 0x11)
-	POIN pBanim_C11 | 1
+	POIN C11Hook // pBanim_C11 | 1
 POP
 
 /**
  * Trace
  */
+#include "Source/AnimTrace.lyn.event"
 PUSH
 	ORG 0x004E7C
 	BL(BL_AnimTrace_AnimInterpret)
