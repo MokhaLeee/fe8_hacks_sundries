@@ -95,14 +95,13 @@ static const struct UnitDefinition UnitDef_Enemy[] = {
 	},
 	{
 		.charIndex = CHARACTER_GLEN,
-		.classIndex = CLASS_RANGER,
+		.classIndex = CLASS_ARCHER,
 		.allegiance = FACTION_ID_RED,
 		.level = 4,
 		.xPosition = 9,
 		.yPosition = 5,
 		.items = {
-			ITEM_SWORD_IRON,
-			// ITEM_BOW_IRON,
+			ITEM_BOW_IRON,
 		},
 		.ai = { 0, 4, 9, 0 },
 	},

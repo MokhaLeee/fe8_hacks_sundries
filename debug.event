@@ -1,7 +1,11 @@
 
-/* Rapier range: 1-2 */
 PUSH
+    /* Rapier range: 1-2 */
     ORG 0x809C6D
+    BYTE 0x12
+
+    /* Bow range: 1-2 */
+    ORG 0x80A17D
     BYTE 0x12
 POP
 
@@ -15,4 +19,8 @@ PUSH
     // Eirika sword
     ORG $8AEFE6
     BYTE Banim_Villager
+
+    // Archer bow
+    ORG $8AF152
+    // BYTE NommAnim
 POP
