@@ -123,6 +123,9 @@ bool Banim_C11(struct Anim *anim)
 		return false;
 	}
 
+	if (!(anim->state3 & ANIM_BIT3_TAKE_BACK_ENABLE))
+		return false;
+
 	if (C01_BLOCKING_IN_BATTLE(anim)) {
 		if (GetAnimNextRoundType(anim) == ANIM_ROUND_INVALID && GetAnimRoundType(GetAnimAnotherSide(anim)) == ANIM_ROUND_INVALID)
 			return false;
