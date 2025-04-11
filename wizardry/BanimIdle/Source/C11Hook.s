@@ -10,7 +10,7 @@ C10Hook:
 	pop {r3}
 	cmp r0, #0
 	beq continue_loop
-	b continue_loop @ break_loop
+	b break_loop
 
 THUMB_FUNC_START C11Hook
 C11Hook:

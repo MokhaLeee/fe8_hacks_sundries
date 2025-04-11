@@ -95,7 +95,7 @@ bool Banim_C10(struct Anim *anim)
 	}
 
 	if (anim->state3 & ANIM_BIT3_NEXT_ROUND_START)
-		return true;
+		return false;
 
 	return false;
 }
@@ -117,20 +117,21 @@ bool Banim_C11(struct Anim *anim)
 		);
 	}
 
-	if (!C01_BLOCKING_PRE_BATTLE(anim) && !C01_BLOCKING_IN_BATTLE(anim)) {
-		if (anim->state3 & ANIM_BIT3_HIT_EFFECT_APPLIED) {
-
-			if (need_trace) {
-				Print("hit applied");
-			}
-			return false;
-		}
+	if (C01_BLOCKING_PRE_BATTLE(anim)) {
+		AnimMoveBackToCommand(anim, 0x10);
+		anim->timer = NextRN_N(20) + 10;
+		return false;
 	}
 
-	if (anim->state3 & ANIM_BIT3_NEXT_ROUND_START)
-		return true;
+	if (C01_BLOCKING_IN_BATTLE(anim)) {
+		if (GetAnimNextRoundType(anim) == ANIM_ROUND_INVALID && GetAnimRoundType(GetAnimAnotherSide(anim)) == ANIM_ROUND_INVALID)
+			return false;
+
+		if (anim->state3 & ANIM_BIT3_HIT_EFFECT_APPLIED)
+			return false;
+	}
 
 	AnimMoveBackToCommand(anim, 0x10);
-	anim->timer = NextRN_N(20) + 10;
+	// anim->timer = NextRN_N(20) + 10;
 	return false;
 }

@@ -22,13 +22,18 @@ void Banim_C01(struct Anim *anim)
 							  ANIM_BIT3_C01_BLOCKING_IN_BATTLE |
 							  ANIM_BIT3_HIT_EFFECT_APPLIED);
 
-			// anim->pScrCurrent = anim->pScrCurrent + 1;
+			anim->pScrCurrent = anim->pScrCurrent + 1;
 
 			if (Get0201FAC8() != 0)
 				Set0201FAC8(0);
 		}
 	}
 
-	// AnimMoveBackToCommand(anim, 0x10);
+#if 0
+	if (anim->state3 & (ANIM_BIT3_NEW_ROUND_START | ANIM_BIT3_NEXT_ROUND_START))
+		return;
+
+	AnimMoveBackToCommand(anim, 0x10);
 	// anim->timer = 0x20;
+#endif
 }

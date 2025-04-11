@@ -22,5 +22,5 @@ PUSH
 
     // Archer bow
     ORG $8AF152
-    // BYTE NommAnim
+    BYTE NommAnim
 POP
