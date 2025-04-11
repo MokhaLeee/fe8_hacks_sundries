@@ -1,5 +1,4 @@
-#include "common-demo.h"
-#include "demo-skills.h"
+#include "gbafe.h"
 
 static const struct UnitDefinition UnitDef_Ally[] = {
 	{
@@ -156,11 +155,6 @@ static void set_unit_status(void)
 		unit->maxHP = 70;
 		unit->curHP = 30;
 	}
-
-	AddSkillDbgListByPid(CHARACTER_ONEILL, DEMOSID_SwitchWeapon1);
-	AddSkillDbgListByPid(CHARACTER_SETH, DEMOSID_CritPetrify1);
-	AddSkillDbgListByPid(CHARACTER_SETH, SID_Luna);
-	AddSkillDbgListByPid(CHARACTER_SETH, SID_RightfulArch);
 }
 
 static const EventScr EventScr_Beginning[] = {

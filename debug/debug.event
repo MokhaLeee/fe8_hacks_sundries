@@ -2,4 +2,4 @@
 #include "GameIntro/GameIntro.event"
 #include "ChapterIntro/ChapterIntro.event"
 
-// #include "debug-event/debug-event.event"
+#include "debug-event/debug-event.event"

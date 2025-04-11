@@ -1,3 +1,4 @@
+#include EAstdlib.event
 {
 	WARNING __Prologue_event_rewritten__
 	#include "Source/debug-event.lyn.event"

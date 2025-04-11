@@ -13,7 +13,7 @@ CLEAN_FILES :=
 CLEAN_DIRS  := $(CACHE_DIR)
 CLEAN_DIRS  += data/Banims/scripts/__pycache__
 
-WIZARDRY_DIR := wizardry
+WIZARDRY_DIR := wizardry debug
 SPRITANS_DIR :=
 WRITANS_DIR  :=
 GAMEDATA_DIR :=

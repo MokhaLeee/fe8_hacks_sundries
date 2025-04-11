@@ -36,6 +36,7 @@ ORG FreeSpace
 #include "wizardry/MenuExpansion/MenuExpansion.event"
 
 ALIGN 4
+#include "data/Banims/Banims.event"
 #include debug.event
-#include "wizardry/debug/debug.event"
+#include "debug/debug.event"
 // #include test_prologue.event

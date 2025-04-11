@@ -1,0 +1,258 @@
+#######################################################
+#74 nomm_ar1 遊牧民 Bow
+#
+#When importing to FEditorAdv delete # and after each line.
+#######################################################
+/// - Mode 1               #Melee Animation
+C03                               #Start attack animation; need 07 right after this.
+C07                               #Start attack animation; need 03 right before this.
+1 p- nomm_000.png
+3 p- nomm_001.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_002.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_003.png
+4 p- nomm_004.png
+4 p- nomm_005.png
+4 p- nomm_006.png
+4 p- nomm_007.png
+2 p- nomm_008.png
+2 p- nomm_009.png
+2 p- nomm_010.png
+C19                               #Play bow pulling SFE
+2 p- nomm_011.png
+2 p- nomm_012.png
+20 p- nomm_013.png
+C05                               #Call spell associated with equipped weapon
+2 p- nomm_014.png
+1 p- nomm_015.png
+C01                               #NOP
+4 p- nomm_016.png
+4 p- nomm_017.png
+4 p- nomm_018.png
+7 p- nomm_019.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+2 p- nomm_020.png
+C06                               #Begin opponent's turn after hit.next code 0D.
+2 p- nomm_020.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_021.png
+C0D                               #End of dodge animation. preceeded by 0x06
+~~~
+/// - Mode 3               #Melee Critical Animation
+C03                               #Start attack animation; need 07 right after this.
+C07                               #Start attack animation; need 03 right before this.
+1 p- nomm_000.png
+4 p- nomm_022.png
+3 p- nomm_023.png
+3 p- nomm_024.png
+3 p- nomm_025.png
+3 p- nomm_024.png
+8 p- nomm_000.png
+4 p- nomm_001.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_002.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_003.png
+4 p- nomm_004.png
+4 p- nomm_005.png
+4 p- nomm_006.png
+C23                               #Play shorter sword swinging SFE
+2 p- nomm_026.png
+2 p- nomm_027.png
+2 p- nomm_028.png
+2 p- nomm_029.png
+C23                               #Play shorter sword swinging SFE
+2 p- nomm_026.png
+2 p- nomm_027.png
+2 p- nomm_028.png
+C19                               #Play bow pulling SFE
+2 p- nomm_012.png
+20 p- nomm_013.png
+C05                               #Call spell associated with equipped weapon
+2 p- nomm_014.png
+1 p- nomm_015.png
+C01                               #NOP
+4 p- nomm_016.png
+4 p- nomm_017.png
+4 p- nomm_018.png
+7 p- nomm_019.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+2 p- nomm_020.png
+C06                               #Begin opponent's turn after hit.next code 0D.
+2 p- nomm_020.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_021.png
+C0D                               #End of dodge animation. preceeded by 0x06
+~~~
+/// - Mode 5               #Ranged Animation 
+C03                               #Start attack animation; need 07 right after this.
+C07                               #Start attack animation; need 03 right before this.
+1 p- nomm_000.png
+4 p- nomm_001.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_002.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_003.png
+4 p- nomm_004.png
+4 p- nomm_005.png
+4 p- nomm_006.png
+4 p- nomm_007.png
+2 p- nomm_008.png
+2 p- nomm_009.png
+2 p- nomm_010.png
+C19                               #Play bow pulling SFE
+2 p- nomm_011.png
+2 p- nomm_012.png
+20 p- nomm_013.png
+C05                               #Call spell associated with equipped weapon
+2 p- nomm_014.png
+1 p- nomm_015.png
+C01                               #NOP
+4 p- nomm_016.png
+4 p- nomm_017.png
+4 p- nomm_018.png
+7 p- nomm_019.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+2 p- nomm_020.png
+C06                               #Begin opponent's turn after hit.next code 0D.
+2 p- nomm_020.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_021.png
+C0D                               #End of dodge animation. preceeded by 0x06
+~~~
+/// - Mode 6               #Ranged Critical Animation
+C03                               #Start attack animation; need 07 right after this.
+C07                               #Start attack animation; need 03 right before this.
+1 p- nomm_000.png
+4 p- nomm_022.png
+3 p- nomm_023.png
+3 p- nomm_024.png
+3 p- nomm_025.png
+3 p- nomm_024.png
+8 p- nomm_000.png
+4 p- nomm_001.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_002.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_003.png
+4 p- nomm_004.png
+4 p- nomm_005.png
+4 p- nomm_006.png
+C23                               #Play shorter sword swinging SFE
+2 p- nomm_026.png
+2 p- nomm_027.png
+2 p- nomm_028.png
+2 p- nomm_029.png
+C23                               #Play shorter sword swinging SFE
+2 p- nomm_026.png
+2 p- nomm_027.png
+2 p- nomm_028.png
+C19                               #Play bow pulling SFE
+2 p- nomm_012.png
+20 p- nomm_013.png
+C05                               #Call spell associated with equipped weapon
+2 p- nomm_014.png
+1 p- nomm_015.png
+C01                               #NOP
+4 p- nomm_016.png
+4 p- nomm_017.png
+4 p- nomm_018.png
+7 p- nomm_019.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+2 p- nomm_020.png
+C06                               #Begin opponent's turn after hit.next code 0D.
+2 p- nomm_020.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_021.png
+C0D                               #End of dodge animation. preceeded by 0x06
+~~~
+/// - Mode 7               #Dodge Melee Attack
+C02                               #Start of dodge
+1 p- nomm_000.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+3 p- nomm_030.png
+1 p- nomm_031.png
+C01                               #NOP
+3 p- nomm_030.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+C0D                               #End of dodge animation. preceeded by 0x06
+~~~
+/// - Mode 8               #Dodge Ranged Attack
+C02                               #Start of dodge
+1 p- nomm_000.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+3 p- nomm_030.png
+1 p- nomm_031.png
+C01                               #NOP
+3 p- nomm_030.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+C0D                               #End of dodge animation. preceeded by 0x06
+~~~
+/// - Mode 9               #Equiped with Melee Weapon
+1 p- nomm_000.png
+C10
+3 p- nomm_023.png
+3 p- nomm_024.png
+3 p- nomm_025.png
+1 p- nomm_000.png
+C11
+C01                               #NOP
+~~~
+/// - Mode 10               #Standing motions
+1 p- nomm_000.png
+C10
+3 p- nomm_023.png
+3 p- nomm_024.png
+3 p- nomm_025.png
+1 p- nomm_000.png
+C11
+C01                               #NOP
+~~~
+/// - Mode 11               #Equiped with Ranged weapon
+1 p- nomm_000.png
+C10
+3 p- nomm_023.png
+3 p- nomm_024.png
+3 p- nomm_025.png
+1 p- nomm_000.png
+C11
+C01                               #NOP
+~~~
+/// - Mode 12               #Attack Missed Animation
+C03                               #Start attack animation; need 07 right after this.
+C07                               #Start attack animation; need 03 right before this.
+1 p- nomm_000.png
+4 p- nomm_001.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_002.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_003.png
+4 p- nomm_004.png
+4 p- nomm_005.png
+4 p- nomm_006.png
+4 p- nomm_007.png
+2 p- nomm_008.png
+2 p- nomm_009.png
+2 p- nomm_010.png
+C19                               #Play bow pulling SFE
+2 p- nomm_011.png
+2 p- nomm_012.png
+20 p- nomm_013.png
+C05                               #Call spell associated with equipped weapon
+2 p- nomm_014.png
+1 p- nomm_015.png
+C01                               #NOP
+4 p- nomm_016.png
+4 p- nomm_017.png
+4 p- nomm_018.png
+7 p- nomm_019.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+2 p- nomm_020.png
+C06                               #Begin opponent's turn after hit.next code 0D.
+2 p- nomm_020.png
+C1C                               #Play light horse stepping SFE; pitch decreases
+4 p- nomm_021.png
+C0D                               #End of dodge animation. preceeded by 0x06
+~~~
+/// - End of animation
