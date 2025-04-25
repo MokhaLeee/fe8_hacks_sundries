@@ -82,14 +82,14 @@ static const struct UnitDefinition UnitDef_Ally[] = {
 static const struct UnitDefinition UnitDef_Enemy[] = {
 	{
 		.charIndex = CHARACTER_ONEILL,
-		.classIndex = CLASS_RANGER,
+		.classIndex = CLASS_ARCHER,
 		.allegiance = FACTION_ID_RED,
 		.level = 4,
 		.xPosition = 3,
 		.yPosition = 3,
 		.items = {
-			ITEM_SWORD_IRON,
 			ITEM_BOW_IRON,
+			ITEM_SWORD_IRON,
 		},
 		.ai = { 0, 4, 9, 0 },
 	},
@@ -152,7 +152,7 @@ static void set_unit_status(void)
 	if (unit) {
 		unit->pow = 0;
 		unit->maxHP = 70;
-		unit->curHP = 30;
+		unit->curHP = 10;
 	}
 }
 

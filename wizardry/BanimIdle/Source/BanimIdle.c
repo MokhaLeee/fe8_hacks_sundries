@@ -117,6 +117,16 @@ bool Banim_C11(struct Anim *anim)
 		);
 	}
 
+	switch (BanimDefaultModeConfig[anim->currentRoundType * 4 + 0]) {
+	case BANIM_MODE_STANDING:
+	case BANIM_MODE_STANDING2:
+	case BANIM_MODE_RANGED_STANDING:
+		break;
+
+	default:
+		return false;
+	}
+
 	if (C01_BLOCKING_PRE_BATTLE(anim)) {
 		AnimMoveBackToCommand(anim, 0x10);
 		anim->timer = NextRN_N(20) + 10;

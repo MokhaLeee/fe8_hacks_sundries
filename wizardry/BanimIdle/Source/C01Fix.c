@@ -76,7 +76,8 @@ void Banim_C01(struct Anim *anim)
 	}
 
 	if (GetAnimNextRoundType(anim) == ANIM_ROUND_INVALID &&
-		gBanimDoneFlag[GetAnimPosition(GetAnimAnotherSide(anim))] == true) {
+		gBanimDoneFlag[GetAnimPosition(GetAnimAnotherSide(anim))] == true &&
+		gEkrDeadEventExist != false) {
 		Printf("return %d", 2);
 		return;
 	}
