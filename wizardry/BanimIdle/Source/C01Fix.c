@@ -10,6 +10,7 @@ void AnimMoveBackToCommand(struct Anim *anim, int cmd);
 void Banim_C01(struct Anim *anim)
 {
 	bool need_trace = ShouldTrace(anim);
+	struct ProcEkrBattle *ekrbattle = Proc_Find(gProc_ekrBattle);
 
 	if (need_trace) {
 		_maybe_unused int layer = GetAISLayerId(anim);
@@ -70,18 +71,38 @@ void Banim_C01(struct Anim *anim)
 		return;
 	}
 
+	if (
+		ekrbattle->proc_idleCb == (ProcFunc)ekrBattleOnBattleEnd ||
+		ekrbattle->proc_idleCb == (ProcFunc)ekrBattle_WaitForPostBattleAct ||
+		ekrbattle->proc_idleCb == (ProcFunc)ekrBattleExecExpGain ||
+		ekrbattle->proc_idleCb == (ProcFunc)ekrBattle_80508F0 ||
+		ekrbattle->proc_idleCb == (ProcFunc)ekrBattle_8050940 ||
+		ekrbattle->proc_idleCb == (ProcFunc)ekrBattleWaitExpBarIdle ||
+		ekrbattle->proc_idleCb == (ProcFunc)ekrBattlePostExpBarIdle ||
+		ekrbattle->proc_idleCb == (ProcFunc)ekrBattle_8050AB8 ||
+		ekrbattle->proc_idleCb == (ProcFunc)ekrBattleLvupHanlder ||
+		ekrbattle->proc_idleCb == (ProcFunc)ekrBattle_ExecEkrLvup ||
+		ekrbattle->proc_idleCb == (ProcFunc)ekrBattle_WaitEkrLvupIdle ||
+		ekrbattle->proc_idleCb == (ProcFunc)ekrNewEkrPopup ||
+		ekrbattle->proc_idleCb == (ProcFunc)ekrBattle_WaitForPopup ||
+		ekrbattle->proc_idleCb == (ProcFunc)ekrBattle_PostPopup ||
+		0
+	)
+		goto goto_loop;
+
 	if (anim->state3 & (ANIM_BIT3_NEW_ROUND_START | ANIM_BIT3_NEXT_ROUND_START)) {
 		Printf("return %d", 1);
 		return;
 	}
 
-	if (GetAnimNextRoundType(anim) == ANIM_ROUND_INVALID &&
-		gBanimDoneFlag[GetAnimPosition(GetAnimAnotherSide(anim))] == true &&
-		gEkrDeadEventExist != false) {
+	if (ekrbattle->proc_idleCb == (ProcFunc)ekrBattleInRoundIdle &&
+		GetAnimNextRoundType(anim) == ANIM_ROUND_INVALID &&
+		gBanimDoneFlag[GetAnimPosition(GetAnimAnotherSide(anim))] == true) {
 		Printf("return %d", 2);
 		return;
 	}
 
+goto_loop:
 	AnimMoveBackToCommand(anim, 0x10);
 	anim->timer = NextRN_N(20) + 10;
 #endif
