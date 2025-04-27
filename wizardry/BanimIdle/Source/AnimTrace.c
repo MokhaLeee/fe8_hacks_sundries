@@ -10,11 +10,13 @@ bool ShouldTrace(struct Anim *anim)
 {
 	bool need_trace = false;
 
+#if 0
 	if (anim == gAnims[0])
 		need_trace = true;
 
 	if (anim == gAnims[2])
 		need_trace = true;
+#endif
 
 	return need_trace;
 }

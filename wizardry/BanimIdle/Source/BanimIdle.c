@@ -15,30 +15,8 @@ void AnimMoveBackToCommand(struct Anim *anim, int cmd)
 	history = anim->pScrCurrent;
 	pre = cur = anim->pScrStart;
 
-	bool need_trace = false; // ShouldTrace(anim);
-
-	if (need_trace) {
-		_maybe_unused int layer = GetAISLayerId(anim);
-		_maybe_unused int pos = GetAnimPosition(anim);
-		_maybe_unused int type = anim->currentRoundType;
-		_maybe_unused int frame = BanimDefaultModeConfig[4 * type + layer * 2];
-
-		Local_Printf("[anim=%p] layer=%d, pos=%d, type=%d(%d), diff=%d, inst=[0x%X 0x%X 0x%X]",
-			anim, layer, pos, type, frame,
-			anim->pScrCurrent - anim->pScrStart,
-			anim->pScrCurrent[0], anim->pScrCurrent[1], anim->pScrCurrent[2]
-		);
-	}
-
 	while (1) {
 		u32 inst = ANINS_GET_TYPE(*cur);
-
-		if (need_trace) {
-			Local_Printf("Trace move: cur=%d, inst=[0x%X 0x%X 0x%X]",
-				cur - anim->pScrStart,
-				cur[0], cur[1], cur[2]
-			);
-		}
 
 		if (cur == history)
 			break;
@@ -51,14 +29,6 @@ void AnimMoveBackToCommand(struct Anim *anim, int cmd)
 
 		if (inst == ANIM_INS_TYPE_COMMAND) {
 			int this_cmd = ANINS_COMMAND_GET_ID(*cur);
-
-			if (need_trace) {
-				Local_Printf("cur=%d, cmd=0x%X, inst=[0x%X 0x%X 0x%X]",
-					cur - anim->pScrStart,
-					this_cmd,
-					anim->pScrCurrent[0], anim->pScrCurrent[1], anim->pScrCurrent[2]
-				);
-			}
 
 			if (this_cmd == cmd) {
 				cur = pre;
@@ -79,44 +49,11 @@ void AnimMoveBackToCommand(struct Anim *anim, int cmd)
 
 bool Banim_C10(struct Anim *anim)
 {
-	bool need_trace = ShouldTrace(anim);
-
-	if (need_trace) {
-		_maybe_unused int layer = GetAISLayerId(anim);
-		_maybe_unused int pos = GetAnimPosition(anim);
-		_maybe_unused int type = anim->currentRoundType;
-		_maybe_unused int frame = BanimDefaultModeConfig[4 * type + layer * 2];
-
-		Local_Printf("[anim=%p] layer=%d, pos=%d, type=%d(%d), diff=%d, inst=[0x%X 0x%X 0x%X]",
-			anim, layer, pos, type, frame,
-			anim->pScrCurrent - anim->pScrStart,
-			anim->pScrCurrent[0], anim->pScrCurrent[1], anim->pScrCurrent[2]
-		);
-	}
-
-	if (anim->state3 & ANIM_BIT3_NEXT_ROUND_START)
-		return false;
-
 	return false;
 }
 
 bool Banim_C11(struct Anim *anim)
 {
-	bool need_trace = ShouldTrace(anim);
-
-	if (need_trace) {
-		_maybe_unused int layer = GetAISLayerId(anim);
-		_maybe_unused int pos = GetAnimPosition(anim);
-		_maybe_unused int type = anim->currentRoundType;
-		_maybe_unused int frame = BanimDefaultModeConfig[4 * type + layer * 2];
-
-		Local_Printf("[anim=%p] layer=%d, pos=%d, type=%d(%d), diff=%d, inst=[0x%X 0x%X 0x%X]",
-			anim, layer, pos, type, frame,
-			anim->pScrCurrent - anim->pScrStart,
-			anim->pScrCurrent[0], anim->pScrCurrent[1], anim->pScrCurrent[2]
-		);
-	}
-
 	switch (BanimDefaultModeConfig[anim->currentRoundType * 4 + 0]) {
 	case BANIM_MODE_STANDING:
 	case BANIM_MODE_STANDING2:
@@ -129,7 +66,6 @@ bool Banim_C11(struct Anim *anim)
 
 	if (C01_BLOCKING_PRE_BATTLE(anim)) {
 		AnimMoveBackToCommand(anim, 0x10);
-		anim->timer = NextRN_N(20) + 10;
 		return false;
 	}
 
@@ -145,6 +81,5 @@ bool Banim_C11(struct Anim *anim)
 	}
 
 	AnimMoveBackToCommand(anim, 0x10);
-	// anim->timer = NextRN_N(20) + 10;
 	return false;
 }
