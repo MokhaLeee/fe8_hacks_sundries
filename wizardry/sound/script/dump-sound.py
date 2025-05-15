@@ -40,36 +40,29 @@ def dump_tone_data(rom_data, addr, name, used_voices):
 	# voice group
 
 	addr = addr_filter(addr)
-	voice_num = max(used_voices)
-	idx = 0
-	off = 0
 
-	while True:
-		voice = ToneData(rom_data, addr + off)
+	for voice_idx in used_voices:
+		voice = ToneData(rom_data, addr + voice_idx * 0xC)
+		print(f"tone_data 0x{voice.type:02X}, 0x{voice.key:02X}, 0x{voice.length:02X}, 0x{voice.pan_sweep:02X}, 0x{voice.wav:08X}, 0x{voice.attack:02X}, 0x{voice.decay:02X}, 0x{voice.sustain:02X}, 0x{voice.release:02X} @ index={voice_idx}")
 
-		if idx in used_voices:
-			print(f"tone_data 0x{voice.type:02X}, 0x{voice.key:02X}, 0x{voice.length:02X}, 0x{voice.pan_sweep:02X}, 0x{voice.wav:08X}, 0x{voice.attack:02X}, 0x{voice.decay:02X}, 0x{voice.sustain:02X}, 0x{voice.release:02X} @ index={idx}")
-		else:
-			# print(f"tone_data 0x{voice.type:02X}, 0x{voice.key:02X}, 0x{voice.length:02X}, 0x{voice.pan_sweep:02X}, 0x{voice.wav:08X}, 0x{voice.attack:02X}, 0x{voice.decay:02X}, 0x{voice.sustain:02X}, 0x{voice.release:02X} @ index={idx}")
-			print(f"tone_data 0x01, 0x3C, 0x00, 0x00, 0x00000002, 0x00, 0x00, 0x0F, 0x00 @ index={idx} (dummy)")
-			# print(f".word 0 ,0, 0 @ index={idx}")
-
-		off = off + 0xC
-		idx = idx + 1
-		if idx > voice_num:
-			break
 
 class SoundTrackCmd:
 	def __init__(self, addr, cmd):
 		self.addr = addr
 		self.cmd  = f"{cmd}"
 
-def dump_sound_track(rom_data, addr, max_len, name):
+def get_sorted_voice_index(voices, index):
+	for i, voice in enumerate(voices):
+		if index == voice:
+			return i
+
+	return -1
+
+def dump_sound_track(rom_data, addr, max_len, name, used_voices):
 
 	# print(f"addr=0x{addr:08X}, max_len={max_len:X}")
 
 	cmds = []
-	used_voices = []
 
 	label_index = 0
 	labels = {}
@@ -126,11 +119,15 @@ def dump_sound_track(rom_data, addr, max_len, name):
 				off = off + 4
 		elif cmd >= 0xBA and cmd <= 0xC8:
 			_arg = rom_data[addr + off + 1]
-			cmds.append(SoundTrackCmd(addr + off, f".byte {MML(cmd)}, {_arg}"))
-			off = off + 2
 
 			if cmd == 0xBD: # VOICE
-				used_voices.append(_arg)
+				if get_sorted_voice_index(used_voices, _arg) < 0:
+					used_voices.append(_arg)
+
+				_arg = get_sorted_voice_index(used_voices, _arg)
+
+			cmds.append(SoundTrackCmd(addr + off, f".byte {MML(cmd)}, {_arg}"))
+			off = off + 2
 
 		elif cmd == 0xCD: # XCMD
 			sub_cmd = rom_data[addr + off + 1]
@@ -227,8 +224,7 @@ def dump_one_song(rom_data, addr, name):
 
 		print(".align 2")
 		print(f"{trace_name}:")
-		track_used_voices = dump_sound_track(rom_data, addr_filter(song_header.tracks[i]), max_len, trace_name)
-		whole_sound_used_voices.extend(track_used_voices)
+		dump_sound_track(rom_data, addr_filter(song_header.tracks[i]), max_len, trace_name, whole_sound_used_voices)
 		print("")
 
 	print("@ **************************** voice_group ***************************")
