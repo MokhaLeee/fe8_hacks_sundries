@@ -17,13 +17,49 @@ def ReadU32(rom_data, addr):
 	b3 = rom_data[addr + 3]
 	return (b0 | (b1 << 8) | (b2 << 16) | (b3 << 24))
 
-def ReadU16():
+def ReadU16(rom_data, addr):
 	b0 = rom_data[addr + 0]
 	b1 = rom_data[addr + 1]
 	return (b0 | (b1 << 8))
 
 def addr_filter(addr):
 	return addr & 0x07FFFFFF
+
+def is_rom_u32(addr):
+	if addr < 0x08000000:
+		return False
+
+	if addr > 0x0A000000:
+		return False
+
+	if (addr & 0x03) != 0:
+		return False
+
+	return True
+
+def crc16(rom_data, addr, size):
+	off = 0
+
+	add_acc = 0
+	xor_acc = 0
+
+	while True:
+		left = size - off
+
+		if left == 1:
+			data = rom_data[addr + off]
+		else:
+			data = ReadU16(rom_data, addr + off)
+
+		add_acc = add_acc + data
+		xor_acc = xor_acc ^ data
+
+		off = off + 2
+		if off >= size:
+			break
+
+	return (add_acc + xor_acc)
+
 
 _MML = {
 	0x80: "W00",

@@ -36,15 +36,52 @@ class ToneData:
 		self.sustain = rom_data[addr + 10]
 		self.release = rom_data[addr + 11]
 
-def dump_tone_data(rom_data, addr, name, used_voices):
+class WaveData:
+	def __init__(self, rom_data, addr):
+		self.name = f"wav_0x{addr:08X}"
+		self.addr = addr
+
+		self.type = ReadU16(rom_data, addr + 0x00)
+		self.status = ReadU16(rom_data, addr + 0x02)
+		self.freq = ReadU32(rom_data, addr + 0x04)
+		self.loopStart = ReadU32(rom_data, addr + 0x08)
+		self.size = ReadU32(rom_data, addr + 0x0C)
+		self.crc = crc16(rom_data, addr, self.size)
+
+def find_wav_index_by_crc(wav_groups, crc):
+	for i, wav in enumerate(wav_groups):
+		if wav.crc == crc:
+			return i
+
+	return -1
+
+def dump_all_wavs(rom_data, wav_groups):
+	for wav in wav_groups:
+		print("align 4")
+		print(f"{wav.name} @ 0x{wav.addr:08X}")
+
+def dump_tone_data(rom_data, addr, name, used_voices, wav_groups):
 	# voice group
 
 	addr = addr_filter(addr)
 
 	for voice_idx in used_voices:
 		voice = ToneData(rom_data, addr + voice_idx * 0xC)
-		print(f"tone_data 0x{voice.type:02X}, 0x{voice.key:02X}, 0x{voice.length:02X}, 0x{voice.pan_sweep:02X}, 0x{voice.wav:08X}, 0x{voice.attack:02X}, 0x{voice.decay:02X}, 0x{voice.sustain:02X}, 0x{voice.release:02X} @ index={voice_idx}")
 
+		if is_rom_u32(voice.wav) and voice.type != 0x80: # voice_keysplit_all
+			wav = WaveData(rom_data, addr_filter(voice.wav))
+
+			wav_idx = find_wav_index_by_crc(wav_groups, wav.crc)
+			if wav_idx < 0:
+				wav_groups.append(wav)
+			else:
+				wav = wav_groups[wav_idx]
+
+			wav_name = wav.name
+		else:
+			wav_name = f"0x{voice.wav:08X}"
+
+		print(f"tone_data 0x{voice.type:02X}, 0x{voice.key:02X}, 0x{voice.length:02X}, 0x{voice.pan_sweep:02X}, {wav_name}, 0x{voice.attack:02X}, 0x{voice.decay:02X}, 0x{voice.sustain:02X}, 0x{voice.release:02X} @ index={voice_idx}")
 
 class SoundTrackCmd:
 	def __init__(self, addr, cmd):
@@ -204,7 +241,7 @@ def dump_sound_header(rom_data, addr, name):
 
 	return song_header
 
-def dump_one_song(rom_data, addr, name):
+def dump_one_song(rom_data, addr, name, wav_groups):
 	whole_sound_used_voices = []
 
 	print("@ ****************************** header ******************************")
@@ -232,11 +269,13 @@ def dump_one_song(rom_data, addr, name):
 
 	print(".align 4")
 	print(f"{tone_name}:")
-	dump_tone_data(rom_data, song_header.tone, tone_name, whole_sound_used_voices)
+	dump_tone_data(rom_data, song_header.tone, tone_name, whole_sound_used_voices, wav_groups)
 
 
 def main(args):
 	addr = eval(args[0]) & 0x07FFFFFF
+
+	wav_groups = []
 
 	with open(rom, 'rb') as f:
 		rom_data = f.read()
@@ -256,7 +295,7 @@ def main(args):
 
 	sound_name = "this_song"
 
-	dump_one_song(rom_data, addr, sound_name)
+	dump_one_song(rom_data, addr, sound_name, wav_groups)
 
 if __name__ == '__main__':
 	main(sys.argv[1:])
