@@ -191,7 +191,7 @@ CLEAN_FILES += $(EFX_SCR_DEPS)
 # ==============
 clean:
 	@rm -f $(CLEAN_FILES)
-	@rm -rf $(CLEAN_DIRS)
+	@rm -rf $(CLEAN_DIRS) $(shell find -name __pycache__)
 #	@$(MAKE) -s -C $(FE8_DIR) clean
 
 FORCE:

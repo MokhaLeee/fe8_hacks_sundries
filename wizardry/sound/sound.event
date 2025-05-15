@@ -1,0 +1,6 @@
+#include "Source/sound1.lyn.event"
+
+PUSH
+	ORG 0x224478
+	POIN this_song
+POP
