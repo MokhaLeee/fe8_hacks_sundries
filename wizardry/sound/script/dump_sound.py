@@ -48,7 +48,7 @@ class ToneData:
 		self.release = rom_data[addr + 11]
 
 class WaveData:
-	def __init__(self, rom_data, addr):
+	def __init__(self, rom_data, addr, tone_type):
 		self.name = f"wav_0x{addr:08X}"
 		self.addr = addr
 
@@ -57,7 +57,14 @@ class WaveData:
 		self.freq = ReadU32(rom_data, addr + 0x04)
 		self.loopStart = ReadU32(rom_data, addr + 0x08)
 		self.size = ReadU32(rom_data, addr + 0x0C)
-		self.crc = crc16(rom_data, addr, self.size)
+
+		self.tone_type = tone_type
+
+		if tone_type == 3 or tone_type == 11:
+			self.size = 16
+			self.crc = 0
+		else:
+			self.crc = crc16(rom_data, addr, self.size)
 
 def find_wav_index_by_crc(wav_groups, crc):
 	for i, wav in enumerate(wav_groups):
@@ -123,11 +130,11 @@ def dump_tone_data(rom_data, song_header, wav_groups):
 
 			sub_tones.append(sub_tone)
 			sub_tone_idx = sub_tone_idx + 1
-			wav_name = sub_tone_name
-			# wav_name = f"0x{voice.wav:08X}"
+			# wav_name = sub_tone_name
+			wav_name = f"0x{voice.wav:08X}"
 
 		elif is_rom_u32(voice.wav):
-			wav = WaveData(rom_data, addr_filter(voice.wav))
+			wav = WaveData(rom_data, addr_filter(voice.wav), voice.type)
 
 			wav_idx = find_wav_index_by_crc(wav_groups, wav.crc)
 			if wav_idx < 0:
@@ -158,7 +165,7 @@ def dump_tone_data(rom_data, song_header, wav_groups):
 				if voice.type == 0x80: # voice_keysplit_all
 					wav_name = f"0x{voice.wav:08X}"
 				elif is_rom_u32(voice.wav):
-					wav = WaveData(rom_data, addr_filter(voice.wav))
+					wav = WaveData(rom_data, addr_filter(voice.wav), voice.type)
 
 					wav_idx = find_wav_index_by_crc(wav_groups, wav.crc)
 					if wav_idx < 0:
