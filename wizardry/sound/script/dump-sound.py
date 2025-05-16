@@ -13,9 +13,6 @@ class TrackInfo:
 
 class SongHeader:
 	def __init__(self, rom_data, addr, name):
-		self.name = name
-		self.addr = addr
-
 		self.trackCount = rom_data[addr + 0]
 		self.blockCount = rom_data[addr + 1]
 		self.priority = rom_data[addr + 2]
@@ -31,6 +28,10 @@ class SongHeader:
 		self.tracks[5] = TrackInfo(f"{name}_track5", ReadU32(rom_data, addr + 0x1C))
 		self.tracks[6] = TrackInfo(f"{name}_track6", ReadU32(rom_data, addr + 0x20))
 		self.tracks[7] = TrackInfo(f"{name}_track7", ReadU32(rom_data, addr + 0x24))
+
+		self.used_voices = []
+		self.name = name
+		self.addr = addr
 
 class ToneData:
 	def __init__(self, rom_data, addr):
@@ -89,15 +90,20 @@ def dump_all_wavs(rom_data, wav_groups):
 		print("")
 
 
-def dump_tone_data(rom_data, addr, name, used_voices, wav_groups):
+def dump_tone_data(rom_data, song_header, wav_groups):
 	# voice group
 
-	addr = addr_filter(addr)
+	name = f"{song_header.name}_tone"
+	print(f"{name}:")
 
-	for voice_idx in used_voices:
+	addr = addr_filter(song_header.tone)
+
+	for voice_idx in song_header.used_voices:
 		voice = ToneData(rom_data, addr + voice_idx * 0xC)
 
-		if is_rom_u32(voice.wav) and voice.type != 0x80: # voice_keysplit_all
+		if voice.type == 0x80: # voice_keysplit_all
+			wav_name = f"0x{voice.wav:08X}"
+		elif is_rom_u32(voice.wav):
 			wav = WaveData(rom_data, addr_filter(voice.wav))
 
 			wav_idx = find_wav_index_by_crc(wav_groups, wav.crc)
@@ -124,10 +130,11 @@ def get_sorted_voice_index(voices, index):
 
 	return -1
 
-def dump_sound_track(rom_data, track, max_len, used_voices):
+def dump_sound_track(rom_data, song_header, track_index, max_len):
 
 	# print(f"addr=0x{addr:08X}, max_len={max_len:X}")
 
+	track = song_header.tracks[track_index]
 	addr = addr_filter(track.addr)
 	name = track.name
 	cmds = []
@@ -191,10 +198,10 @@ def dump_sound_track(rom_data, track, max_len, used_voices):
 				track.keysh.append(_arg)
 
 			if cmd == 0xBD: # VOICE
-				if get_sorted_voice_index(used_voices, _arg) < 0:
-					used_voices.append(_arg)
+				if get_sorted_voice_index(song_header.used_voices, _arg) < 0:
+					song_header.used_voices.append(_arg)
 
-				_arg = get_sorted_voice_index(used_voices, _arg)
+				_arg = get_sorted_voice_index(song_header.used_voices, _arg)
 				track.voice.append(_arg)
 
 			cmds.append(SoundTrackCmd(addr + off, f".byte {MML(cmd)}, {_arg}"))
@@ -256,8 +263,6 @@ def dump_sound_track(rom_data, track, max_len, used_voices):
 			print(f"{labels[cmd.addr]}:")
 		print(f"    {cmd.cmd}")
 
-	return used_voices
-
 def dump_sound_header(rom_data, addr, name):
 	song_header = SongHeader(rom_data, addr, name)
 
@@ -276,8 +281,6 @@ def dump_sound_header(rom_data, addr, name):
 	return song_header
 
 def dump_one_song(rom_data, addr, name, wav_groups):
-	whole_sound_used_voices = []
-
 	print("@ ****************************** header ******************************")
 	print(".align 2")
 	print(f".global {name}")
@@ -294,16 +297,14 @@ def dump_one_song(rom_data, addr, name, wav_groups):
 		track = song_header.tracks[i]
 
 		print(".align 2")
-		print(f"{track.name}:")
-		dump_sound_track(rom_data, track, max_len, whole_sound_used_voices)
+		print(f"{song_header.tracks[i].name}:")
+		dump_sound_track(rom_data, song_header, i, max_len)
 		print("")
 
 	print("@ **************************** voice_group ***************************")
-	tone_name = f"{name}_tone"
 
 	print(".align 4")
-	print(f"{tone_name}:")
-	dump_tone_data(rom_data, song_header.tone, tone_name, whole_sound_used_voices, wav_groups)
+	dump_tone_data(rom_data, song_header, wav_groups)
 
 
 def main(args):
