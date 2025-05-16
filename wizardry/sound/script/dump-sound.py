@@ -8,8 +8,8 @@ class TrackInfo:
 	def __init__(self, name, addr):
 		self.addr = addr
 		self.name = name
-		self.keysh = -1
-		self.voice = -1
+		self.keysh = []
+		self.voice = []
 
 class SongHeader:
 	def __init__(self, rom_data, addr, name):
@@ -187,11 +187,15 @@ def dump_sound_track(rom_data, track, max_len, used_voices):
 		elif cmd >= 0xBA and cmd <= 0xC8:
 			_arg = rom_data[addr + off + 1]
 
+			if cmd == 0xBC: # KEYSH
+				track.keysh.append(_arg)
+
 			if cmd == 0xBD: # VOICE
 				if get_sorted_voice_index(used_voices, _arg) < 0:
 					used_voices.append(_arg)
 
 				_arg = get_sorted_voice_index(used_voices, _arg)
+				track.voice.append(_arg)
 
 			cmds.append(SoundTrackCmd(addr + off, f".byte {MML(cmd)}, {_arg}"))
 			off = off + 2
