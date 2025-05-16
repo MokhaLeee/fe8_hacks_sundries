@@ -1,4 +1,4 @@
-#include "Source/sound1.lyn.event"
+#include "Source/sound001.lyn.event"
 
 PUSH
 	ORG 0x224478

@@ -57,8 +57,27 @@ def find_wav_index_by_crc(wav_groups, crc):
 
 def dump_all_wavs(rom_data, wav_groups):
 	for wav in wav_groups:
-		print("align 4")
-		print(f"{wav.name} @ 0x{wav.addr:08X}")
+		print(".align 4")
+		print(f"{wav.name}: @ 0x{wav.addr:08X}")
+		format_print(f".short 0x{wav.type:04X}", "type")
+		format_print(f".short 0x{wav.status:04X}", "status")
+		format_print(f".word  0x{wav.freq:08X}", "freq")
+		format_print(f".word  0x{wav.loopStart:08X}", "loopStart")
+		format_print(f".word  0x{wav.size:08X}", "size")
+
+		print("    .byte ", end=' ')
+		for i in range(wav.size):
+			print(f"0x{rom_data[wav.addr + 0x10 + i]:02X}", end='')
+
+			if (i + 1) % 16 == 0:
+				print("")
+				print("    .byte ", end=' ')
+			else:
+				print(",", end=' ')
+
+		print("")
+		print("")
+
 
 def dump_tone_data(rom_data, addr, name, used_voices, wav_groups):
 	# voice group
@@ -81,7 +100,7 @@ def dump_tone_data(rom_data, addr, name, used_voices, wav_groups):
 		else:
 			wav_name = f"0x{voice.wav:08X}"
 
-		print(f"tone_data 0x{voice.type:02X}, 0x{voice.key:02X}, 0x{voice.length:02X}, 0x{voice.pan_sweep:02X}, {wav_name}, 0x{voice.attack:02X}, 0x{voice.decay:02X}, 0x{voice.sustain:02X}, 0x{voice.release:02X} @ index={voice_idx}")
+		print(f"    tone_data 0x{voice.type:02X}, 0x{voice.key:02X}, 0x{voice.length:02X}, 0x{voice.pan_sweep:02X}, {wav_name}, 0x{voice.attack:02X}, 0x{voice.decay:02X}, 0x{voice.sustain:02X}, 0x{voice.release:02X} @ index={voice_idx}")
 
 class SoundTrackCmd:
 	def __init__(self, addr, cmd):
@@ -296,6 +315,9 @@ def main(args):
 	sound_name = "this_song"
 
 	dump_one_song(rom_data, addr, sound_name, wav_groups)
+	print("")
+	print("@ ******************************** WAVs ******************************")
+	dump_all_wavs(rom_data, wav_groups)
 
 if __name__ == '__main__':
 	main(sys.argv[1:])
