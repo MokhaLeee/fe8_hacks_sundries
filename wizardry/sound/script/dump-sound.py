@@ -4,23 +4,33 @@
 import sys
 from local_util import *
 
+class TrackInfo:
+	def __init__(self, name, addr):
+		self.addr = addr
+		self.name = name
+		self.keysh = -1
+		self.voice = -1
+
 class SongHeader:
-	def __init__(self, rom_data, addr):
+	def __init__(self, rom_data, addr, name):
+		self.name = name
+		self.addr = addr
+
 		self.trackCount = rom_data[addr + 0]
 		self.blockCount = rom_data[addr + 1]
 		self.priority = rom_data[addr + 2]
 		self.reverb = rom_data[addr + 3]
-		self.tone = int.from_bytes(rom_data[addr + 4:addr + 8], 'little')
+		self.tone = ReadU32(rom_data, addr + 4)
 
 		self.tracks = {}
-		self.tracks[0] = int.from_bytes(rom_data[addr + 0x08:addr + 0x0C], 'little')
-		self.tracks[1] = int.from_bytes(rom_data[addr + 0x0C:addr + 0x10], 'little')
-		self.tracks[2] = int.from_bytes(rom_data[addr + 0x10:addr + 0x14], 'little')
-		self.tracks[3] = int.from_bytes(rom_data[addr + 0x14:addr + 0x18], 'little')
-		self.tracks[4] = int.from_bytes(rom_data[addr + 0x18:addr + 0x1C], 'little')
-		self.tracks[5] = int.from_bytes(rom_data[addr + 0x1C:addr + 0x20], 'little')
-		self.tracks[6] = int.from_bytes(rom_data[addr + 0x20:addr + 0x24], 'little')
-		self.tracks[7] = int.from_bytes(rom_data[addr + 0x24:addr + 0x28], 'little')
+		self.tracks[0] = TrackInfo(f"{name}_track0", ReadU32(rom_data, addr + 0x08))
+		self.tracks[1] = TrackInfo(f"{name}_track1", ReadU32(rom_data, addr + 0x0C))
+		self.tracks[2] = TrackInfo(f"{name}_track2", ReadU32(rom_data, addr + 0x10))
+		self.tracks[3] = TrackInfo(f"{name}_track3", ReadU32(rom_data, addr + 0x14))
+		self.tracks[4] = TrackInfo(f"{name}_track4", ReadU32(rom_data, addr + 0x18))
+		self.tracks[5] = TrackInfo(f"{name}_track5", ReadU32(rom_data, addr + 0x1C))
+		self.tracks[6] = TrackInfo(f"{name}_track6", ReadU32(rom_data, addr + 0x20))
+		self.tracks[7] = TrackInfo(f"{name}_track7", ReadU32(rom_data, addr + 0x24))
 
 class ToneData:
 	def __init__(self, rom_data, addr):
@@ -114,15 +124,16 @@ def get_sorted_voice_index(voices, index):
 
 	return -1
 
-def dump_sound_track(rom_data, addr, max_len, name, used_voices):
+def dump_sound_track(rom_data, track, max_len, used_voices):
 
 	# print(f"addr=0x{addr:08X}, max_len={max_len:X}")
 
+	addr = addr_filter(track.addr)
+	name = track.name
 	cmds = []
 
 	label_index = 0
 	labels = {}
-
 	prev = 0
 
 	off = 0
@@ -131,9 +142,9 @@ def dump_sound_track(rom_data, addr, max_len, name, used_voices):
 
 		# https://loveemu.github.io/vgmdocs/Summary_of_GBA_Standard_Sound_Driver_MusicPlayer2000.html
 
-		if cmd < 0x80 and prev > 0:
-			cmd = prev
-			off = off - 1
+		# if cmd < 0x80 and prev > 0:
+		#	cmd = prev
+		#	off = off - 1
 
 		if cmd >= 0x00 and cmd <= 0x7F: # n/a
 			cmds.append(SoundTrackCmd(addr + off, f".byte {MML(cmd)}"))
@@ -244,7 +255,7 @@ def dump_sound_track(rom_data, addr, max_len, name, used_voices):
 	return used_voices
 
 def dump_sound_header(rom_data, addr, name):
-	song_header = SongHeader(rom_data, addr)
+	song_header = SongHeader(rom_data, addr, name)
 
 	format_print(f".byte 0x{song_header.trackCount:02X}", "trackCount")
 	format_print(f".byte 0x{song_header.blockCount:02X}", "blockCount")
@@ -255,8 +266,8 @@ def dump_sound_header(rom_data, addr, name):
 	format_print(f".word {name}_tone", "tone")
 
 	for i in range(song_header.trackCount):
-		trace_name = f"{name}_track{i}"
-		format_print(f".word {trace_name}", f"tracks 0x{song_header.tracks[i]:08X}")
+		track = song_header.tracks[i]
+		format_print(f".word {track.name}", f"tracks 0x{track.addr:08X}")
 
 	return song_header
 
@@ -274,13 +285,13 @@ def dump_one_song(rom_data, addr, name, wav_groups):
 	for i in range(song_header.trackCount):
 		max_len = 0
 		if (i < (song_header.trackCount - 1)):
-			max_len = song_header.tracks[i + 1] - song_header.tracks[i]
+			max_len = song_header.tracks[i + 1].addr - song_header.tracks[i].addr
 
-		trace_name = f"{name}_track{i}"
+		track = song_header.tracks[i]
 
 		print(".align 2")
-		print(f"{trace_name}:")
-		dump_sound_track(rom_data, addr_filter(song_header.tracks[i]), max_len, trace_name, whole_sound_used_voices)
+		print(f"{track.name}:")
+		dump_sound_track(rom_data, track, max_len, whole_sound_used_voices)
 		print("")
 
 	print("@ **************************** voice_group ***************************")
