@@ -327,22 +327,31 @@ def dump_sound_header(rom_data, addr, name):
 	format_print(f".byte 0x{song_header.priority:02X}", "priority")
 	format_print(f".byte 0x{song_header.reverb:02X}", "reverb")
 
-	# format_print(f".word 0x{song_header.tone:08X}", "tone")
-	format_print(f".word {name}_tone", "tone")
+	if song_header.trackCount != 0:
+		# format_print(f".word 0x{song_header.tone:08X}", "tone")
+		format_print(f".word {name}_tone", "tone")
 
-	for i in range(song_header.trackCount):
-		track = song_header.tracks[i]
-		format_print(f".word {track.name}", f"tracks 0x{track.addr:08X}")
+		for i in range(song_header.trackCount):
+			track = song_header.tracks[i]
+			format_print(f".word {track.name}", f"tracks 0x{track.addr:08X}")
 
 	return song_header
 
 def dump_one_song(rom_data, addr, name, wav_groups):
-	print("@ ****************************** header ******************************")
+	addr = addr_filter(addr)
+
 	print(".align 2")
 	print(f".global {name}")
 	print(f"{name}:")
+
+	print("@ ****************************** header ******************************")
 	song_header = dump_sound_header(rom_data, addr, name)
 	print("")
+
+	# dummy_song
+	if song_header.trackCount == 0:
+		return song_header
+
 	print("@ ****************************** tracks ******************************")
 
 	for i in range(song_header.trackCount):
@@ -359,10 +368,10 @@ def dump_one_song(rom_data, addr, name, wav_groups):
 
 	print("@ **************************** voice_group ***************************")
 	dump_tone_data(rom_data, song_header, wav_groups)
+	return song_header
 
-
-def main(args):
-	addr = eval(args[0]) & 0x07FFFFFF
+if __name__ == '__main__':
+	addr = eval(sys.argv[1]) & 0x07FFFFFF
 
 	wav_groups = []
 
@@ -388,6 +397,3 @@ def main(args):
 	print("")
 	print("@ ******************************** WAVs ******************************")
 	dump_all_wavs(rom_data, wav_groups)
-
-if __name__ == '__main__':
-	main(sys.argv[1:])
