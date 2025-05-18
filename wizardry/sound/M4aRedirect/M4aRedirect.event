@@ -1,0 +1,41 @@
+#include "Source/m4a.lyn.event"
+
+PUSH
+    ORG 0x0CF988
+    POIN redirect_gMPlayJumpTableTemplate
+    PROTECT 0x000CF988 0x000CF98C // lt_MPlayJumpTableTemplat
+
+    ORG 0x0D0130
+    POIN redirect_gScaleTable
+    ORG 0x0D0134
+    POIN redirect_gFreqTable
+    PROTECT 0x000D00D4 0x000D0138 // MidiKeyToFreq
+
+    ORG 0x0D06F4
+    POIN redirect_gPcmSamplesPerVBlankTable
+    PROTECT 0x000D0670 0x000D0714 // SampleFreqSet
+
+    ORG 0x0D0C70
+    POIN redirect_gCgbScaleTable
+    ORG 0x0D0C74
+    POIN redirect_gCgbFreqTable
+    ORG 0x0D0C04
+    POIN redirect_gNoiseTable
+    PROTECT 0x000D0BD0 0x000D0C78 // MidiKeyToCgbFreq
+
+    ORG 0x0D1124
+    POIN redirect_gCgb3Vol
+    PROTECT 0x000D0D30 0x000D117C // CgbSound
+
+    ORG 0x0CFDC4
+    POIN redirect_gClockTable
+    PROTECT 0x000CFDC4 0x000CFDC8 // lt_gClockTable
+
+    ORG 0x0D0040
+    POIN redirect_gClockTable
+    PROTECT 0x000D002A 0x000D0044 // _081DDCEA
+
+    ORG 0x0D1564
+    POIN redirect_gXcmdTable
+    PROTECT 0x000D1548 0x000D1568 // ply_xcmd
+POP

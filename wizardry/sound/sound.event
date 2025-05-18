@@ -1,6 +1,15 @@
-#include "Source/sound001.lyn.event"
+/*
+	#include "Source/sound001.lyn.event"
 
-PUSH
-	ORG 0x224478
-	POIN this_song
-POP
+	PUSH
+		ORG 0x224478
+		POIN this_song
+	POP
+*/
+
+ALIGN 4
+// ORG 0x207468
+#include "AllInstrumentEA/AllInstrument.event"
+#include "RepointSongTable.event"
+#include "M4aRedirect/M4aRedirect.event"
+

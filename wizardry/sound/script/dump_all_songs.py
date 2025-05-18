@@ -26,19 +26,23 @@ if __name__ == '__main__':
 	with open(rom, 'rb') as f:
 		rom_data = f.read()
 
-	print(".include \"MPlayDef.s\"")
-	print(".include \"asm/macros/m4a.inc\"")
-	print(".section .rodata")
+	print(
+'''.include "MPlayDef.s"
+.section .rodata
 
-	print("")
+.macro song label, music_player, unknown
+	.4byte \\label
+	.2byte \\music_player
+	.2byte \\unknown
+.endm
 
-	print(".macro tone_data type, key, length, pan_sweep, wav, attack, decay, sustain, release")
-	print("    .byte \\type, \\key, \\length, \\pan_sweep")
-	print("    .word \\wav")
-	print("    .byte \\attack, \\decay, \\sustain, \\release")
-	print(".endm")
-
-	print("")
+.macro tone_data type, key, length, pan_sweep, wav, attack, decay, sustain, release
+    .byte \\type, \\key, \\length, \\pan_sweep
+    .word \\wav
+    .byte \\attack, \\decay, \\sustain, \\release
+.endm
+'''
+)
 
 	for i in range(SONGTABLE_AMT):
 
