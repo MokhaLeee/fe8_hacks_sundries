@@ -1,0 +1,42 @@
+#include "Source/music_player_table.lyn.event"
+
+PUSH
+    ORG 0x014B7C
+    POIN reloc_gMPlayTable
+
+    ORG 0x0458DC
+    POIN reloc_gMPlayTable
+
+    ORG 0x071B1C
+    POIN reloc_gMPlayTable
+
+    ORG 0x071B60
+    POIN reloc_gMPlayTable
+
+    ORG 0x0B5758
+    POIN reloc_gMPlayTable
+
+    ORG 0x0D01E8
+    POIN reloc_gMPlayTable
+
+    ORG 0x0D0220
+    POIN reloc_gMPlayTable
+
+    ORG 0x0D0254
+    POIN reloc_gMPlayTable
+
+    ORG 0x0D02A0
+    POIN reloc_gMPlayTable
+
+    ORG 0x0D02F4
+    POIN reloc_gMPlayTable
+
+    ORG 0x0D0328
+    POIN reloc_gMPlayTable
+
+    ORG 0x0D0358
+    POIN reloc_gMPlayTable
+
+    ORG 0x0D0390
+    POIN reloc_gMPlayTable
+POP

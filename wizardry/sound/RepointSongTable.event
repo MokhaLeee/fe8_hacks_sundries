@@ -7,43 +7,33 @@ ALL_SOUNDS_END:
 PUSH
     ORG 0x0028BC
     POIN NewSongTable
-    PROTECT 0x00002890 0x000028D0 // PlaySong
 
     ORG 0x014B80
     POIN NewSongTable
-    PROTECT 0x00014B28 0x00014B88 // PlaySeSpacial
 
     ORG 0x0458E0
     POIN NewSongTable
-    PROTECT 0x0004589C 0x000458E8 // SioPostBattle_AwaitAPress
 
     ORG 0x071B20
     POIN NewSongTable
     ORG 0x071B64
     POIN NewSongTable
-    PROTECT 0x00071AB0 0x00071B6C // M4aPlayWithPostionCtrl
 
     ORG 0x0B575C
     POIN NewSongTable
-    PROTECT 0x000B5730 0x000B576C // sub_80B5730
 
     ORG 0x0D0224
     POIN NewSongTable
-    PROTECT 0x000D01FC 0x000D0228 // m4aSongNumStart
 
     ORG 0x0D0258
     POIN NewSongTable
-    PROTECT 0x000D0228 0x000D0274 // m4aSongNumStartOrChange
 
     ORG 0x0D02A4
     POIN NewSongTable
-    PROTECT 0x000D0274 0x000D02C8 // m4aSongNumStartOrContinue
 
     ORG 0x0D02F8
     POIN NewSongTable
-    PROTECT 0x000D02C8 0x000D02FC // m4aSongNumStop
 
     ORG 0x0D032C
     POIN NewSongTable
-    PROTECT 0x000D02FC 0x000D0330 // m4aSongNumContinue
 POP
