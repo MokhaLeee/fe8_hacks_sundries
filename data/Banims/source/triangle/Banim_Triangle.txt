@@ -1,0 +1,183 @@
+#######################################################
+#D3 lorm_sp1 
+#
+#当输入到FEditorAdv时，请删除＃和每行之后。
+#######################################################
+/// - Mode 1               #攻击命中时的动作
+1 p- triangle_000.png
+C35                               #翅膀拍打声音
+1 p- triangle_001.png
+# 1 p- triangle_002.png
+1 p- triangle_003.png
+# 1 p- triangle_004.png
+1 p- triangle_005.png
+# 2 p- triangle_006.png
+1 p- triangle_007.png
+# 2 p- triangle_008.png
+1 p- triangle_009.png
+# 2 p- triangle_010.png
+1 p- triangle_011.png
+# 2 p- triangle_012.png
+1 p- triangle_013.png
+# 2 p- triangle_014.png
+2 p- triangle_015.png
+# 2 p- triangle_016.png
+C35                               #翅膀拍打声音
+# 3 p- triangle_017.png
+2 p- triangle_018.png
+# 2 p- triangle_019.png
+C25                               #弹翼声音
+3 p- triangle_020.png
+S0263                               #Sound 611 SE:@C85_25 @C85_3C Play wing flap SFE
+# 3 p- triangle_021.png
+4 p- triangle_022.png
+C25                               #弹翼声音
+4 p- triangle_023.png
+S0263                               #Sound 611 SE:@C85_25 @C85_3C Play wing flap SFE
+C22                               #剑在手中摆动声音
+# 3 p- triangle_024.png
+3 p- triangle_025.png
+SC8                               #Sound 200 SE:Small plunk? @C85_23
+3 p- triangle_026.png
+C35                               #翅膀拍打声音
+6 p- triangle_027.png
+S0264                               #Sound 612 SE:@C85_35 Play longer wing flapping SFE
+6 p- triangle_028.png
+C35                               #翅膀拍打声音
+6 p- triangle_029.png
+12 p- triangle_030.png
+C04                               #准备HP耗尽程序; 在命中后需要动画回到站立框架
+C38                               #枪转动的声音
+C15                               #屏幕动摇　弱
+C1A                               #无声音
+C1F                               #暴击效果音
+12 p- triangle_031.png
+SC8                               #Sound 200 SE:Small plunk? @C85_23
+C15                               #屏幕动摇　弱
+C1A                               #无声音
+C21                               #暴击效果音
+12 p- triangle_032.png
+C38                               #枪转动的声音
+C15                               #屏幕动摇　弱
+C1A                               #无声音
+C1F                               #暴击效果音
+12 p- triangle_033.png
+4 p- triangle_034.png
+C01                               #NOP
+C38                               #枪转动的声音
+4 p- triangle_035.png
+SCA                               #Sound 202 SE:Large plunk? @C85_24
+4 p- triangle_036.png
+C35                               #翅膀拍打声音
+3 p- triangle_037.png
+2 p- triangle_038.png
+S0264                               #Sound 612 SE:@C85_35 Play longer wing flapping SFE
+# 3 p- triangle_039.png
+2 p- triangle_040.png
+# 2 p- triangle_041.png
+C38                               #枪转动的声音
+# 3 p- triangle_042.png
+12 p- triangle_043.png
+# 7 p- triangle_044.png
+S0264                               #Sound 612 SE:@C85_35 Play longer wing flapping SFE
+# 3 p- triangle_045.png
+2 p- triangle_046.png
+# 2 p- triangle_047.png
+15 p- triangle_048.png
+C01                               #NOP
+C35                               #翅膀拍打声音
+1 p- triangle_049.png
+# 1 p- triangle_050.png
+1 p- triangle_051.png
+# 1 p- triangle_052.png
+1 p- triangle_053.png
+# 2 p- triangle_054.png
+1 p- triangle_055.png
+# 2 p- triangle_056.png
+1 p- triangle_057.png
+# 1 p- triangle_058.png
+1 p- triangle_059.png
+C25                               #弹翼声音
+# 2 p- triangle_060.png
+2 p- triangle_061.png
+# 2 p- triangle_062.png
+2 p- triangle_063.png
+# 1 p- triangle_064.png
+2 p- triangle_065.png
+C06                               #0D在攻击动画结束后出现
+# 3 p- triangle_066.png
+3 p- triangle_067.png
+# 2 p- triangle_068.png
+2 p- triangle_069.png
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - Mode 3               #攻击必杀时的动作
+1 p- triangle_000.png
+C03                               #攻击动作开始 07将在此之后
+C07                               #攻击动作开始 03就在此之前
+C04                               #准备HP耗尽程序; 在命中后需要动画回到站立框架
+C0C                               #重击
+C21                               #暴击效果音
+C01                               #NOP
+C06                               #0D在攻击动画结束后出现
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - Mode 5               #间接攻击的动作
+C03                               #攻击动作开始 07将在此之后
+C07                               #攻击动作开始 03就在此之前
+C05                               #魔法的呼出
+C01                               #NOP
+C06                               #0D在攻击动画结束后出现
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - Mode 6               #间接攻击必杀时的动作
+1 p- triangle_000.png
+C03                               #攻击动作开始 07将在此之后
+C07                               #攻击动作开始 03就在此之前
+C05                               #魔法的呼出
+C01                               #NOP
+C06                               #0D在攻击动画结束后出现
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - Mode 7               #被攻击回避时的动作
+C02                               #开始回避运动
+1 p- triangle_000.png
+1 p- triangle_069.png
+C0E                               #开始躲避帧(应该在静止帧之后，在躲避动画之前)
+3 p- triangle_070.png
+1 p- triangle_071.png
+C01                               #NOP
+2 p- triangle_070.png
+1 p- triangle_068.png
+1 p- triangle_069.png
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - Mode 8               #被间接攻击回避时的动作
+C02                               #开始回避运动
+1 p- triangle_000.png
+C0E                               #开始躲避帧(应该在静止帧之后，在躲避动画之前)
+C01                               #NOP
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - Mode 9               #站立不动的动作
+1 p- triangle_000.png
+C01                               #NOP
+~~~
+/// - Mode 10               #站立不动的动作
+1 p- triangle_000.png
+C01                               #NOP
+~~~
+/// - Mode 11               #间接时站立不动的动作
+1 p- triangle_000.png
+C01                               #NOP
+~~~
+/// - Mode 12               #攻击失误时的动作
+1 p- triangle_000.png
+C03                               #攻击动作开始 07将在此之后
+C07                               #攻击动作开始 03就在此之前
+C04                               #准备HP耗尽程序; 在命中后需要动画回到站立框架
+C01                               #NOP
+C06                               #0D在攻击动画结束后出现
+C0D                               #06在攻击动画结束前出现
+~~~
+/// - End of animation

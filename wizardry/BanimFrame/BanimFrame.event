@@ -1,0 +1,16 @@
+
+#include "Source/LynJump.event"
+#include "Source/BanimFrame.lyn.event"
+
+PUSH
+	ORG 0x059BD8
+	pr_BattleAnimTable:
+
+	ORG 0x059BFC
+	pr_CharaPalTable:
+POP
+
+ALIGN 4
+MultiPalList:
+	SHORT 0xB3
+	SHORT 0

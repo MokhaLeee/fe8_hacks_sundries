@@ -34,6 +34,7 @@ ORG FreeSpace
 #include "wizardry/CustomOpAnim/CustomOpAnim.event"
 #include "wizardry/BanimHpDrainFix/BanimHpDrainFix.event"
 #include "wizardry/MenuExpansion/MenuExpansion.event"
+#include "wizardry/BanimFrame/BanimFrame.event"
 #include "wizardry/sound/sound.event"
 
 ALIGN 4
