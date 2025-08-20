@@ -1,6 +1,7 @@
 
 #include "Source/LynJump.event"
 #include "Source/BanimFrame.lyn.event"
+#include "Source/CheckMultiPal.lyn.event"
 
 PUSH
 	ORG 0x059BD8

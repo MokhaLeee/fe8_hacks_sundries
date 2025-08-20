@@ -5,18 +5,7 @@ extern struct BattleAnimCharaPal const *const pr_CharaPalTable; // pointer to ch
 
 extern const u16 MultiPalList[];
 
-static bool IsMultiPaletteAnim(int pos)
-{
-	int i;
-	int bid = gBanimIdx[pos];
-
-	for (i = 0; MultiPalList[i] != 0; i++) {
-		if (bid == (MultiPalList[i] - 1))
-			return true;
-	}
-
-	return false;
-}
+extern bool IsMultiPaletteAnim(int pos);
 
 static int GetUnitStatusIndex(struct Unit *unit)
 {
@@ -38,13 +27,20 @@ void UpdateBanimFrame(void)
 	if (gBanimValid[EKR_POS_L] == true) {
 		bid = gBanimIdx[EKR_POS_L];
 		bid_pal = gBanimFactionPal[EKR_POS_L];
-		is_multi_pal = IsMultiPaletteAnim(EKR_POS_L);
 
+		// script
 		LZ77UnCompWram(banim[bid].script, gBanimScrLeft);
 		gpBanimModesLeft = banim[bid].modes;
 
+		// oam
+		LZ77UnCompWram(banim[bid].oam_l, gBanimOaml);
+		gBanimOaml[0x57F0 / 4] = 1;
+
+		// pal
 		pal_src = (const u16 *)banim[GetBanimPalette(bid, EKR_POS_L)].pal;
 		LZ77UnCompWram(pal_src, gBanimPaletteLeft);
+
+		is_multi_pal = IsMultiPaletteAnim(EKR_POS_L);
 
 		if (is_multi_pal) {
 			gpEfxUnitPaletteBackup[EKR_POS_L] = gBanimPaletteLeft;
@@ -66,21 +62,26 @@ void UpdateBanimFrame(void)
 			EfxPalModifyPetrifyEffect(gPaletteBuffer, OBPAL_EFX_UNIT_L, is_multi_pal ? 2 : 1);
 
 		EnablePaletteSync();
-		LZ77UnCompWram(banim[bid].oam_l, gBanimOaml);
-		gBanimOaml[0x57F0 / 4] = 1;
 	}
 
 	if (gBanimValid[EKR_POS_R] == true) {
 		bid = gBanimIdx[EKR_POS_R];
 		bid_pal = gBanimFactionPal[EKR_POS_R];
 		chara_pal = gBanimUniquePal[EKR_POS_R];
-		is_multi_pal = IsMultiPaletteAnim(EKR_POS_R);
 
+		// scr
 		LZ77UnCompWram(banim[bid].script, gBanimScrRight);
 		gpBanimModesRight = banim[bid].modes;
 
+		// oam
+		LZ77UnCompWram(banim[bid].oam_r, gBanimOamr2);
+		gBanimOamr2[0x57F0 / 4] = 1;
+
+		// pal
 		pal_src = (const u16 *)banim[GetBanimPalette(bid, EKR_POS_R)].pal;
 		LZ77UnCompWram(pal_src, gBanimPaletteRight);
+
+		is_multi_pal = IsMultiPaletteAnim(EKR_POS_R);
 
 		if (is_multi_pal) {
 			gpEfxUnitPaletteBackup[EKR_POS_R] = gBanimPaletteRight;
@@ -101,7 +102,39 @@ void UpdateBanimFrame(void)
 			EfxPalModifyPetrifyEffect(gPaletteBuffer, OBPAL_EFX_UNIT_R, is_multi_pal ? 2 : 1);
 
 		EnablePaletteSync();
-		LZ77UnCompWram(banim[bid].oam_r, gBanimOamr2);
-		gBanimOamr2[0x57F0 / 4] = 1;
+	}
+
+	if (gpEkrTriangleUnits[0] != NULL) {
+		u16 pid, jid;
+		u16 i;
+		u16 idx;
+		int val1;
+
+		idx = GetBattleAnimationId_WithUnique(gpEkrTriangleUnits[0], gpEkrTriangleUnits[0]->pClassData->pBattleAnimDef, 0, &val1);
+		gBanimTriAtkPalettes[0] = banim[idx].pal;
+
+		pid = gpEkrTriangleUnits[0]->pCharacterData->number - 1;
+		jid = gpEkrTriangleUnits[0]->pClassData->number;
+
+		for (i = 0; i < 7; i++) {
+			if (gAnimCharaPalConfig[pid][i] == jid) {
+				gBanimTriAtkPalettes[0] = cbapt[gAnimCharaPalIt[pid][i] - 1].pal;
+				break;
+			}
+		}
+
+		idx = GetBattleAnimationId_WithUnique(gpEkrTriangleUnits[1], gpEkrTriangleUnits[1]->pClassData->pBattleAnimDef, 0, &val1);
+		gBanimTriAtkPalettes[1] = banim[idx].pal;
+
+		pid = gpEkrTriangleUnits[1]->pCharacterData->number - 1;
+		jid = gpEkrTriangleUnits[1]->pClassData->number;
+
+		for (i = 0; i < 7; i++) {
+			if (gAnimCharaPalConfig[pid][i] == jid) {
+				gBanimTriAtkPalettes[1] = cbapt[gAnimCharaPalIt[pid][i] - 1].pal;
+				break;
+			}
+		}
 	}
 }
+
