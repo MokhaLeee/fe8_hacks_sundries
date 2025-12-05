@@ -19,7 +19,7 @@ void EkrTriangleRework_Init(struct ProcEkrTriangleRe * proc)
 	desc->animId = 0;
 	desc->charPalId = -1;
 	desc->roundType = ANIM_ROUND_HIT_CLOSE;
-	desc->state2 = 1;
+	desc->state2 = GetAnimPosition(proc->anim);
 	desc->oam2Tile = VRAMOFF_BANIM_SPELL_OBJ / 0x20;
 	desc->oam2Pal = OBJPAL_BANIM_SPELL_OBJ;
 
@@ -43,7 +43,7 @@ void EkrTriangleRework_Loop(struct ProcEkrTriangleRe * proc)
 		return;
 	}
 
-	if (proc->timer > 200) {
+	if (proc->timer > 30) {
 		sub_805AA28(&proc->desc);
 		Proc_Break(proc);
 
