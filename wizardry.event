@@ -9,8 +9,8 @@ ORG FreeSpace
 #include "wizardry/RemoveWorldMap/RemoveWorldMap.event"
 #include "wizardry/TargetSelectRework/TargetSelectRework.event"
 #include "wizardry/EfxStatusUnitRework/EfxStatusUnitRework.event"
-#include "wizardry/BanimCmdExpansion/BanimCmdExpansion.event"
-#include "wizardry/BanimIdle/BanimIdle.event"
+// #include "wizardry/BanimCmdExpansion/BanimCmdExpansion.event"
+// #include "wizardry/BanimIdle/BanimIdle.event"
 #include "wizardry/PostActionHook/PostActionHook.event"
 #include "wizardry/UnitStatusGetter/UnitStatusGetter.event"
 #include "wizardry/BwlRework/BwlRework.event"
@@ -21,7 +21,7 @@ ORG FreeSpace
 #include "wizardry/UnitPreAction/UnitPreAction.event"
 // #include "wizardry/EfxMagicDummyFix/EfxMagicDummyFix.event"
 // #include "wizardry/EfxAnims/EfxAnims.event"
-#include "wizardry/RemoveMovePath/RemoveMovePath.event"
+// #include "wizardry/RemoveMovePath/RemoveMovePath.event"
 #include "wizardry/EventThunderfx/EventThunderfx.event"
 #include "wizardry/SpawnAssassinfx/SpawnAssassinfx.event"
 #include "wizardry/EventBonusClaim/EventBonusClaim.event"
@@ -34,8 +34,10 @@ ORG FreeSpace
 #include "wizardry/CustomOpAnim/CustomOpAnim.event"
 #include "wizardry/BanimHpDrainFix/BanimHpDrainFix.event"
 #include "wizardry/MenuExpansion/MenuExpansion.event"
-#include "wizardry/BanimFrame/BanimFrame.event"
-#include "wizardry/sound/sound.event"
+// #include "wizardry/BanimFrame/BanimFrame.event"
+#include "wizardry/NewTriangleAnim/NewTriangleAnim.event"
+
+// #include "wizardry/sound/sound.event"
 
 ALIGN 4
 #include debug.event

@@ -1,0 +1,6 @@
+#include "Source/NewTriangleAnim.lyn.event"
+
+PUSH
+	ORG 0x06EB74
+	pr_ClassReelSpellAnimFuncLut:
+POP
