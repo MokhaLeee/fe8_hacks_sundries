@@ -44,7 +44,8 @@ AS  := $(PREFIX)as
 OBJCOPY := $(PREFIX)objcopy
 
 EA_DIR := tools/EventAssembler
-EA := $(EA_DIR)/ColorzCore$(EXE)
+# EA := $(EA_DIR)/ColorzCore$(EXE)
+EA := wine $(EA_DIR)_win/ColorzCore.exe
 
 PARSEFILE         := $(EA_DIR)/Tools/ParseFile$(EXE)
 PORTRAITFORMATTER := $(EA_DIR)/Tools/PortraitFormatter$(EXE)
