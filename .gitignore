@@ -21,7 +21,7 @@ tools/dotnet-install.sh
 *.o
 *.d
 *.dmp
-*.lyn.event
+# *.lyn.event
 
 # Spritans
 *.4bpp
